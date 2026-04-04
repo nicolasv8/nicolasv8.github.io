@@ -133,7 +133,7 @@ export function Hero() {
       <div className="relative flex h-full flex-col items-center justify-between px-6 py-8 md:px-12 md:py-12 lg:block">
         {/* Main Headline */}
         <motion.h1
-          className="relative z-10 -mt-8 text-center font-sans text-5xl font-black uppercase tracking-tight text-white drop-shadow-2xl md:-mt-6 md:text-7xl lg:absolute lg:left-1/2 lg:top-[0.5%] lg:mt-0 lg:w-max lg:-translate-x-1/2 lg:text-[8rem] lg:leading-none lg:tracking-[-0.06em] xl:left-[49.1%] xl:-top-[2%] xl:text-[10.75rem]"
+          className="relative z-10 -mt-8 translate-x-3 text-center font-sans text-5xl font-black uppercase tracking-tight text-white drop-shadow-2xl md:-mt-6 md:translate-x-6 md:text-7xl lg:absolute lg:left-[53%] lg:top-[0.5%] lg:mt-0 lg:w-max lg:-translate-x-1/2 lg:text-[8rem] lg:leading-none lg:tracking-[-0.06em] xl:left-[52.5%] xl:-top-[2%] xl:text-[10.75rem]"
           {...fadeIn}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.5 }}
         >
@@ -141,16 +141,16 @@ export function Hero() {
         </motion.h1>
 
         {/* Middle Text Row */}
-        <div className="relative z-30 -mt-24 flex w-full max-w-4xl items-center justify-between px-4 md:-mt-32 md:px-6 lg:absolute lg:inset-x-0 lg:top-[35%] lg:mt-0 lg:max-w-none lg:px-0 xl:top-[33.5%]">
+        <div className="relative z-30 -mt-40 flex w-full max-w-4xl items-center justify-between px-12 md:-mt-48 md:px-24 lg:absolute lg:inset-x-0 lg:top-[28%] lg:mt-0 lg:max-w-none lg:px-0 xl:top-[25%]">
           <motion.span
-            className="ml-4 text-4xl font-bold uppercase tracking-widest text-white drop-shadow-lg md:ml-8 md:text-5xl lg:absolute lg:left-[20.5%] lg:top-0 lg:text-[3.75rem] lg:tracking-[0.14em] xl:left-[22.5%] xl:text-[4.75rem]"
+            className="ml-4 text-4xl font-bold uppercase tracking-widest text-white drop-shadow-lg md:ml-8 md:text-5xl lg:absolute lg:left-[25.5%] lg:top-0 lg:text-[3.75rem] lg:tracking-[0.14em] xl:left-[27.5%] xl:text-[4.75rem]"
             {...slideUp}
             transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.7 }}
           >
             A LA
           </motion.span>
           <motion.span
-            className="text-4xl font-bold uppercase tracking-widest text-white drop-shadow-lg md:text-5xl lg:absolute lg:right-[14.5%] lg:top-0 lg:text-[3.75rem] lg:tracking-[0.12em] xl:right-[16.25%] xl:text-[4.75rem]"
+            className="translate-x-3 text-4xl font-bold uppercase tracking-widest text-white drop-shadow-lg md:translate-x-6 md:text-5xl lg:absolute lg:right-[16.75%] lg:top-0 lg:text-[3.75rem] lg:tracking-[0.12em] lg:translate-x-0 xl:right-[18.25%] xl:text-[4.75rem]"
             {...slideUp}
             transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.8 }}
           >
