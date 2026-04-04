@@ -96,11 +96,11 @@ export function Hero() {
   const sideTextClass =
     "absolute font-bold uppercase whitespace-nowrap text-white drop-shadow-lg text-[clamp(1.2rem,5.5vw,1.95rem)] md:text-[clamp(2.15rem,4.75vw,3rem)] lg:text-[clamp(3rem,3.8vw,3.8rem)]"
   const alaClass =
-    "right-1/2 -top-[1rem] mr-[2.2rem] xs:mr-[3rem] tracking-[0.16em] md:mr-[clamp(6rem,12vw,8rem)] md:top-[0.2rem] lg:mr-[clamp(9rem,16vw,11rem)] lg:top-[0.4rem] lg:tracking-[0.14em] xl:mr-[10.5rem] xl:top-0 xl:text-[4.75rem]"
+    "right-1/2 -top-[1rem] mr-[5.5rem] xs:mr-[6rem] tracking-[0.16em] md:mr-[clamp(10.5rem,18vw,13rem)] md:top-[0.2rem] lg:mr-[clamp(15rem,24vw,18rem)] lg:top-[0.4rem] lg:tracking-[0.14em] xl:mr-[18rem] xl:top-0 xl:text-[4.75rem]"
   const vidaDeClass =
-    "left-1/2 -top-[0.8rem] ml-[2.6rem] xs:ml-[3.5rem] tracking-[0.12em] md:ml-[clamp(8rem,15vw,10.5rem)] md:top-[0.35rem] lg:ml-[clamp(11rem,16vw,13rem)] lg:top-[0.55rem] lg:tracking-[0.12em] xl:ml-[13rem] xl:top-0 xl:text-[4.75rem]"
+    "left-1/2 -top-[0.8rem] ml-[clamp(5rem,14vw,6.5rem)] tracking-[0.12em] md:ml-[clamp(12.5rem,20vw,15.5rem)] md:top-[0.35rem] lg:ml-[clamp(18rem,24vw,20.5rem)] lg:top-[0.55rem] lg:tracking-[0.12em] xl:ml-[20rem] xl:top-0 xl:text-[4.75rem]"
   const signatureClass =
-    "pointer-events-none absolute left-1/2 top-[62%] z-50 h-[6rem] w-[20rem] xs:h-[7rem] xs:w-[24rem] -translate-x-1/2 md:top-[53%] md:h-[clamp(16rem,24vw,20rem)] md:w-[clamp(56rem,160vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
+    "pointer-events-none absolute left-1/2 top-[62%] z-50 h-[18rem] w-[60rem] xs:h-[21rem] xs:w-[72rem] -translate-x-1/2 md:top-[53%] md:h-[clamp(48rem,72vw,60rem)] md:w-[clamp(168rem,480vw,216rem)] lg:top-[51%] lg:h-[clamp(72rem,96vw,90rem)] lg:w-[clamp(312rem,438vw,396rem)] xl:top-[48%] xl:h-[117rem] xl:w-[486rem]"
   const writingIconClass =
     "right-1/2 top-[35%] mr-[5rem] xs:mr-[6rem] md:right-auto md:mr-0 md:left-[12.5%] md:top-[40%] lg:left-[19.5%] lg:top-[44.5%] xl:left-[18.25%] xl:top-[43.5%]"
   const bagIconClass =
@@ -124,7 +124,7 @@ export function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-[45%_50%]"
+          className="object-cover object-[55%_50%]"
           sizes="100vw"
         />
         {/* Dark cinematic overlay */}
@@ -176,7 +176,7 @@ export function Hero() {
             {...slideUp}
             transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.8 }}
           >
-            VIDA DE
+            VIDA&nbsp;DE
           </motion.span>
         </div>
 
