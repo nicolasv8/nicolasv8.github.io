@@ -124,7 +124,7 @@ export function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-[45%_50%]"
           sizes="100vw"
         />
         {/* Dark cinematic overlay */}
@@ -133,7 +133,7 @@ export function Hero() {
 
       {/* Nico Cutout Overlay */}
       <motion.div
-        className="absolute bottom-0 left-1/2 z-20 h-[85%] w-[130%] -translate-x-1/2 md:inset-0 md:h-full md:w-full md:translate-x-0 md:left-0"
+        className="absolute inset-0 z-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -146,7 +146,7 @@ export function Hero() {
           alt="Nico"
           fill
           priority
-          className="object-contain object-bottom md:object-cover md:object-center"
+          className="object-cover object-[45%_50%]"
           sizes="100vw"
         />
       </motion.div>
