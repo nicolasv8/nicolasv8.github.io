@@ -100,7 +100,7 @@ export function Hero() {
   const vidaDeClass =
     "left-1/2 -top-[0.8rem] ml-[clamp(5rem,14vw,6.5rem)] tracking-[0.12em] md:ml-[clamp(12.5rem,20vw,15.5rem)] md:top-[0.35rem] lg:ml-[clamp(18rem,24vw,20.5rem)] lg:top-[0.55rem] lg:tracking-[0.12em] xl:ml-[20rem] xl:top-0 xl:text-[4.75rem]"
   const signatureClass =
-    "pointer-events-none absolute left-1/2 top-[62%] z-50 h-[18rem] w-[60rem] xs:h-[21rem] xs:w-[72rem] -translate-x-1/2 md:top-[53%] md:h-[clamp(48rem,72vw,60rem)] md:w-[clamp(168rem,480vw,216rem)] lg:top-[51%] lg:h-[clamp(72rem,96vw,90rem)] lg:w-[clamp(312rem,438vw,396rem)] xl:top-[48%] xl:h-[117rem] xl:w-[486rem]"
+    "pointer-events-none absolute left-1/2 top-[62%] z-50 h-[18rem] w-[60rem] xs:h-[21rem] xs:w-[72rem] -translate-x-1/2 md:top-[53%] md:h-[clamp(16rem,24vw,20rem)] md:w-[clamp(56rem,160vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
   const writingIconClass =
     "right-1/2 top-[35%] mr-[5rem] xs:mr-[6rem] md:right-auto md:mr-0 md:left-[12.5%] md:top-[40%] lg:left-[19.5%] lg:top-[44.5%] xl:left-[18.25%] xl:top-[43.5%]"
   const bagIconClass =
