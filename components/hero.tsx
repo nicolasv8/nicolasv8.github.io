@@ -96,11 +96,11 @@ export function Hero() {
   const sideTextClass =
     "absolute font-bold uppercase text-white drop-shadow-lg text-[clamp(1.35rem,6vw,1.95rem)] md:text-[clamp(2.15rem,4.75vw,3rem)] lg:text-[clamp(3rem,3.8vw,3.8rem)]"
   const alaClass =
-    "left-[9.5%] top-0 tracking-[0.16em] md:left-[13.5%] md:top-[0.2rem] lg:left-[30%] lg:top-[0.4rem] lg:tracking-[0.14em] xl:left-[27.5%] xl:top-0 xl:text-[4.75rem]"
+    "right-1/2 top-0 mr-[clamp(3.5rem,10vw,5rem)] tracking-[0.16em] md:mr-[clamp(6rem,12vw,8rem)] md:top-[0.2rem] lg:mr-[clamp(9rem,16vw,11rem)] lg:top-[0.4rem] lg:tracking-[0.14em] xl:mr-[10.5rem] xl:top-0 xl:text-[4.75rem]"
   const vidaDeClass =
-    "right-[7.5%] top-[0.1rem] tracking-[0.12em] md:right-[12.5%] md:top-[0.35rem] lg:right-[20.5%] lg:top-[0.55rem] lg:tracking-[0.12em] xl:right-[18.25%] xl:top-0 xl:text-[4.75rem]"
+    "left-1/2 top-[0.1rem] ml-[clamp(7rem,20vw,9rem)] tracking-[0.12em] md:ml-[clamp(8rem,15vw,10.5rem)] md:top-[0.35rem] lg:ml-[clamp(11rem,16vw,13rem)] lg:top-[0.55rem] lg:tracking-[0.12em] xl:ml-[13rem] xl:top-0 xl:text-[4.75rem]"
   const signatureClass =
-    "pointer-events-none absolute left-1/2 top-[55.5%] z-50 h-[clamp(8rem,18vw,10rem)] w-[clamp(28rem,130vw,36rem)] -translate-x-1/2 md:top-[53%] md:h-[clamp(12rem,19vw,16rem)] md:w-[clamp(48rem,150vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
+    "pointer-events-none absolute left-1/2 top-[55.5%] z-50 h-[clamp(14rem,35vw,18rem)] w-[clamp(44rem,180vw,56rem)] -translate-x-1/2 md:top-[53%] md:h-[clamp(16rem,24vw,20rem)] md:w-[clamp(56rem,160vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
   const writingIconClass =
     "left-[15%] top-[41.5%] md:left-[12.5%] md:top-[40%] lg:left-[19.5%] lg:top-[44.5%] xl:left-[18.25%] xl:top-[43.5%]"
   const bagIconClass =
@@ -152,7 +152,7 @@ export function Hero() {
       </motion.div>
 
       {/* Content Container */}
-      <div className="relative h-full w-full">
+      <div className="relative mx-auto h-full w-full max-w-[1440px]">
         {/* Main Headline */}
         <motion.h1
           className={headlineClass}
@@ -195,7 +195,6 @@ export function Hero() {
             sizes="(max-width: 767px) 95vw, (max-width: 1023px) 84vw, (max-width: 1279px) 78vw, 72vw"
           />
         </motion.div>
-      </div>
 
       {/* Floating Navigation Icons */}
       {/* Writing Icon - Upper Left */}
@@ -243,6 +242,7 @@ export function Hero() {
         delay={1.5}
         external
       />
+      </div>
     </section>
   )
 }
