@@ -3,14 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { PenLine, Briefcase, Youtube, Instagram } from "lucide-react"
 
-const BACKGROUND_URL =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/background-full-Sks8rYk9gG6hVt26okvwUoNmfLrDxh.png"
-const CUTOUT_URL =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nico-cutout-9u6KbqAanTRhADb9Hdlus0LpWAA3iJ.png"
-const SIGNATURE_URL =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nico-signature-uVGFAF5G6zWQZIx38POii2kIvWppyp.png"
+
 
 interface FloatingIconProps {
   href: string
@@ -40,7 +34,7 @@ function FloatingIcon({
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: shouldReduceMotion ? 0 : delay, duration: 0.5 }}
-      className={`absolute z-40 ${className}`}
+      className={`absolute z-[60] ${className}`}
     >
       <motion.div
         animate={
@@ -92,8 +86,10 @@ export function Hero() {
 
   const floatingIconBoxClass =
     "flex h-[clamp(2.9rem,11vw,3.4rem)] w-[clamp(2.9rem,11vw,3.4rem)] items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20 md:h-[clamp(3.35rem,8vw,4.1rem)] md:w-[clamp(3.35rem,8vw,4.1rem)] lg:h-[clamp(3.7rem,5vw,4.6rem)] lg:w-[clamp(3.7rem,5vw,4.6rem)] xl:h-[5rem] xl:w-[5rem]"
+  const transparentBoxClass =
+    "flex h-[clamp(5.8rem,22vw,6.8rem)] w-[clamp(5.8rem,22vw,6.8rem)] items-center justify-center rounded-2xl bg-transparent transition-all duration-300 group-hover:scale-110 md:h-[clamp(6.7rem,16vw,8.2rem)] md:w-[clamp(6.7rem,16vw,8.2rem)] lg:h-[clamp(7.4rem,10vw,9.2rem)] lg:w-[clamp(7.4rem,10vw,9.2rem)] xl:h-[10rem] xl:w-[10rem]"
   const floatingIconGlyphClass =
-    "h-[clamp(1.15rem,4.2vw,1.45rem)] w-[clamp(1.15rem,4.2vw,1.45rem)] md:h-[clamp(1.35rem,3.4vw,1.8rem)] md:w-[clamp(1.35rem,3.4vw,1.8rem)] lg:h-[clamp(1.55rem,2.5vw,1.95rem)] lg:w-[clamp(1.55rem,2.5vw,1.95rem)] xl:h-10 xl:w-10"
+    "h-[clamp(2.3rem,8.4vw,2.9rem)] w-[clamp(2.3rem,8.4vw,2.9rem)] md:h-[clamp(2.7rem,6.8vw,3.6rem)] md:w-[clamp(2.7rem,6.8vw,3.6rem)] lg:h-[clamp(3.1rem,5vw,3.9rem)] lg:w-[clamp(3.1rem,5vw,3.9rem)] xl:h-[5rem] xl:w-[5rem]"
   const headlineClass =
     "absolute left-1/2 top-[3.75%] z-10 w-max -translate-x-1/2 text-center font-sans text-[clamp(2.65rem,12vw,4.8rem)] font-black uppercase leading-none tracking-[-0.05em] text-white drop-shadow-2xl md:top-[3.5%] md:text-[clamp(4.75rem,10vw,6.8rem)] lg:left-[51.5%] lg:top-[2.5%] lg:text-[clamp(6.4rem,8.2vw,8.3rem)] lg:tracking-[-0.06em] xl:left-[52.5%] xl:-top-[2%] xl:text-[10.75rem]"
   const sideRowClass = "absolute inset-x-0 top-[33.5%] z-30 md:top-[31%] lg:top-[29.5%] xl:top-[25%]"
@@ -104,7 +100,7 @@ export function Hero() {
   const vidaDeClass =
     "right-[7.5%] top-[0.1rem] tracking-[0.12em] md:right-[12.5%] md:top-[0.35rem] lg:right-[20.5%] lg:top-[0.55rem] lg:tracking-[0.12em] xl:right-[18.25%] xl:top-0 xl:text-[4.75rem]"
   const signatureClass =
-    "absolute left-1/2 top-[55.5%] z-50 h-[clamp(8rem,18vw,10rem)] w-[clamp(28rem,130vw,36rem)] -translate-x-1/2 md:top-[53%] md:h-[clamp(12rem,19vw,16rem)] md:w-[clamp(48rem,150vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
+    "pointer-events-none absolute left-1/2 top-[55.5%] z-50 h-[clamp(8rem,18vw,10rem)] w-[clamp(28rem,130vw,36rem)] -translate-x-1/2 md:top-[53%] md:h-[clamp(12rem,19vw,16rem)] md:w-[clamp(48rem,150vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
   const writingIconClass =
     "left-[15%] top-[41.5%] md:left-[12.5%] md:top-[40%] lg:left-[19.5%] lg:top-[44.5%] xl:left-[18.25%] xl:top-[43.5%]"
   const bagIconClass =
@@ -124,7 +120,7 @@ export function Hero() {
         transition={{ duration: shouldReduceMotion ? 0 : 1 }}
       >
         <Image
-          src={BACKGROUND_URL}
+          src="/Background.png"
           alt=""
           fill
           priority
@@ -146,7 +142,7 @@ export function Hero() {
         }}
       >
         <Image
-          src={CUTOUT_URL}
+          src="/Nico-cutout.png"
           alt="Nico"
           fill
           priority
@@ -192,7 +188,7 @@ export function Hero() {
           transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 1 }}
         >
           <Image
-            src={SIGNATURE_URL}
+            src="/Signature.png"
             alt="Nico signature"
             fill
             className="object-contain drop-shadow-2xl"
@@ -205,10 +201,10 @@ export function Hero() {
       {/* Writing Icon - Upper Left */}
       <FloatingIcon
         href="/writing"
-        icon={<PenLine className={`${floatingIconGlyphClass} text-white`} />}
+        icon={<span className="text-[4rem] leading-none md:text-[5rem] lg:text-[6rem] xl:text-[7rem]">📝</span>}
         label="Writing"
         className={writingIconClass}
-        boxClassName={floatingIconBoxClass}
+        boxClassName={transparentBoxClass}
         rotation={8}
         delay={1.2}
       />
@@ -216,10 +212,10 @@ export function Hero() {
       {/* Resume Icon - Lower Left */}
       <FloatingIcon
         href="/resume"
-        icon={<Briefcase className={`${floatingIconGlyphClass} text-white`} />}
+        icon={<span className="text-[5rem] leading-none md:text-[6.25rem] lg:text-[7.5rem] xl:text-[8.75rem]">💼</span>}
         label="Resume"
         className={bagIconClass}
-        boxClassName={floatingIconBoxClass}
+        boxClassName={transparentBoxClass}
         rotation={-6}
         delay={1.3}
       />
@@ -227,10 +223,10 @@ export function Hero() {
       {/* YouTube Icon - Upper Right */}
       <FloatingIcon
         href="https://www.youtube.com/@LaVidadeNicoVP"
-        icon={<Youtube className={`${floatingIconGlyphClass} text-white`} />}
+        icon={<img src="/YT Icon.svg" alt="YouTube" className={`${floatingIconGlyphClass} scale-[1.5] md:scale-[1.8]`} />}
         label="YouTube"
         className={youtubeIconClass}
-        boxClassName={floatingIconBoxClass}
+        boxClassName={transparentBoxClass}
         rotation={6}
         delay={1.4}
         external
@@ -239,10 +235,10 @@ export function Hero() {
       {/* Instagram Icon - Lower Right */}
       <FloatingIcon
         href="https://www.instagram.com/lavidadenicovp/"
-        icon={<Instagram className={`${floatingIconGlyphClass} text-white`} />}
+        icon={<img src="/Instagram Icon.svg" alt="Instagram" className={`${floatingIconGlyphClass} scale-[1.05] md:scale-[1.25]`} />}
         label="Instagram"
         className={instagramIconClass}
-        boxClassName={floatingIconBoxClass}
+        boxClassName={transparentBoxClass}
         rotation={-8}
         delay={1.5}
         external
