@@ -92,23 +92,23 @@ export function Hero() {
     "h-[3.6rem] w-[3.6rem] md:h-[clamp(2.7rem,6.8vw,3.6rem)] md:w-[clamp(2.7rem,6.8vw,3.6rem)] lg:h-[clamp(3.1rem,5vw,3.9rem)] lg:w-[clamp(3.1rem,5vw,3.9rem)] xl:h-[5rem] xl:w-[5rem]"
   const headlineClass =
     "absolute left-1/2 top-[3%] z-10 w-max -translate-x-1/2 text-center font-sans text-[clamp(2.3rem,11vw,4.8rem)] font-black uppercase leading-none tracking-[-0.05em] text-white drop-shadow-2xl md:top-[3.5%] md:text-[clamp(4.75rem,10vw,6.8rem)] lg:left-[51.5%] lg:top-[2.5%] lg:text-[clamp(6.4rem,8.2vw,8.3rem)] lg:tracking-[-0.06em] xl:left-[52.5%] xl:-top-[2%] xl:text-[10.75rem]"
-  const sideRowClass = "absolute inset-x-0 top-[23%] z-30 md:top-[31%] lg:top-[29.5%] xl:top-[25%]"
+  const sideRowClass = "absolute inset-x-0 top-[14%] z-30 md:top-[31%] lg:top-[29.5%] xl:top-[25%]"
   const sideTextClass =
     "absolute font-bold uppercase whitespace-nowrap text-white drop-shadow-lg text-[clamp(1.2rem,5.5vw,1.95rem)] md:text-[clamp(2.15rem,4.75vw,3rem)] lg:text-[clamp(3rem,3.8vw,3.8rem)]"
   const alaClass =
-    "right-1/2 -top-[1rem] mr-[clamp(7.5rem,20vw,9.5rem)] tracking-[0.16em] md:mr-[clamp(12.5rem,20vw,15.5rem)] md:top-[0.2rem] lg:mr-[clamp(18rem,24vw,20rem)] lg:top-[0.4rem] lg:tracking-[0.14em] xl:mr-[23rem] xl:top-0 xl:text-[4.75rem]"
+    "right-1/2 top-0 mr-[1.5rem] tracking-[0.16em] md:-top-[1rem] md:mr-[clamp(12.5rem,20vw,15.5rem)] md:top-[0.2rem] lg:mr-[clamp(18rem,24vw,20rem)] lg:top-[0.4rem] lg:tracking-[0.14em] xl:mr-[23rem] xl:top-0 xl:text-[4.75rem]"
   const vidaDeClass =
-    "left-1/2 -top-[0.8rem] ml-[clamp(5rem,14vw,6.5rem)] tracking-[0.12em] md:ml-[clamp(12.5rem,20vw,15.5rem)] md:top-[0.35rem] lg:ml-[clamp(18rem,24vw,20.5rem)] lg:top-[0.55rem] lg:tracking-[0.12em] xl:ml-[20rem] xl:top-0 xl:text-[4.75rem]"
+    "left-1/2 top-[0.1rem] ml-[1.5rem] tracking-[0.12em] md:-top-[0.8rem] md:ml-[clamp(12.5rem,20vw,15.5rem)] md:top-[0.35rem] lg:ml-[clamp(18rem,24vw,20.5rem)] lg:top-[0.55rem] lg:tracking-[0.12em] xl:ml-[20rem] xl:top-0 xl:text-[4.75rem]"
   const signatureClass =
     "pointer-events-none absolute left-1/2 top-[62%] z-50 h-[18rem] w-[60rem] xs:h-[21rem] xs:w-[72rem] -translate-x-1/2 md:top-[53%] md:h-[clamp(16rem,24vw,20rem)] md:w-[clamp(56rem,160vw,72rem)] lg:top-[51%] lg:h-[clamp(24rem,32vw,30rem)] lg:w-[clamp(104rem,146vw,132rem)] xl:top-[48%] xl:h-[39rem] xl:w-[162rem]"
   const writingIconClass =
-    "right-1/2 top-[42%] mr-[5rem] xs:mr-[6rem] md:right-auto md:mr-0 md:left-[12.5%] md:top-[40%] lg:left-[19.5%] lg:top-[44.5%] xl:left-[18.25%] xl:top-[43.5%]"
+    "right-1/2 top-[42%] mr-[3.75rem] xs:mr-[4.5rem] md:right-auto md:mr-0 md:left-[12.5%] md:top-[40%] lg:left-[19.5%] lg:top-[44.5%] xl:left-[18.25%] xl:top-[43.5%]"
   const bagIconClass =
-    "right-1/2 top-[55%] mr-[5.5rem] xs:mr-[6.5rem] md:right-auto md:mr-0 md:left-[13.5%] md:top-[61.5%] lg:left-[20.5%] lg:top-[63.5%] xl:left-[20.25%] xl:top-[62.25%]"
+    "right-1/2 top-[55%] mr-[4rem] xs:mr-[5rem] md:right-auto md:mr-0 md:left-[13.5%] md:top-[61.5%] lg:left-[20.5%] lg:top-[63.5%] xl:left-[20.25%] xl:top-[62.25%]"
   const youtubeIconClass =
-    "left-1/2 top-[42%] ml-[5rem] xs:ml-[6rem] md:left-auto md:ml-0 md:right-[12%] md:top-[40.5%] lg:right-[19.75%] lg:top-[45%] xl:right-[18%] xl:top-[43.5%]"
+    "left-1/2 top-[42%] ml-[3.75rem] xs:ml-[4.5rem] md:left-auto md:ml-0 md:right-[12%] md:top-[40.5%] lg:right-[19.75%] lg:top-[45%] xl:right-[18%] xl:top-[43.5%]"
   const instagramIconClass =
-    "left-1/2 top-[55%] ml-[5.5rem] xs:ml-[6.5rem] md:left-auto md:ml-0 md:right-[13%] md:top-[61.75%] lg:right-[20.5%] lg:top-[64%] xl:right-[20%] xl:top-[62.75%]"
+    "left-1/2 top-[55%] ml-[4rem] xs:ml-[5rem] md:left-auto md:ml-0 md:right-[13%] md:top-[61.75%] lg:right-[20.5%] lg:top-[64%] xl:right-[20%] xl:top-[62.75%]"
 
   return (
     <section className="relative h-screen min-h-[720px] w-full overflow-hidden bg-black md:min-h-[820px] lg:min-h-[740px] xl:min-h-[774px]">
@@ -124,7 +124,7 @@ export function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-[52%_50%] md:object-[55%_50%]"
+          className="object-cover object-center md:object-[55%_50%]"
           sizes="100vw"
         />
         {/* Dark cinematic overlay */}
@@ -146,7 +146,7 @@ export function Hero() {
           alt="Nico"
           fill
           priority
-          className="object-cover object-[55%_50%]"
+          className="object-cover object-center md:object-[55%_50%]"
           sizes="100vw"
         />
       </motion.div>
