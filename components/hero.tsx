@@ -92,7 +92,7 @@ export function Hero() {
     "h-[3.6rem] w-[3.6rem] md:h-[clamp(2.7rem,6.8vw,3.6rem)] md:w-[clamp(2.7rem,6.8vw,3.6rem)] lg:h-[clamp(3.1rem,5vw,3.9rem)] lg:w-[clamp(3.1rem,5vw,3.9rem)] xl:h-[5rem] xl:w-[5rem]"
   const headlineClass =
     "absolute left-1/2 top-[3%] z-10 w-max -translate-x-1/2 text-center font-sans text-[clamp(2.3rem,11vw,4.8rem)] font-black uppercase leading-none tracking-[-0.05em] text-white drop-shadow-2xl md:top-[3.5%] md:text-[clamp(4.75rem,10vw,6.8rem)] lg:left-[51.5%] lg:top-[2.5%] lg:text-[clamp(6.4rem,8.2vw,8.3rem)] lg:tracking-[-0.06em] xl:left-[52.5%] xl:-top-[2%] xl:text-[10.75rem]"
-  const sideRowClass = "absolute inset-x-0 top-[14%] z-30 md:top-[31%] lg:top-[29.5%] xl:top-[25%]"
+  const sideRowClass = "absolute inset-x-0 top-[10%] z-30 md:top-[31%] lg:top-[29.5%] xl:top-[25%]"
   const sideTextClass =
     "absolute font-bold uppercase whitespace-nowrap text-white drop-shadow-lg text-[clamp(1.2rem,5.5vw,1.95rem)] md:text-[clamp(2.15rem,4.75vw,3rem)] lg:text-[clamp(3rem,3.8vw,3.8rem)]"
   const alaClass =
@@ -119,16 +119,18 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: shouldReduceMotion ? 0 : 1 }}
       >
-        <Image
-          src="/Background.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center md:object-[55%_50%]"
-          sizes="100vw"
-        />
-        {/* Dark cinematic overlay */}
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 scale-[0.85] md:scale-100">
+          <Image
+            src="/Background.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-[53%_50%] md:object-[55%_50%]"
+            sizes="100vw"
+          />
+          {/* Dark cinematic overlay */}
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
       </motion.div>
 
       {/* Nico Cutout Overlay */}
@@ -141,14 +143,16 @@ export function Hero() {
           delay: shouldReduceMotion ? 0 : 0.3,
         }}
       >
-        <Image
-          src="/Nico-cutout.png"
-          alt="Nico"
-          fill
-          priority
-          className="object-cover object-center md:object-[55%_50%]"
-          sizes="100vw"
-        />
+        <div className="absolute inset-0 scale-[0.85] md:scale-100">
+          <Image
+            src="/Nico-cutout.png"
+            alt="Nico"
+            fill
+            priority
+            className="object-cover object-[53%_50%] md:object-[55%_50%]"
+            sizes="100vw"
+          />
+        </div>
       </motion.div>
 
       {/* Content Container */}
