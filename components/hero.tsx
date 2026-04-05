@@ -119,18 +119,16 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: shouldReduceMotion ? 0 : 1 }}
       >
-        <div className="absolute inset-0 scale-[0.85] md:scale-100">
-          <Image
-            src="/Background.png"
-            alt=""
-            fill
-            priority
-            className="object-cover object-[53%_50%] md:object-[55%_50%]"
-            sizes="100vw"
-          />
-          {/* Dark cinematic overlay */}
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
+        <Image
+          src="/Background.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-[53%_50%] md:object-[55%_50%]"
+          sizes="100vw"
+        />
+        {/* Dark cinematic overlay */}
+        <div className="absolute inset-0 bg-black/30" />
       </motion.div>
 
       {/* Nico Cutout Overlay */}
@@ -143,16 +141,14 @@ export function Hero() {
           delay: shouldReduceMotion ? 0 : 0.3,
         }}
       >
-        <div className="absolute inset-0 scale-[0.85] md:scale-100">
-          <Image
-            src="/Nico-cutout.png"
-            alt="Nico"
-            fill
-            priority
-            className="object-cover object-[53%_50%] md:object-[55%_50%]"
-            sizes="100vw"
-          />
-        </div>
+        <Image
+          src="/Nico-cutout.png"
+          alt="Nico"
+          fill
+          priority
+          className="object-cover object-[53%_50%] md:object-[55%_50%]"
+          sizes="100vw"
+        />
       </motion.div>
 
       {/* Content Container */}
