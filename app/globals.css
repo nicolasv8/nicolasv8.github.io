@@ -150,6 +150,10 @@ a {
   display: none;
 }
 .portrait-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: 52% 0%;
   pointer-events: none;
@@ -1224,8 +1228,8 @@ body:has(.home-page) {
   color: var(--paper);
   --headroom: 84px;
   --frame-height: calc(100cqh - var(--headroom));
-  --photo-width: max(100cqw, calc(var(--frame-height) * 1.764057));
-  --photo-height: max(56.6875cqw, var(--frame-height));
+  --photo-width: max(100cqw, calc(var(--frame-height) * 1.764858));
+  --photo-height: max(56.6618cqw, var(--frame-height));
   --photo-left: calc((100cqw - var(--photo-width)) * 0.52);
   --photo-top: var(--headroom);
   --person-center: calc(var(--photo-left) + var(--photo-width) * 0.515);

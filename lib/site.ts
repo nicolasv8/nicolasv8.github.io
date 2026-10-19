@@ -1,3 +1,5 @@
+import imageManifest from "./image-manifest.json"
+
 export const site = {
   name: "La Vida de Nico",
   description:
@@ -24,7 +26,10 @@ export const site = {
   ],
   assets: {
     background: "/images/background.webp",
-    foreground: "/images/nico-layer.webp",
+    foreground: imageManifest.foreground[imageManifest.foreground.length - 1].src,
+    foregroundSrcSet: imageManifest.foreground
+      .map((image) => `${image.src} ${image.width}w`)
+      .join(", "),
     portrait: "/images/nico.webp",
     signature: "/images/signature.webp",
   },

@@ -1,0 +1,29 @@
+{
+  "foreground": [
+    {
+      "src": "/images/nico-layer-1366.webp",
+      "width": 1366,
+      "height": 774
+    },
+    {
+      "src": "/images/nico-layer-2049.webp",
+      "width": 2049,
+      "height": 1161
+    },
+    {
+      "src": "/images/nico-layer-2732.webp",
+      "width": 2732,
+      "height": 1548
+    },
+    {
+      "src": "/images/nico-layer-3415.webp",
+      "width": 3415,
+      "height": 1935
+    },
+    {
+      "src": "/images/nico-layer-4098.webp",
+      "width": 4098,
+      "height": 2322
+    }
+  ]
+}

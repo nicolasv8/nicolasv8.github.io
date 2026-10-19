@@ -55,8 +55,8 @@ export default function AboutPage() {
           <Image
             src={site.assets.portrait}
             alt="Nico con la camiseta de Colombia"
-            width={1000}
-            height={1276}
+            width={1600}
+            height={2041}
             sizes="(max-width: 720px) 90vw, 40vw"
             priority
           />

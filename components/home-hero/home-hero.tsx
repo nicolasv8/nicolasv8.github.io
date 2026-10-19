@@ -27,7 +27,7 @@ export function Hero() {
         <span>VIDA DE</span>
       </div>
       <div className="hero-signature">
-        <Image src={site.assets.signature} alt="Nico" width={800} height={614} priority />
+        <Image src={site.assets.signature} alt="Nico" width={1200} height={922} priority />
         <span className="sr-only">La Vida de Nico</span>
       </div>
       <div className="hero-sticker" aria-hidden="true">

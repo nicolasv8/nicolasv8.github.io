@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: site.description,
     locale: "es_CO",
     type: "website",
-    images: [{ url: "/images/background.webp", width: 1600, height: 907, alt: "La Vida de Nico" }],
+    images: [{ url: "/images/background.webp", width: 2049, height: 1161, alt: "La Vida de Nico" }],
   },
   icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
 }
