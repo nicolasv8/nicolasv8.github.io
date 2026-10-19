@@ -11,6 +11,7 @@ type WritingFrontmatter = {
   date?: string | Date
   type?: string
   excerpt?: string
+  language?: string
   published?: boolean
 }
 
@@ -20,6 +21,7 @@ export type WritingEntry = {
   date: string
   type: WritingType
   excerpt?: string
+  language: "en" | "es"
   published: boolean
   url: string
 }
@@ -31,15 +33,16 @@ export type WritingDocument = WritingEntry & {
 const writingContentDirectory = path.join(process.cwd(), "content", "writing")
 
 const writingTypeLabels: Record<WritingType, string> = {
-  essays: "Essay",
-  poems: "Poem",
-  notes: "Note",
+  essays: "Ensayo",
+  poems: "Poema",
+  notes: "Nota",
 }
 
-const writingDateFormatter = new Intl.DateTimeFormat("en-US", {
+const writingDateFormatter = new Intl.DateTimeFormat("es-CO", {
   year: "numeric",
   month: "long",
   day: "numeric",
+  timeZone: "UTC",
 })
 
 export function isWritingType(value: string): value is WritingType {
@@ -51,7 +54,7 @@ export function getWritingTypeLabel(type: WritingType) {
 }
 
 export function formatWritingDate(date: string) {
-  return writingDateFormatter.format(new Date(`${date}T00:00:00`))
+  return writingDateFormatter.format(new Date(`${date}T00:00:00Z`))
 }
 
 function getWritingDirectory(type: WritingType) {
@@ -76,6 +79,10 @@ function parseWritingFile(filePath: string, type: WritingType, slug: string): Wr
   const date = normalizeFrontmatterDate(frontmatter.date)
   const resolvedType = normalizeFrontmatterString(frontmatter.type)
   const excerpt = normalizeFrontmatterString(frontmatter.excerpt)
+  const language = normalizeFrontmatterString(frontmatter.language) ?? "es"
+  if (language !== "es" && language !== "en") {
+    throw new Error(`Invalid language in ${filePath}. Use es or en.`)
+  }
 
   if (!title) {
     throw new Error(`Missing title in ${filePath}`)
@@ -99,6 +106,7 @@ function parseWritingFile(filePath: string, type: WritingType, slug: string): Wr
     date,
     type,
     excerpt: excerpt || undefined,
+    language,
     published: frontmatter.published === true,
     url: `/writing/${type}/${slug}`,
     content,
@@ -162,4 +170,8 @@ export function getWritingEntry(type: WritingType, slug: string) {
   }
 
   return entry
+}
+
+export function getReadingMinutes(content: string) {
+  return Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 200))
 }

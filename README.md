@@ -1,0 +1,37 @@
+# La Vida de Nico
+
+Personal site built with Next.js App Router and exported as static HTML for GitHub Pages.
+
+## Local development
+
+```sh
+npm ci
+npm run dev
+```
+
+## Content
+
+- `lib/site.ts`: navigation, social links, asset paths and public project descriptions.
+- `app/about/page.tsx`: personal introduction and interests.
+- `content/writing/{essays,poems,notes}/*.mdx`: writing, in its original language.
+
+Each writing file needs `title`, `date` (`YYYY-MM-DD`), `type` matching its folder, and `published: true`. `excerpt` is optional. Set `language: en` for English; Spanish (`es`) is the default. Lists, filters, reading estimates, article navigation and exported routes follow the content automatically. Drafts are excluded from publication.
+
+## Images
+
+Original PNGs remain in `public/`. The site loads optimized WebP derivatives from `public/images/`. To regenerate them after updating the originals:
+
+```sh
+node scripts/optimize-images.mjs
+```
+
+The background and foreground hero images retain exactly the same canvas size and use the same object fit and position in `components/layered-portrait.tsx`. Apply color filters only to `.portrait-background`; trimming one hero layer would break their alignment. The separate About portrait can be trimmed.
+
+## Verify and export
+
+```sh
+npm run check-types
+npm run build
+```
+
+The output is in `out/`. Existing GitHub Actions publish it on pushes to `main`; local edits do not deploy by themselves. Preview the export with any static HTTP server, for example `python3 -m http.server 3001 --directory out`.
