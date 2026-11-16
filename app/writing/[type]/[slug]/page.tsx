@@ -2,16 +2,18 @@ import { Arrow } from "@/components/icons"
 import { writingMdxComponents } from "@/components/writing/mdx-components"
 import {
   formatWritingDate,
-  getReadingMinutes,
   getPublishedWritingEntries,
+  getReadingMinutes,
   getWritingEntry,
   getWritingTypeLabel,
+  isUnverifiedLegacyEntry,
   isWritingType,
 } from "@/lib/writing"
 import type { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import "../../real-writing.css"
 
 type WritingEntryPageProps = {
   params: Promise<{
@@ -45,6 +47,7 @@ export async function generateMetadata({ params }: WritingEntryPageProps): Promi
   return {
     title: entry.title,
     description: entry.excerpt ?? `${getWritingTypeLabel(entry.type)} from La Vida de Nico.`,
+    ...(isUnverifiedLegacyEntry(entry) ? { robots: { index: false, follow: true } } : {}),
   }
 }
 
@@ -71,6 +74,13 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
         <Link href="/writing" className="writing-backlink">
           ← Volver al cuaderno
         </Link>
+
+        {isUnverifiedLegacyEntry(entry) && (
+          <aside className="legacy-writing-notice">
+            Este texto pertenece a una versión anterior del sitio y su autoría está pendiente de
+            verificar.
+          </aside>
+        )}
 
         <header className="writing-article-header">
           <p className="writing-kicker">{getWritingTypeLabel(entry.type)}</p>

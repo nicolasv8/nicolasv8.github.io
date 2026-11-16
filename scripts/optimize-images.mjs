@@ -1,5 +1,5 @@
-import sharp from "sharp"
 import { mkdir, writeFile } from "node:fs/promises"
+import sharp from "sharp"
 
 // Keep the original PNGs. Never trim the hero layers: matching canvases preserve alignment.
 // Multiples of 683 preserve the original 683:387 ratio without rounding the canvas height.

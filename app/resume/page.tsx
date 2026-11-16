@@ -1,12 +1,12 @@
-import type { Metadata } from "next"
-import Link from "next/link"
 import { Arrow, Asterisk } from "@/components/icons"
 import { projects, site } from "@/lib/site"
+import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Lo que hago",
   description:
-    "Un vistazo a mis proyectos: asistentes de IA, herramientas cotidianas y un rincón propio en internet.",
+    "Ideas, comunidad y proyectos: un vistazo a lo que he construido y lo que sigo aprendiendo.",
 }
 export default function ResumePage() {
   return (
@@ -14,12 +14,13 @@ export default function ResumePage() {
       <header className="page-heading work-heading">
         <p className="eyebrow">Lo que hago / Proyectos e ideas</p>
         <h1>
-          De «¿y si…?»
-          <br />a <em>hacerlo.</em>
+          Algunas cosas
+          <br />
+          que <em>he hecho.</em>
         </h1>
         <p className="page-description">
-          Me interesa lo que pasa cuando una idea se convierte en algo que puedes usar. Estos son
-          algunos de los caminos que estoy explorando.
+          Proyectos, comunidades y experimentos que me han enseñado mucho. Unos empezaron con una
+          conversación; otros, con un problema que no me dejaba tranquilo.
         </p>
         <Asterisk />
       </header>
@@ -40,9 +41,16 @@ export default function ResumePage() {
                 ))}
               </ul>
               {"href" in project && (
-                <Link href={project.href} className="text-link">
+                <Link
+                  href={project.href}
+                  className="text-link"
+                  target={"external" in project && project.external ? "_blank" : undefined}
+                  rel={
+                    "external" in project && project.external ? "noopener noreferrer" : undefined
+                  }
+                >
                   {project.linkLabel}
-                  <Arrow />
+                  <Arrow diagonal={"external" in project && project.external} />
                 </Link>
               )}
             </div>
@@ -60,12 +68,12 @@ export default function ResumePage() {
         </h2>
         <div>
           <p>
-            La tecnología me interesa cuando resuelve algo. Una conversación más útil, una tarea con
-            menos pasos o una idea que por fin tiene dónde vivir.
+            Estudié economía política, pero también me gusta meterme en tecnología, hacer videos y
+            aprender cómo funcionan los negocios.
           </p>
           <p>
-            También hay otra parte del trabajo: contar lo aprendido. A veces termina en un video;
-            otras, en una nota.
+            Me interesan los problemas difíciles, sobre todo cuando hay gente dispuesta a sentarse a
+            trabajar en ellos conmigo.
           </p>
           <Link href="/writing" className="text-link">
             Pasar por el cuaderno <Arrow />

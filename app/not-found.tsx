@@ -1,5 +1,5 @@
-import Link from "next/link"
 import { Arrow, Asterisk } from "@/components/icons"
+import Link from "next/link"
 
 export default function NotFound() {
   return (

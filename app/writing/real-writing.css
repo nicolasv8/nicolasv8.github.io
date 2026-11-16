@@ -1,0 +1,141 @@
+.writing-publication {
+  display: grid;
+  grid-template-columns: minmax(160px, .5fr) 1.5fr;
+  min-height: 240px;
+  background: #e8eadc;
+  color: var(--ink);
+}
+
+.writing-publication-mark {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 230px;
+  padding: 25px;
+  background: #e5c65a;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .6rem;
+  letter-spacing: .08em;
+}
+
+.writing-publication-mark strong {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(4rem, 7vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.writing-publication-copy {
+  padding: clamp(26px, 4vw, 48px);
+}
+
+.writing-publication-copy h2 {
+  margin-top: 16px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.writing-publication-copy > p:not(.eyebrow) {
+  max-width: 540px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.8;
+}
+
+.writing-publication-copy > span {
+  display: inline-block;
+  margin-top: 22px;
+  font-size: .75rem;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.writing-publication:hover .writing-publication-copy > span {
+  color: #9b5035;
+}
+
+.writing-interview {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 38px;
+  border-bottom: 1px solid var(--line);
+}
+
+.writing-interview h2 {
+  max-width: 700px;
+  margin-top: 14px;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.writing-interview p:not(.eyebrow) {
+  max-width: 520px;
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.8;
+}
+
+.writing-interview > span {
+  font-size: 1.5rem;
+}
+
+.writing-archive {
+  margin-top: 40px;
+}
+
+.writing-archive summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-height: 60px;
+  cursor: pointer;
+  font-size: .82rem;
+  font-weight: 600;
+  list-style: none;
+}
+
+.writing-archive summary::-webkit-details-marker {
+  display: none;
+}
+
+.writing-archive[open] summary span {
+  transform: rotate(45deg);
+}
+
+.legacy-writing-notice {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-left: 3px solid #a15336;
+  background: #eee8da;
+  color: #4d5d50;
+  font-size: .8rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .writing-publication {
+    grid-template-columns: 1fr;
+  }
+  .writing-publication-mark {
+    min-height: 100px;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+  }
+  .writing-publication-mark strong {
+    font-size: 3rem;
+  }
+  .writing-publication-copy {
+    padding: 26px;
+  }
+}

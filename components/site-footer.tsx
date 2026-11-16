@@ -1,5 +1,5 @@
-import Link from "next/link"
 import { site } from "@/lib/site"
+import Link from "next/link"
 import { Arrow } from "./icons"
 
 export function SiteFooter() {

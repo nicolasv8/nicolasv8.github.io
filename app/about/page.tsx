@@ -1,8 +1,9 @@
+import { Arrow, Asterisk } from "@/components/icons"
+import { site } from "@/lib/site"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { Arrow, Asterisk } from "@/components/icons"
-import { site } from "@/lib/site"
+import "./about-personal.css"
 
 export const metadata: Metadata = {
   title: "Sobre mí",
@@ -20,20 +21,28 @@ const interests = [
   },
   {
     number: "02",
-    title: "Ponerlo en palabras",
+    title: "Ir, mirar y contar",
     description:
-      "A veces es un ensayo. A veces, un poema. Otras veces, una nota pequeña para no dejar escapar una idea.",
-    href: "/writing",
-    label: "Leer mis escritos",
+      "Estudié entre China y Estados Unidos. He guardado fotos de muchos lugares en el camino; aquí puedes explorar algunos.",
+    href: "/mapa",
+    label: "Abrir mi mapa",
     external: false,
   },
   {
     number: "03",
     title: "Hacer que funcione",
     description:
-      "Del diseño de una página a los asistentes de IA. Me interesa conectar la tecnología con problemas de la vida real.",
+      "Me gusta probar ideas con tecnología y trabajar en proyectos que resuelvan algo concreto.",
     href: "/resume",
     label: "Explorar mis proyectos",
+    external: false,
+  },
+  {
+    number: "04",
+    title: "Ponerlo en palabras",
+    description: "También he escrito sobre negocios y educación financiera, entre otras cosas.",
+    href: "/writing",
+    label: "Pasar por el cuaderno",
     external: false,
   },
 ]
@@ -43,9 +52,9 @@ export default function AboutPage() {
       <header className="page-heading">
         <p className="eyebrow">Sobre mí / Más allá de la bio</p>
         <h1>
-          Muchas ideas.
+          Soy Nico.
           <br />
-          Un mismo <em>Nico.</em>
+          ¿Qué te <em>cuento?</em>
         </h1>
       </header>
       <section className="about-intro" aria-label="Conoce a Nico">
@@ -70,12 +79,13 @@ export default function AboutPage() {
             de contar una vida.
           </h2>
           <p>
-            Este es mi lugar para juntar esas formas: lo que grabo, lo que escribo y lo que
-            construyo. La Vida de Nico empezó como un nombre y acá tiene su propio rincón.
+            Soy de Medellín. Estudié entre Duke Kunshan, en China, y Duke, en Estados Unidos, con
+            formación en Economía Política y Políticas Públicas. También me gusta correr, grabar
+            videos y meterme en proyectos nuevos.
           </p>
           <p>
-            Me muevo entre las historias y la tecnología. Entre una página en blanco y una idea que
-            quiero ver funcionando. Por eso este espacio tiene un poco de cada cosa.
+            He trabajado en iniciativas de desarrollo global, participado en One Young World y
+            cofundado Recobra. Aquí reúno mis videos, escritos y algunos proyectos.
           </p>
           <p className="handwritten">Qué chimba tenerte por acá.</p>
           <Link href="/writing" className="text-link">
@@ -83,13 +93,61 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
+      <section className="about-chapters" aria-labelledby="chapters-title">
+        <div className="about-chapters-heading">
+          <div>
+            <p className="eyebrow">Un poco de contexto</p>
+            <h2 id="chapters-title">
+              La versión <em>corta.</em>
+            </h2>
+          </div>
+          <p>Algunos lugares y proyectos que hacen parte de esta historia.</p>
+        </div>
+        <div className="about-chapter-grid">
+          <article>
+            <span className="about-chapter-number">01 / COLOMBIA</span>
+            <h3>Medellín</h3>
+            <p>La ciudad de la que soy y un lugar que aparece mucho en mis fotos.</p>
+          </article>
+          <article>
+            <span className="about-chapter-number">02 / 2021–2025</span>
+            <h3>China y Estados Unidos</h3>
+            <p>Estudié un programa de doble titulación en Duke Kunshan y Duke.</p>
+          </article>
+          <article>
+            <span className="about-chapter-number">03 / 2024</span>
+            <h3>Montreal y Hong Kong</h3>
+            <p>
+              Fui becario de CUSEF x One Young World y participé en el US-China Hong Kong Forum.
+            </p>
+            <a
+              href="https://cscc.dukekunshan.edu.cn/featured-student-nicolas-velasco-perez/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Leer más <Arrow diagonal />
+            </a>
+          </article>
+          <article>
+            <span className="about-chapter-number">04 / CONSTRUYENDO</span>
+            <h3>Recobra y más</h3>
+            <p>
+              Con Damián cofundé Recobra. También me gusta experimentar con IA y nuevas
+              herramientas.
+            </p>
+            <Link href="/resume">
+              Ver proyectos <Arrow />
+            </Link>
+          </article>
+        </div>
+      </section>
       <section className="interest-section">
         <div className="section-heading compact">
-          <p className="eyebrow">Las cosas que se cruzan en mi mundo</p>
+          <p className="eyebrow">Algunas cosas que me gustan</p>
           <h2>
-            Tres maneras
+            Un poco de
             <br />
-            de <em>crear.</em>
+            <em>todo.</em>
           </h2>
         </div>
         <div className="interest-list">

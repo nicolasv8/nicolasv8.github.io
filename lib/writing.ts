@@ -32,6 +32,18 @@ export type WritingDocument = WritingEntry & {
 
 const writingContentDirectory = path.join(process.cwd(), "content", "writing")
 
+// These files came from the first version of the writing system; authorship is unconfirmed.
+// Keep their existing URLs, but do not feature or index them until authorship is confirmed.
+const unverifiedLegacyUrls = new Set([
+  "/writing/essays/the-quiet-page",
+  "/writing/poems/morning-in-bogota",
+  "/writing/notes/a-note-on-keeping-notes",
+])
+
+export function isUnverifiedLegacyEntry(entry: Pick<WritingEntry, "url">) {
+  return unverifiedLegacyUrls.has(entry.url)
+}
+
 const writingTypeLabels: Record<WritingType, string> = {
   essays: "Ensayo",
   poems: "Poema",

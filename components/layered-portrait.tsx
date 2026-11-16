@@ -1,5 +1,5 @@
-import Image from "next/image"
 import { site } from "@/lib/site"
+import Image from "next/image"
 
 /** Both full-canvas layers share the same aspect ratio and geometry so the sharp cutout always matches the filtered photo. */
 export function LayeredPortrait({ priority = false }: { priority?: boolean }) {

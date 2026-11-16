@@ -1,0 +1,116 @@
+.about-chapters {
+  margin-top: clamp(70px, 10vw, 140px);
+}
+
+.about-chapters-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.about-chapters-heading h2 {
+  margin-top: 15px;
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.06em;
+}
+
+.about-chapters-heading > p {
+  max-width: 260px;
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.7;
+}
+
+.about-chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--line);
+}
+
+.about-chapter-grid article {
+  min-width: 0;
+  padding: 27px 26px 30px 0;
+}
+
+.about-chapter-grid article + article {
+  padding-left: 26px;
+  border-left: 1px solid var(--line);
+}
+
+.about-chapter-number {
+  color: #92543a;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .6rem;
+  letter-spacing: .08em;
+}
+
+.about-chapter-grid h3 {
+  margin-top: 25px;
+  font-family: var(--serif);
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.about-chapter-grid p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: .83rem;
+  line-height: 1.75;
+}
+
+.about-chapter-grid a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  margin-top: 12px;
+  font-size: .75rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.about-chapter-grid a svg {
+  width: 15px;
+}
+
+@media (max-width: 850px) {
+  .about-chapter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about-chapter-grid article:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .about-chapter-grid article:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 520px) {
+  .about-chapters-heading {
+    display: block;
+  }
+  .about-chapters-heading > p {
+    margin-top: 18px;
+  }
+  .about-chapter-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-chapter-grid article,
+  .about-chapter-grid article + article {
+    padding: 22px 0;
+    border-left: 0;
+  }
+  .about-chapter-grid article + article {
+    border-top: 1px solid var(--line);
+  }
+  .about-chapter-grid h3 {
+    margin-top: 14px;
+  }
+}

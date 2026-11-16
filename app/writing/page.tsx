@@ -1,46 +1,90 @@
+import { Asterisk } from "@/components/icons"
+import { WritingIndex } from "@/components/writing/writing-index"
 import {
   formatWritingDate,
   getPublishedWritingEntries,
-  getWritingTypeLabel,
   getReadingMinutes,
+  getWritingTypeLabel,
+  isUnverifiedLegacyEntry,
 } from "@/lib/writing"
-import { WritingIndex } from "@/components/writing/writing-index"
-import { Asterisk } from "@/components/icons"
 import type { Metadata } from "next"
+import "./real-writing.css"
 
 export const metadata: Metadata = {
   title: "Escritos",
-  description: "Ensayos, poemas y notas de Nico. Un cuaderno abierto para leer sin afán.",
+  description: "Publicaciones y conversaciones de Nicolás Velasco Pérez.",
 }
 export default function WritingPage() {
-  const entries = getPublishedWritingEntries().map((entry) => ({
-    url: entry.url,
-    title: entry.title,
-    type: entry.type,
-    date: entry.date,
-    excerpt: entry.excerpt,
-    label: getWritingTypeLabel(entry.type),
-    displayDate: formatWritingDate(entry.date),
-    minutes: getReadingMinutes(entry.content),
-    language: entry.language,
-  }))
+  const entries = getPublishedWritingEntries()
+    .filter((entry) => !isUnverifiedLegacyEntry(entry))
+    .map((entry) => ({
+      url: entry.url,
+      title: entry.title,
+      type: entry.type,
+      date: entry.date,
+      excerpt: entry.excerpt,
+      label: getWritingTypeLabel(entry.type),
+      displayDate: formatWritingDate(entry.date),
+      minutes: getReadingMinutes(entry.content),
+      language: entry.language,
+    }))
   return (
     <main id="main-content" className="shell interior-page writing-index-page">
       <header className="page-heading writing-heading">
-        <p className="eyebrow">El cuaderno / Ensayos, poemas y notas</p>
+        <p className="eyebrow">El cuaderno / Textos y publicaciones</p>
         <h1>
-          Hay cosas que
+          Algunas cosas
           <br />
-          piden <em>palabras.</em>
+          por <em>escrito.</em>
         </h1>
         <p className="page-description">
-          Ideas que se quedan, preguntas que vuelven y pequeñas cosas que merecen una página.
-          Siéntate un ratico.
+          Algunas cosas que he escrito o ayudado a escribir. Si tienes un ratico, pasa y lee.
         </p>
         <Asterisk />
       </header>
-      <WritingIndex entries={entries} />
-      <p className="writing-language-note">Los escritos conservan su idioma original.</p>
+      <a
+        className="writing-publication"
+        href="https://repository.eafit.edu.co/bitstreams/82eee464-52b4-46d0-893a-977948190b2a/download"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="writing-publication-mark" aria-hidden="true">
+          <span>UNA PUBLICACIÓN</span>
+          <strong>↗</strong>
+          <span>2022</span>
+        </div>
+        <div className="writing-publication-copy">
+          <p className="eyebrow">Editorial EAFIT · Coautor</p>
+          <h2>Aprende a gestionar tu negocio</h2>
+          <p>
+            Escribí junto a otros autores el capítulo «Estado de resultados» de esta guía para
+            pequeños negocios y productores de cacao en Antioquia.
+          </p>
+          <span>Leer la publicación ↗</span>
+        </div>
+      </a>
+      <a
+        className="writing-interview"
+        href="https://cscc.dukekunshan.edu.cn/featured-student-nicolas-velasco-perez/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div>
+          <p className="eyebrow">Duke Kunshan University · Entrevista</p>
+          <h2>Una conversación sobre jóvenes, China y Estados Unidos.</h2>
+          <p>Después del US-China Hong Kong Forum de 2024, compartí algunas de mis impresiones.</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </a>
+      {entries.length > 0 && (
+        <details className="writing-archive">
+          <summary>
+            Archivo de la versión anterior del sitio <span aria-hidden="true">＋</span>
+          </summary>
+          <WritingIndex entries={entries} />
+          <p className="writing-language-note">Los textos conservan su idioma original.</p>
+        </details>
+      )}
     </main>
   )
 }

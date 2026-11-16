@@ -3,10 +3,12 @@ import imageManifest from "./image-manifest.json"
 export const site = {
   name: "La Vida de Nico",
   description:
-    "Un espacio para lo que escribo, lo que creo y lo que voy construyendo. Bienvenido a La Vida de Nico.",
+    "Soy Nico: de Medellín, con historias de China y del mundo. Aquí están mis videos, mis viajes y mis proyectos.",
   navigation: [
     { href: "/", label: "Inicio" },
     { href: "/about", label: "Sobre mí" },
+    { href: "/mapa", label: "Mi mapa" },
+    { href: "/videos", label: "Videos" },
     { href: "/writing", label: "Escritos" },
     { href: "/resume", label: "Lo que hago" },
   ],
@@ -22,6 +24,12 @@ export const site = {
       label: "Instagram",
       note: "Nos vemos por allá.",
       icon: "/Instagram Icon.svg",
+    },
+    {
+      href: "https://www.linkedin.com/in/nicolasvelascoperez/",
+      label: "LinkedIn",
+      note: "Ideas, proyectos y personas.",
+      icon: "/LinkedIn Icon.svg",
     },
   ],
   assets: {
@@ -40,28 +48,43 @@ export const site = {
 export const projects = [
   {
     number: "01",
-    category: "IA · Conversaciones",
-    title: "Tecnología que conversa.",
+    category: "Emprendimiento · Atención",
+    title: "Recobra tu tiempo.",
     description:
-      "Asistentes de inteligencia artificial y automatización para WhatsApp. Convertir una conversación en una herramienta útil es uno de los problemas que me gusta explorar.",
-    tags: ["Inteligencia artificial", "WhatsApp", "Automatización"],
+      "Con Damián Duque creé Recobra: una tarjeta física que ayuda a bloquear aplicaciones y recuperar tiempo lejos del celular.",
+    tags: ["Emprendimiento", "Bienestar digital", "Producto"],
+    href: "https://contxto.com/en/colombia/recobra-the-startup-that-seeks-to-recover-lost-time-in-the-age-of-digital-distraction/",
+    linkLabel: "Lee la historia en Contxto",
+    external: true,
   },
   {
     number: "02",
-    category: "Herramientas · Vida cotidiana",
-    title: "Más claridad, menos vueltas.",
+    category: "Comunidad · Desarrollo global",
+    title: "South-North Scholars.",
     description:
-      "Un proyecto de asistente para organizar las finanzas personales. Una forma de explorar cómo la tecnología puede ayudar a entender mejor lo cotidiano.",
-    tags: ["Finanzas personales", "Asistentes", "Producto"],
+      "Una red estudiantil que cofundé entre Duke y Duke Kunshan para conectar a jóvenes interesados en desarrollo global.",
+    tags: ["Comunidad", "Desarrollo", "Perspectiva global"],
+    href: "https://www.millenniumfellows.org/fellow/2023/dku/nicol%C3%A1s-velasco-p%C3%A9rez",
+    linkLabel: "Conoce el proyecto",
+    external: true,
   },
   {
     number: "03",
-    category: "Internet · Espacio propio",
-    title: "La Vida de Nico.",
+    category: "IA · Herramientas útiles",
+    title: "Del «¿y si…?» al prototipo.",
     description:
-      "Este rincón de internet reúne videos, escritos y proyectos. Un espacio propio que puede crecer y cambiar conmigo.",
-    tags: ["Next.js", "Diseño web", "Escritura"],
-    href: "/about",
-    linkLabel: "Conoce la historia",
+      "Construyo y pruebo asistentes de IA y automatizaciones para resolver tareas concretas. Me gusta aprender mientras hago.",
+    tags: ["Inteligencia artificial", "Automatización", "Aprender haciendo"],
+  },
+  {
+    number: "04",
+    category: "Historias · Video",
+    title: "Una vida para contar.",
+    description:
+      "De las montañas de China a One Young World en Montreal: en La Vida de Nico comparto los lugares, las personas y los aprendizajes que voy encontrando por el camino.",
+    tags: ["Video", "Viajes", "Curiosidad"],
+    href: "https://www.youtube.com/@LaVidadeNicoVP",
+    linkLabel: "Pasar por el canal",
+    external: true,
   },
 ] as const

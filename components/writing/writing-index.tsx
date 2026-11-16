@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
 import { Arrow } from "@/components/icons"
+import Link from "next/link"
+import { useState } from "react"
 
 type Entry = {
   url: string
@@ -26,7 +26,8 @@ export function WritingIndex({ entries }: { entries: Entry[] }) {
   const visible = entries.filter((entry) => filter === "all" || entry.type === filter)
   return (
     <>
-      <div className="writing-filters" role="group" aria-label="Filtrar escritos por tipo">
+      <fieldset className="writing-filters">
+        <legend className="sr-only">Filtrar escritos por tipo</legend>
         {filters.map((item) => (
           <button
             key={item.value}
@@ -40,11 +41,11 @@ export function WritingIndex({ entries }: { entries: Entry[] }) {
             </span>
           </button>
         ))}
-      </div>
-      <p className="results-count eyebrow" role="status">
+      </fieldset>
+      <output className="results-count eyebrow" aria-live="polite">
         {visible.length}{" "}
         {visible.length === 1 ? "escrito para leer sin afán" : "escritos para leer sin afán"}
-      </p>
+      </output>
       <ol className="writing-list">
         {visible.map((entry, index) => (
           <li key={entry.url}>

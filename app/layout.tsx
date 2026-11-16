@@ -1,9 +1,9 @@
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
+import { site } from "@/lib/site"
 import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next"
 import localFont from "next/font/local"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
-import { site } from "@/lib/site"
 import "./globals.css"
 
 const geistSans = localFont({
@@ -27,7 +27,18 @@ export const metadata: Metadata = {
     description: site.description,
     locale: "es_CO",
     type: "website",
-    images: [{ url: "/images/background.webp", width: 2049, height: 1161, alt: "La Vida de Nico" }],
+    images: [
+      {
+        url: "/images/og-cover.png",
+        width: 1200,
+        height: 630,
+        alt: "La Vida de Nico: videos, viajes y proyectos",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/og-cover.png"],
   },
   icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
 }
@@ -41,7 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         {children}
         <SiteFooter />
-        {process.env.NODE_ENV === "production" && <Analytics />}
+        {process.env.NODE_ENV === "production" && process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   )

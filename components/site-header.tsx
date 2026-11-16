@@ -1,16 +1,24 @@
 "use client"
 
+import { site } from "@/lib/site"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
-import { site } from "@/lib/site"
 import { Arrow } from "./icons"
 
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   return (
-    <header className={`site-header shell ${pathname === "/" ? "is-home" : ""}`}>
+    <header
+      className={`site-header shell ${pathname === "/" ? "is-home" : ""}`}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && open) {
+          setOpen(false)
+          document.querySelector<HTMLButtonElement>(".menu-toggle")?.focus()
+        }
+      }}
+    >
       <Link
         href="/"
         className="wordmark"
@@ -36,12 +44,6 @@ export function SiteHeader() {
         id="site-navigation"
         aria-label="Navegación principal"
         className={`site-nav ${open ? "is-open" : ""}`}
-        onKeyDown={(event) => {
-          if (event.key === "Escape") {
-            setOpen(false)
-            document.querySelector<HTMLButtonElement>(".menu-toggle")?.focus()
-          }
-        }}
       >
         {site.navigation.map((link) => (
           <Link
