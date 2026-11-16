@@ -1,13 +1,13 @@
 import { Arrow, Asterisk } from "@/components/icons"
+import { pageMetadata } from "@/lib/metadata"
 import { projects, site } from "@/lib/site"
-import type { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "Lo que hago",
-  description:
-    "Ideas, comunidad y proyectos: un vistazo a lo que he construido y lo que sigo aprendiendo.",
-}
+export const metadata = pageMetadata(
+  "Lo que hago",
+  "Proyectos y comunidades que he construido: Recobra, South-North Scholars, IA y videos.",
+  "/resume"
+)
 export default function ResumePage() {
   return (
     <main id="main-content" className="shell interior-page">
@@ -40,19 +40,31 @@ export default function ResumePage() {
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
-              {"href" in project && (
-                <Link
-                  href={project.href}
-                  className="text-link"
-                  target={"external" in project && project.external ? "_blank" : undefined}
-                  rel={
-                    "external" in project && project.external ? "noopener noreferrer" : undefined
-                  }
-                >
-                  {project.linkLabel}
-                  <Arrow diagonal={"external" in project && project.external} />
-                </Link>
-              )}
+              <div className="project-links">
+                {"href" in project && (
+                  <Link
+                    href={project.href}
+                    className="text-link"
+                    target={"external" in project && project.external ? "_blank" : undefined}
+                    rel={
+                      "external" in project && project.external ? "noopener noreferrer" : undefined
+                    }
+                  >
+                    {project.linkLabel}
+                    <Arrow diagonal={"external" in project && project.external} />
+                  </Link>
+                )}
+                {"sourceHref" in project && (
+                  <a
+                    href={project.sourceHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-link"
+                  >
+                    {project.sourceLabel} <Arrow diagonal />
+                  </a>
+                )}
+              </div>
             </div>
           </article>
         ))}

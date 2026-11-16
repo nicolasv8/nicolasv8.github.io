@@ -565,6 +565,11 @@ em {
 .project .text-link {
   margin-top: 25px;
 }
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 28px;
+}
 .work-approach {
   background: #eee5d8;
   padding: 48px;

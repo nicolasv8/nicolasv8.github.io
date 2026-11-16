@@ -1,5 +1,6 @@
 import { Asterisk } from "@/components/icons"
 import { WritingIndex } from "@/components/writing/writing-index"
+import { pageMetadata } from "@/lib/metadata"
 import {
   formatWritingDate,
   getPublishedWritingEntries,
@@ -7,13 +8,13 @@ import {
   getWritingTypeLabel,
   isUnverifiedLegacyEntry,
 } from "@/lib/writing"
-import type { Metadata } from "next"
 import "./real-writing.css"
 
-export const metadata: Metadata = {
-  title: "Escritos",
-  description: "Publicaciones y conversaciones de Nicolás Velasco Pérez.",
-}
+export const metadata = pageMetadata(
+  "Escritos",
+  "Publicaciones y conversaciones de Nicolás Velasco Pérez.",
+  "/writing"
+)
 export default function WritingPage() {
   const entries = getPublishedWritingEntries()
     .filter((entry) => !isUnverifiedLegacyEntry(entry))

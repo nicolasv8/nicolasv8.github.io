@@ -1,11 +1,12 @@
 import { VideoShelf } from "@/components/video-shelf"
-import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import "./videos.css"
 
-export const metadata: Metadata = {
-  title: "Videos",
-  description: "China, viajes y cosas que voy aprendiendo. Los videos de La Vida de Nico.",
-}
+export const metadata = pageMetadata(
+  "Videos",
+  "China, viajes y cosas que voy aprendiendo. Los videos de La Vida de Nico.",
+  "/videos"
+)
 
 export default function VideosPage() {
   return (

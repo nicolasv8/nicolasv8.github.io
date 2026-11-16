@@ -53,8 +53,11 @@ export const projects = [
     description:
       "Con Damián Duque creé Recobra: una tarjeta física que ayuda a bloquear aplicaciones y recuperar tiempo lejos del celular.",
     tags: ["Emprendimiento", "Bienestar digital", "Producto"],
-    href: "https://contxto.com/en/colombia/recobra-the-startup-that-seeks-to-recover-lost-time-in-the-age-of-digital-distraction/",
-    linkLabel: "Lee la historia en Contxto",
+    href: "https://www.recobratutiempo.com/",
+    linkLabel: "Conoce Recobra",
+    sourceHref:
+      "https://contxto.com/es/colombia/recobra-la-startup-que-busca-recuperar-el-tiempo-perdido-en-la-era-de-la-distraccion-digital/",
+    sourceLabel: "La historia en Contxto",
     external: true,
   },
   {

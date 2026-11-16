@@ -1,14 +1,15 @@
 import { Arrow, Asterisk } from "@/components/icons"
+import { pageMetadata } from "@/lib/metadata"
 import { site } from "@/lib/site"
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import "./about-personal.css"
 
-export const metadata: Metadata = {
-  title: "Sobre mí",
-  description: "Detrás de La Vida de Nico: videos, palabras y tecnología. Un poco más de mí.",
-}
+export const metadata = pageMetadata(
+  "Sobre mí",
+  "Soy Nico: de Medellín, con una historia entre China, Estados Unidos y Colombia.",
+  "/about"
+)
 const interests = [
   {
     number: "01",

@@ -248,10 +248,10 @@
   letter-spacing: .08em;
   color: #52695a;
 }
-.travel-map-bar span:first-child {
+.travel-map-bar > span {
   color: var(--travel-ink);
 }
-.travel-map-bar span:first-child span {
+.travel-map-bar > span span {
   color: var(--travel-orange);
 }
 .travel-map-foot a {
@@ -349,14 +349,15 @@
   pointer-events: none;
 }
 .travel-map-controls {
-  position: absolute;
-  z-index: 6;
-  right: 12px;
-  bottom: 12px;
   display: flex;
-  flex-direction: column;
   border: 1px solid #aac2b1;
   box-shadow: 0 2px 7px #294a3430;
+}
+.travel-map-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 5px;
 }
 .travel-map-controls button {
   width: 44px;
@@ -367,7 +368,7 @@
   font-size: 1.3rem;
 }
 .travel-map-controls button + button {
-  border-top: 1px solid #d5e0d4;
+  border-left: 1px solid #d5e0d4;
 }
 .travel-map-controls button:disabled {
   opacity: 0.45;
@@ -695,12 +696,8 @@
     padding-inline: 12px;
     font-size: .49rem;
   }
-  .travel-map-bar > span:last-child {
+  .travel-map-bar-caption {
     display: none;
-  }
-  .travel-map-controls {
-    right: 7px;
-    bottom: 7px;
   }
   .travel-map-controls button {
     width: 44px;

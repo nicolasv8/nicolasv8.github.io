@@ -22,11 +22,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nicolasv8.github.io"),
   title: { default: site.name, template: "%s | La Vida de Nico" },
   description: site.description,
+  alternates: { canonical: "/" },
   openGraph: {
     title: site.name,
     description: site.description,
     locale: "es_CO",
     type: "website",
+    url: "/",
+    siteName: site.name,
     images: [
       {
         url: "/images/og-cover.png",

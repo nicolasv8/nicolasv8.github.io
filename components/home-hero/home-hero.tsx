@@ -1,5 +1,4 @@
-import { site } from "@/lib/site"
-import Image from "next/image"
+import { homeImages } from "@/lib/home-images"
 import Link from "next/link"
 
 export function Hero() {
@@ -42,19 +41,31 @@ export function Hero() {
             aria-label="Explorar mi mapa de viajes"
           >
             <span className="nico-stage-tape" aria-hidden="true" />
-            <Image src="/images/travel/londres.webp" alt="" width={720} height={540} priority />
+            <img
+              src={homeImages.london.src}
+              srcSet={homeImages.london.srcSet}
+              sizes="(max-width: 720px) 32vw, 220px"
+              alt=""
+              width={1600}
+              height={1200}
+              loading="eager"
+              decoding="async"
+            />
             <span>
               Londres, 2024 <b>↗</b>
             </span>
           </Link>
           <div className="nico-hero-person">
-            <Image
-              src={site.assets.portrait}
+            <img
+              src={homeImages.portrait.src}
+              srcSet={homeImages.portrait.srcSet}
               alt="Nico sonriendo con la camiseta de Colombia"
               width={1600}
               height={2041}
-              sizes="(max-width: 720px) 68vw, 440px"
-              priority
+              sizes={homeImages.portrait.sizes}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
           <Link href="/mapa" className="nico-ticket">

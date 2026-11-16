@@ -2,7 +2,7 @@
 
 import { travelPlaces } from "@/lib/travel"
 import Image from "next/image"
-import { type CSSProperties, useState } from "react"
+import { type CSSProperties, useEffect, useRef, useState } from "react"
 
 // The projection matches the locally generated Natural Earth illustration.
 function position(latitude: number, longitude: number) {
@@ -16,13 +16,29 @@ export function TravelMap() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [zoom, setZoom] = useState(1)
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null)
+  const pointerDown = useRef(false)
   const selected = travelPlaces[selectedIndex]
   const zoomAnchor = travelPlaces[focusedIndex ?? selectedIndex]
   const selectedPosition = position(zoomAnchor.latitude, zoomAnchor.longitude)
   const picturePlaces = ["londres", "montreal", "pekin", "shanghai"]
 
+  useEffect(() => {
+    const releasePointer = () => {
+      pointerDown.current = false
+    }
+    window.addEventListener("pointerup", releasePointer)
+    window.addEventListener("pointercancel", releasePointer)
+    window.addEventListener("blur", releasePointer)
+    return () => {
+      window.removeEventListener("pointerup", releasePointer)
+      window.removeEventListener("pointercancel", releasePointer)
+      window.removeEventListener("blur", releasePointer)
+    }
+  }, [])
+
   function selectPlace(index: number) {
     setSelectedIndex((index + travelPlaces.length) % travelPlaces.length)
+    setFocusedIndex(null)
   }
 
   function openPlace(id: string) {
@@ -121,7 +137,35 @@ export function TravelMap() {
                 <span>
                   MI MAPA <span aria-hidden="true">✳</span>
                 </span>
-                <span>UNA VUELTA POR EL MUNDO</span>
+                <div className="travel-map-bar-actions">
+                  <span className="travel-map-bar-caption">UNA VUELTA POR EL MUNDO</span>
+                  <div className="travel-map-controls">
+                    <button
+                      type="button"
+                      aria-label="Acercar mapa"
+                      onFocus={() => setFocusedIndex(null)}
+                      onClick={() => {
+                        setFocusedIndex(null)
+                        setZoom((value) => Math.min(2, value + 0.5))
+                      }}
+                      disabled={zoom >= 2}
+                    >
+                      +
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Alejar mapa"
+                      onFocus={() => setFocusedIndex(null)}
+                      onClick={() => {
+                        setFocusedIndex(null)
+                        setZoom((value) => Math.max(1, value - 0.5))
+                      }}
+                      disabled={zoom <= 1}
+                    >
+                      −
+                    </button>
+                  </div>
+                </div>
               </div>
               <div className="travel-map-viewport">
                 <div
@@ -153,8 +197,12 @@ export function TravelMap() {
                         style={style}
                         type="button"
                         onClick={() => selectPlace(index)}
-                        onFocus={() => setFocusedIndex(index)}
-                        onBlur={() => setFocusedIndex(null)}
+                        onPointerDown={() => {
+                          pointerDown.current = true
+                        }}
+                        onFocus={() => {
+                          if (!pointerDown.current) setFocusedIndex(index)
+                        }}
                         aria-label={`${place.city}, ${place.country}`}
                         aria-pressed={index === selectedIndex}
                       >
@@ -177,24 +225,6 @@ export function TravelMap() {
                       </button>
                     )
                   })}
-                </div>
-                <div className="travel-map-controls">
-                  <button
-                    type="button"
-                    aria-label="Acercar mapa"
-                    onClick={() => setZoom((value) => Math.min(2, value + 0.5))}
-                    disabled={zoom >= 2}
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Alejar mapa"
-                    onClick={() => setZoom((value) => Math.max(1, value - 0.5))}
-                    disabled={zoom <= 1}
-                  >
-                    −
-                  </button>
                 </div>
                 <span className="travel-map-compass" aria-hidden="true">
                   N<br />

@@ -1,5 +1,6 @@
 import { HomeCuriosity } from "@/components/home-curiosity"
 import { Hero } from "@/components/home-hero"
+import { homeImages } from "@/lib/home-images"
 import Image from "next/image"
 import Link from "next/link"
 import "./home-experience.css"
@@ -95,12 +96,15 @@ export default function Home() {
             aria-label="Ver mi mapa de viajes y fotografías"
           >
             <span className="nico-map-art-caption">UNA VUELTA POR EL MUNDO &nbsp; ↗</span>
-            <Image
-              src="/images/travel/londres.webp"
+            <img
+              src={homeImages.london.src}
+              srcSet={homeImages.london.srcSet}
               alt="Nico frente al Tower Bridge en Londres"
-              width={720}
-              height={540}
+              width={1600}
+              height={1200}
               sizes="(max-width: 720px) 82vw, 430px"
+              loading="lazy"
+              decoding="async"
             />
             <span className="nico-map-art-label">
               <b>LONDRES</b>
@@ -139,7 +143,7 @@ export default function Home() {
             >
               <span className="nico-film-media">
                 <Image
-                  src="/images/home/xishan.webp"
+                  src="/images/videos/56f1HvY4zsg.webp"
                   alt=""
                   width={800}
                   height={450}
@@ -168,7 +172,7 @@ export default function Home() {
             >
               <span className="nico-film-media">
                 <Image
-                  src="/images/home/one-young-world.webp"
+                  src="/images/videos/MSIRX2332S4.webp"
                   alt=""
                   width={800}
                   height={450}

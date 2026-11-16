@@ -27,9 +27,10 @@ const things = [
     label: "Moverme",
     icon: "↗",
     title: "También corro. Bastante.",
-    body: "Me gusta correr y he participado en varias medias maratones. Los tenis también hacen parte de este cuento.",
-    href: "/about",
-    link: "Un poco más de mí",
+    body: "He corrido varias medias maratones. En 2025 corrí los 10K con el equipo de Duke Kunshan; quedamos terceros por equipos.",
+    href: "https://athletics.dukekunshan.edu.cn/latest-in-athletics/home-course-home-champions-dku-varsity-running-claims-third-straight-victory/",
+    link: "Ver la carrera en DKU",
+    external: true,
   },
 ] as const
 
@@ -74,9 +75,21 @@ export function HomeCuriosity() {
             </span>
             <h3>{active.title}</h3>
             <p>{active.body}</p>
-            <Link href={active.href} className="nico-inline-link">
-              {active.link} <span aria-hidden="true">↗</span>
-            </Link>
+            {"external" in active && active.external ? (
+              <a
+                href={active.href}
+                className="nico-inline-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${active.link} (abre otra pestaña)`}
+              >
+                {active.link} <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <Link href={active.href} className="nico-inline-link">
+                {active.link} <span aria-hidden="true">↗</span>
+              </Link>
+            )}
           </div>
         </div>
       </div>

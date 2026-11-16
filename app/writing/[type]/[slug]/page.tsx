@@ -1,5 +1,6 @@
 import { Arrow } from "@/components/icons"
 import { writingMdxComponents } from "@/components/writing/mdx-components"
+import { pageMetadata } from "@/lib/metadata"
 import {
   formatWritingDate,
   getPublishedWritingEntries,
@@ -45,8 +46,11 @@ export async function generateMetadata({ params }: WritingEntryPageProps): Promi
   }
 
   return {
-    title: entry.title,
-    description: entry.excerpt ?? `${getWritingTypeLabel(entry.type)} from La Vida de Nico.`,
+    ...pageMetadata(
+      entry.title,
+      entry.excerpt ?? `${getWritingTypeLabel(entry.type)} de La Vida de Nico.`,
+      entry.url
+    ),
     ...(isUnverifiedLegacyEntry(entry) ? { robots: { index: false, follow: true } } : {}),
   }
 }
