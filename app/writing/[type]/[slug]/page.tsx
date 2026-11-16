@@ -68,9 +68,10 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
     notFound()
   }
 
-  const entries = getPublishedWritingEntries()
-  const nextEntry =
-    entries[(entries.findIndex((item) => item.url === entry.url) + 1) % entries.length]
+  const entries = getPublishedWritingEntries().filter((item) => !isUnverifiedLegacyEntry(item))
+  const nextEntry = entries.length
+    ? entries[(entries.findIndex((item) => item.url === entry.url) + 1) % entries.length]
+    : undefined
 
   return (
     <main id="main-content" className="writing-surface">

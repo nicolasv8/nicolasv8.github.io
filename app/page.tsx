@@ -160,8 +160,11 @@ export default function Home() {
                 <br />
                 <em>aventura en las montañas de China.</em>
               </span>
+              <span className="nico-film-note">
+                Entre lluvia y neblina, las montañas me recordaron a Medellín.
+              </span>
               <span className="nico-film-bottom">
-                ESCALANDO XISHAN <b>VER VIDEO ↗</b>
+                <b>VER VIDEO ↗</b>
               </span>
             </a>
             <a
@@ -189,13 +192,16 @@ export default function Home() {
                 <br />
                 <em>en One Young World.</em>
               </span>
+              <span className="nico-film-note">
+                Mi libreta de Montreal y consejos para buscar una beca.
+              </span>
               <span className="nico-film-bottom">
-                ONE YOUNG WORLD <b>VER VIDEO ↗</b>
+                <b>VER VIDEO ↗</b>
               </span>
             </a>
           </div>
           <Link href="/videos" className="nico-inline-link nico-all-videos">
-            Ver todos mis videos <span aria-hidden="true">↗</span>
+            Explorar mis videos <span aria-hidden="true">↗</span>
           </Link>
         </div>
       </section>

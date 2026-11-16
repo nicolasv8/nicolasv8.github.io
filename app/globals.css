@@ -328,11 +328,15 @@ em {
   border-top: 1px solid #ffffff30;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
   font-size: .63rem;
   color: #d1d6c9;
 }
 .footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: underline;
   text-underline-offset: 4px;
 }

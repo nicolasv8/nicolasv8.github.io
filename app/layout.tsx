@@ -20,11 +20,11 @@ const geistMono = localFont({
 })
 export const metadata: Metadata = {
   metadataBase: new URL("https://nicolasv8.github.io"),
-  title: { default: site.name, template: "%s | La Vida de Nico" },
+  title: { default: "La Vida de Nico | Nicolás Velasco Pérez", template: "%s | La Vida de Nico" },
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: site.name,
+    title: "La Vida de Nico | Nicolás Velasco Pérez",
     description: site.description,
     locale: "es_CO",
     type: "website",

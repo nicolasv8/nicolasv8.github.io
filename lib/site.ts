@@ -3,7 +3,7 @@ import imageManifest from "./image-manifest.json"
 export const site = {
   name: "La Vida de Nico",
   description:
-    "Soy Nico: de Medellín, con historias de China y del mundo. Aquí están mis videos, mis viajes y mis proyectos.",
+    "Soy Nicolás Velasco Pérez, Nico: de Medellín, con historias de China y del mundo. Aquí están mis videos, viajes y proyectos.",
   navigation: [
     { href: "/", label: "Inicio" },
     { href: "/about", label: "Sobre mí" },
@@ -65,10 +65,12 @@ export const projects = [
     category: "Comunidad · Desarrollo global",
     title: "South-North Scholars.",
     description:
-      "Una red estudiantil que cofundé entre Duke y Duke Kunshan para conectar a jóvenes interesados en desarrollo global.",
+      "Una red de jóvenes interesados en desarrollo global. Cofundé su capítulo en Duke Kunshan para acercar estas conversaciones a la universidad.",
     tags: ["Comunidad", "Desarrollo", "Perspectiva global"],
-    href: "https://www.millenniumfellows.org/fellow/2023/dku/nicol%C3%A1s-velasco-p%C3%A9rez",
+    href: "https://www.southnorthscholars.org/about",
     linkLabel: "Conoce el proyecto",
+    sourceHref: "https://www.millenniumfellows.org/fellow/2023/dku/nicol%C3%A1s-velasco-p%C3%A9rez",
+    sourceLabel: "Mi perfil en Millennium Fellowship",
     external: true,
   },
   {

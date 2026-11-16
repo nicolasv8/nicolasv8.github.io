@@ -1,13 +1,13 @@
 import { Arrow, Asterisk } from "@/components/icons"
+import { homeImages } from "@/lib/home-images"
 import { pageMetadata } from "@/lib/metadata"
 import { site } from "@/lib/site"
-import Image from "next/image"
 import Link from "next/link"
 import "./about-personal.css"
 
 export const metadata = pageMetadata(
-  "Sobre mí",
-  "Soy Nico: de Medellín, con una historia entre China, Estados Unidos y Colombia.",
+  "Sobre mí: Nicolás Velasco Pérez",
+  "Soy Nicolás Velasco Pérez, Nico: de Medellín, con una historia entre China, Estados Unidos y Colombia.",
   "/about"
 )
 const interests = [
@@ -62,13 +62,15 @@ export default function AboutPage() {
         <figure className="about-photo">
           <div className="photo-grid" />
           <Asterisk className="about-flower" />
-          <Image
-            src={site.assets.portrait}
+          <img
+            src={homeImages.portrait.src}
+            srcSet={homeImages.portrait.srcSet}
             alt="Nico con la camiseta de Colombia"
             width={1600}
             height={2041}
-            sizes="(max-width: 720px) 90vw, 40vw"
-            priority
+            sizes="(max-width: 720px) min(calc(100vw - 88px), 412px), (max-width: 1000px) calc(45.5vw - 74px), min(calc(45.5vw - 92px), 535px)"
+            fetchPriority="high"
+            decoding="async"
           />
           <figcaption>El de la camiseta de Colombia. Sí, ese soy yo.</figcaption>
         </figure>
@@ -80,9 +82,10 @@ export default function AboutPage() {
             de contar una vida.
           </h2>
           <p>
-            Soy de Medellín. Estudié entre Duke Kunshan, en China, y Duke, en Estados Unidos, con
-            formación en Economía Política y Políticas Públicas. También me gusta correr, grabar
-            videos y meterme en proyectos nuevos.
+            Soy Nicolás Velasco Pérez, Nico para los amigos, y soy de Medellín. Estudié entre Duke
+            Kunshan, en China, y Duke, en Estados Unidos, con formación en Economía Política y
+            Políticas Públicas. También me gusta correr, grabar videos y meterme en proyectos
+            nuevos.
           </p>
           <p>
             He trabajado en iniciativas de desarrollo global, participado en One Young World y
