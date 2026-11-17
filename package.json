@@ -11,7 +11,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@vercel/analytics": "1.6.1",
+    "@vercel/analytics": "2.0.1",
     "gray-matter": "^4.0.3",
     "next": "16.4.6",
     "next-mdx-remote": "^6.0.0",
