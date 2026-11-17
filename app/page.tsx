@@ -2,6 +2,7 @@ import { HomeCuriosity } from "@/components/home-curiosity"
 import { Hero } from "@/components/home-hero"
 import { HomeJourney } from "@/components/home-journey"
 import { HomePostcards } from "@/components/home-postcards"
+import { HomeRailway } from "@/components/home-railway"
 import { HomeRunning } from "@/components/home-running"
 import { HomeScrollMotion } from "@/components/home-scroll-motion"
 import { HomeSoundtrack } from "@/components/home-soundtrack"
@@ -9,6 +10,7 @@ import { HomeTravelScene } from "@/components/home-travel-scene"
 import Image from "next/image"
 import Link from "next/link"
 import "./home-experience.css"
+import "./home-railway.css"
 
 export default function Home() {
   return (
@@ -91,6 +93,8 @@ export default function Home() {
       <HomeTravelScene />
 
       <HomeJourney />
+
+      <HomeRailway />
 
       <HomeCuriosity />
 

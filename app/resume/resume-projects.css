@@ -1,6 +1,6 @@
 .project-details-featured {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 200px;
+  grid-template-columns: minmax(0, 1fr) 240px;
   align-items: start;
   gap: 28px;
 }
@@ -14,6 +14,125 @@
   display: block;
   width: 100%;
   height: auto;
+}
+.recobra-demo {
+  position: relative;
+  isolation: isolate;
+}
+.recobra-demo-card {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 12%;
+  width: 48%;
+  aspect-ratio: 1.6;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 7px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #0e3c2b, #09a85f);
+  box-shadow: 0 6px 15px #17382b50;
+  color: white;
+  font-size: .55rem;
+  transform: rotate(-14deg);
+}
+.recobra-demo-card i {
+  font-size: 1rem;
+  font-style: normal;
+}
+.recobra-demo-pulse,
+.recobra-demo-check {
+  position: absolute;
+  z-index: 3;
+  top: 32%;
+  left: 55%;
+  width: 35px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.recobra-demo-pulse {
+  border: 2px solid #55f995;
+}
+.recobra-demo-check {
+  display: grid;
+  place-items: center;
+  color: #073e23;
+  background: #91f4a7;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.recobra-replay {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: #20503a;
+  font-size: .7rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .recobra-demo.is-playing .recobra-demo-card {
+    animation: recobra-tap 4.8s .2s ease-in-out both;
+  }
+  .recobra-demo.is-playing .recobra-demo-pulse {
+    animation: recobra-pulse 4.8s .2s ease-out both;
+  }
+  .recobra-demo.is-playing .recobra-demo-check {
+    animation: recobra-check 4.8s .2s ease-out both;
+  }
+}
+@keyframes recobra-tap {
+  0%,
+  12% {
+    transform: translate(0, 0) rotate(-14deg);
+  }
+  43%,
+  57% {
+    transform: translate(60%, -125%) rotate(8deg);
+  }
+  88%,
+  100% {
+    transform: translate(0, 0) rotate(-14deg);
+  }
+}
+@keyframes recobra-pulse {
+  0%,
+  40%,
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  45% {
+    opacity: 0.9;
+    transform: scale(0.5);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+@keyframes recobra-check {
+  0%,
+  47% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  58%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .recobra-demo-check {
+    opacity: 1;
+  }
 }
 .recobra-visual figcaption {
   color: #536153;

@@ -1,4 +1,5 @@
 import { Arrow, Asterisk } from "@/components/icons"
+import { RecobraVisual } from "@/components/recobra-visual"
 import { pageMetadata } from "@/lib/metadata"
 import { projects, site } from "@/lib/site"
 import Link from "next/link"
@@ -76,21 +77,7 @@ export default function ResumePage() {
                   )}
                 </div>
               </div>
-              {project.number === "01" && (
-                <figure className="recobra-visual">
-                  <img
-                    src="/images/projects/recobra-400.webp"
-                    srcSet="/images/projects/recobra-400.webp 400w, /images/projects/recobra-641.webp 641w"
-                    sizes="(max-width: 720px) 200px, 180px"
-                    width={641}
-                    height={1024}
-                    alt="Maqueta de la aplicación Recobra en un celular"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>La app de Recobra · vista de ejemplo</figcaption>
-                </figure>
-              )}
+              {project.number === "01" && <RecobraVisual />}
             </div>
           </article>
         ))}

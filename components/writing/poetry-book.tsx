@@ -83,6 +83,9 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
       </div>
       {!opened ? (
         <div className="poetry-cover-wrap">
+          <span className="poetry-cover-moon" aria-hidden="true">
+            <span>✦</span>
+          </span>
           <button type="button" className="poetry-cover" onClick={() => showPoem(index)}>
             <span className="poetry-cover-top">LA VIDA DE NICO</span>
             <span className="poetry-cover-art" aria-hidden="true">
@@ -140,9 +143,15 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
               </select>
             </label>
             <article className="poetry-book-content" key={poem.slug} lang={poem.language}>
-              {(poem.slug === "luna-lunita-luna" || poem.slug === "kunshan-y-shanghai") && (
+              {poem.slug === "luna-lunita-luna" && (
+                <span className="poetry-luna-orbit" aria-hidden="true">
+                  <span>☾</span>
+                  <i>✦</i>
+                </span>
+              )}
+              {poem.slug === "kunshan-y-shanghai" && (
                 <span className="poetry-book-motif" aria-hidden="true">
-                  {poem.slug === "luna-lunita-luna" ? "☾" : "↝"}
+                  ↝
                 </span>
               )}
               {initialSlug ? (
