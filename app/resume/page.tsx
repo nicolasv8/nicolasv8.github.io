@@ -2,6 +2,7 @@ import { Arrow, Asterisk } from "@/components/icons"
 import { pageMetadata } from "@/lib/metadata"
 import { projects, site } from "@/lib/site"
 import Link from "next/link"
+import "./resume-projects.css"
 
 export const metadata = pageMetadata(
   "Lo que hago",
@@ -31,40 +32,65 @@ export default function ResumePage() {
               {project.number}
               <span aria-hidden="true">↘</span>
             </div>
-            <div>
-              <p className="eyebrow">{project.category}</p>
-              <h2>{project.title}</h2>
-              <p className="project-description">{project.description}</p>
-              <ul className="tags" aria-label="Temas del proyecto">
-                {project.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-              <div className="project-links">
-                {"href" in project && (
-                  <Link
-                    href={project.href}
-                    className="text-link"
-                    target={"external" in project && project.external ? "_blank" : undefined}
-                    rel={
-                      "external" in project && project.external ? "noopener noreferrer" : undefined
-                    }
-                  >
-                    {project.linkLabel}
-                    <Arrow diagonal={"external" in project && project.external} />
-                  </Link>
-                )}
-                {"sourceHref" in project && (
-                  <a
-                    href={project.sourceHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-link"
-                  >
-                    {project.sourceLabel} <Arrow diagonal />
-                  </a>
-                )}
+            <div
+              className={
+                project.number === "01"
+                  ? "project-details project-details-featured"
+                  : "project-details"
+              }
+            >
+              <div>
+                <p className="eyebrow">{project.category}</p>
+                <h2>{project.title}</h2>
+                <p className="project-description">{project.description}</p>
+                <ul className="tags" aria-label="Temas del proyecto">
+                  {project.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+                <div className="project-links">
+                  {"href" in project && (
+                    <Link
+                      href={project.href}
+                      className="text-link"
+                      target={"external" in project && project.external ? "_blank" : undefined}
+                      rel={
+                        "external" in project && project.external
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
+                      {project.linkLabel}
+                      <Arrow diagonal={"external" in project && project.external} />
+                    </Link>
+                  )}
+                  {"sourceHref" in project && (
+                    <a
+                      href={project.sourceHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-link"
+                    >
+                      {project.sourceLabel} <Arrow diagonal />
+                    </a>
+                  )}
+                </div>
               </div>
+              {project.number === "01" && (
+                <figure className="recobra-visual">
+                  <img
+                    src="/images/projects/recobra-400.webp"
+                    srcSet="/images/projects/recobra-400.webp 400w, /images/projects/recobra-641.webp 641w"
+                    sizes="(max-width: 720px) 200px, 180px"
+                    width={641}
+                    height={1024}
+                    alt="Maqueta de la aplicación Recobra en un celular"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>La app de Recobra · vista de ejemplo</figcaption>
+                </figure>
+              )}
             </div>
           </article>
         ))}

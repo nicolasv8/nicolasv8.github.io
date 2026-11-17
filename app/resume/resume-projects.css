@@ -1,0 +1,31 @@
+.project-details-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  align-items: start;
+  gap: 28px;
+}
+.recobra-visual {
+  margin: 0;
+  padding: 12px 10px 14px;
+  background: #e7ede3;
+  text-align: center;
+}
+.recobra-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.recobra-visual figcaption {
+  color: #536153;
+  font-size: .7rem;
+  line-height: 1.45;
+}
+@media (max-width: 720px) {
+  .project-details-featured {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .recobra-visual {
+    width: min(220px, 100%);
+  }
+}

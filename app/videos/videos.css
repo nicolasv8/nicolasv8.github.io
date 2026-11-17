@@ -240,6 +240,12 @@
   }
 }
 
+@media (max-width: 380px) {
+  .videos-stamp {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .video-cover img,
   .video-play {
