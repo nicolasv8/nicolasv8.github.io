@@ -14,7 +14,9 @@ function position(latitude: number, longitude: number) {
 }
 
 export function TravelMap() {
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [selectedIndex, setSelectedIndex] = useState(() =>
+    travelPlaces.findIndex((place) => place.id === "medellin")
+  )
   const [zoom, setZoom] = useState(1)
   const [view, setView] = useState<RegionId | "world">("world")
   const [shareUrl, setShareUrl] = useState("")
@@ -68,7 +70,7 @@ export function TravelMap() {
     function restorePlace() {
       const id = new URLSearchParams(window.location.search).get("lugar")
       const found = travelPlaces.findIndex((place) => place.id === id)
-      const next = found >= 0 ? found : 0
+      const next = found >= 0 ? found : travelPlaces.findIndex((place) => place.id === "medellin")
       const nextView = found >= 0 ? (regionForPlace(travelPlaces[next].id) ?? "world") : "world"
       if (next === selectedIndex && (found >= 0 || view === "world")) return
 
@@ -239,7 +241,7 @@ export function TravelMap() {
             al resto del <em>mapa.</em>
           </h1>
           <p className="travel-intro-description">
-            Un pedacito de mi carrete: lugares donde estuve entre 2022 y 2024. Toca un punto y date
+            Un pedacito de mi carrete: lugares donde estuve entre 2021 y 2024. Toca un punto y date
             una vuelta.
           </p>
           <a href="#explorar" className="travel-explore-link">

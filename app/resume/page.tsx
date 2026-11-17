@@ -96,26 +96,31 @@ export default function ResumePage() {
         ))}
       </section>
       <section className="work-approach">
-        <p className="eyebrow">El hilo que une todo</p>
+        <p className="eyebrow">Un poco de contexto</p>
         <h2>
-          Entender.
+          Economía política,
           <br />
-          Probar.
+          tecnología
           <br />
-          <em>Construir.</em>
+          <em>y video.</em>
         </h2>
         <div>
           <p>
-            Estudié economía política, pero también me gusta meterme en tecnología, hacer videos y
-            aprender cómo funcionan los negocios.
+            Estudié economía política y experimenté con pequeños negocios de importación entre China
+            y Colombia.
           </p>
           <p>
-            Me interesan los problemas difíciles, sobre todo cuando hay gente dispuesta a sentarse a
-            trabajar en ellos conmigo.
+            También me gusta probar herramientas de IA, grabar videos y compartir oportunidades como
+            las becas para One Young World.
           </p>
-          <Link href="/writing" className="text-link">
-            Pasar por el cuaderno <Arrow />
-          </Link>
+          <a
+            href="https://www.youtube.com/watch?v=MSIRX2332S4"
+            className="text-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mi experiencia en Montreal <Arrow diagonal />
+          </a>
         </div>
       </section>
       <aside className="contact-note">

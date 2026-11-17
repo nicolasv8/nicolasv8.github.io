@@ -17,6 +17,17 @@ export type TravelPlace = {
 
 export const travelPlaces: TravelPlace[] = [
   {
+    id: "san-andres",
+    city: "San Andrés",
+    country: "Colombia",
+    year: "2021",
+    latitude: 12.5847,
+    longitude: -81.7006,
+    image: "/images/travel/san-andres.webp",
+    imageAlt: "El mar de San Andrés bajo un cielo nublado",
+    note: "El mar de San Andrés bajo un cielo nublado.",
+  },
+  {
     id: "medellin",
     city: "Medellín",
     country: "Colombia",

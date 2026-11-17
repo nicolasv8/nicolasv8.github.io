@@ -76,9 +76,9 @@ export const projects = [
   {
     number: "03",
     category: "IA · Herramientas útiles",
-    title: "Del «¿y si…?» al prototipo.",
+    title: "Asistentes y automatización.",
     description:
-      "Construyo y pruebo asistentes de IA y automatizaciones para resolver tareas concretas. Me gusta aprender mientras hago.",
+      "Experimento con asistentes de IA para organizar tareas y hacer más útiles las conversaciones de WhatsApp.",
     tags: ["Inteligencia artificial", "Automatización", "Aprender haciendo"],
   },
   {

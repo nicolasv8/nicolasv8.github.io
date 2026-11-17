@@ -3,12 +3,12 @@ export type RegionId = "colombia" | "china" | "china-norte"
 // Boundaries describe the crop of the same Natural Earth equirectangular map.
 export const regions = {
   colombia: {
-    label: "Colombia",
+    label: "Colombia y Caribe",
     center: "medellin",
     worldNudge: [13, 9],
-    bounds: [-77, -73, 5, 11],
-    ids: ["cartagena", "medellin", "guatape", "jerico"],
-    nudges: { medellin: [-12, -10], guatape: [12, -10], jerico: [0, 20] },
+    bounds: [-83, -73, 5, 13.5],
+    ids: ["san-andres", "cartagena", "medellin", "guatape", "jerico"],
+    nudges: { "san-andres": [0, -20], medellin: [-15, -14], guatape: [20, -14], jerico: [0, 20] },
   },
   china: {
     label: "Este de China",
