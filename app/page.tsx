@@ -34,22 +34,28 @@ export default function Home() {
           </div>
           <div className="nico-intro-collage" aria-label="Recuerdos de viajes">
             <div className="nico-photo nico-photo-nyc">
-              <Image
-                src="/images/travel/nueva-york.webp"
+              <img
+                src="/images/travel/nueva-york-480.webp"
+                srcSet="/images/travel/nueva-york-480.webp 480w, /images/travel/nueva-york-960.webp 960w"
                 alt="Atardecer sobre Nueva York"
                 width={600}
                 height={800}
-                sizes="(max-width: 720px) 45vw, 250px"
+                sizes="(max-width: 720px) min(calc(51vw - 35px), 226px), (max-width: 950px) calc(23.6vw - 34px), min(calc(22.6vw - 42px), 270px)"
+                loading="lazy"
+                decoding="async"
               />
               <span>Nueva York, un atardecer.</span>
             </div>
             <div className="nico-photo nico-photo-shanghai">
-              <Image
-                src="/images/travel/shanghai.webp"
+              <img
+                src="/images/travel/shanghai-480.webp"
+                srcSet="/images/travel/shanghai-480.webp 480w, /images/travel/shanghai-960.webp 960w"
                 alt="El cielo de Shanghái de noche"
                 width={600}
                 height={800}
-                sizes="(max-width: 720px) 45vw, 250px"
+                sizes="(max-width: 720px) min(calc(51vw - 35px), 226px), (max-width: 950px) calc(23.6vw - 34px), min(calc(22.6vw - 42px), 270px)"
+                loading="lazy"
+                decoding="async"
               />
               <span>Una noche en Shanghái.</span>
             </div>

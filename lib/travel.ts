@@ -196,8 +196,8 @@ export const travelPlaces: TravelPlace[] = [
     latitude: 31.299,
     longitude: 120.585,
     image: "/images/travel/suzhou.webp",
-    imageAlt: "Un edificio con forma de arco en Suzhou",
-    note: "Un edificio en Suzhou.",
+    imageAlt: "La Puerta de Oriente, un edificio con forma de arco en Suzhou",
+    note: "La Puerta de Oriente, en Suzhou.",
   },
   {
     id: "hangzhou",
@@ -219,6 +219,6 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 117.2009,
     image: "/images/travel/tianjin.webp",
     imageAlt: "Nico frente al horizonte de Tianjin",
-    note: "Tianjin, enero de 2023.",
+    note: "Junto al río, en enero de 2023.",
   },
 ]
