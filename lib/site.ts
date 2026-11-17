@@ -51,7 +51,7 @@ export const projects = [
     category: "Emprendimiento · Atención",
     title: "Recobra tu tiempo.",
     description:
-      "Con Damián Duque creé Recobra: una tarjeta física que ayuda a bloquear aplicaciones y recuperar tiempo lejos del celular.",
+      "Con Damián Duque creé Recobra: una tarjeta física que sirve de llave para desbloquear las aplicaciones que quieres pausar.",
     tags: ["Emprendimiento", "Bienestar digital", "Producto"],
     href: "https://www.recobratutiempo.com/",
     linkLabel: "Conoce Recobra",

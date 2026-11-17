@@ -20,7 +20,7 @@ export default function ResumePage() {
           que <em>he hecho.</em>
         </h1>
         <p className="page-description">
-          De una tarjeta para bloquear aplicaciones al capítulo de South-North Scholars en Duke
+          De una tarjeta para pausar aplicaciones al capítulo de South-North Scholars en Duke
           Kunshan: aquí están algunos proyectos que he ayudado a construir.
         </p>
         <Asterisk />
