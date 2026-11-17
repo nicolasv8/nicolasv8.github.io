@@ -20,6 +20,9 @@ export function TravelMap() {
   const [shareUrl, setShareUrl] = useState("")
   const [shareStatus, setShareStatus] = useState("")
   const backRef = useRef<HTMLButtonElement>(null)
+  const zoomInRef = useRef<HTMLButtonElement>(null)
+  const zoomOutRef = useRef<HTMLButtonElement>(null)
+  const zoomFocusAfter = useRef<"in" | "out" | null>(null)
   const focusAfterView = useRef<"back" | RegionId | null>(null)
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null)
   const pointerDown = useRef(false)
@@ -63,6 +66,12 @@ export function TravelMap() {
     focusAfterView.current = null
   }, [view])
 
+  useEffect(() => {
+    if (zoom === 1 && zoomFocusAfter.current === "in") zoomInRef.current?.focus()
+    if (zoom === 2 && zoomFocusAfter.current === "out") zoomOutRef.current?.focus()
+    zoomFocusAfter.current = null
+  }, [zoom])
+
   function selectPlace(index: number) {
     const next = (index + travelPlaces.length) % travelPlaces.length
     setSelectedIndex(next)
@@ -76,7 +85,11 @@ export function TravelMap() {
 
   function openRegion(id: RegionId) {
     focusAfterView.current = "back"
-    selectPlace(travelPlaces.findIndex((place) => place.id === regions[id].center))
+    const index =
+      regionForPlace(selected.id) === id
+        ? selectedIndex
+        : travelPlaces.findIndex((place) => place.id === regions[id].center)
+    selectPlace(index)
   }
 
   function returnToWorld() {
@@ -158,22 +171,24 @@ export function TravelMap() {
             <span>DESDE MEDELLÍN</span>
           </div>
           <div className="travel-collage-photo travel-collage-back">
-            <Image
-              src="/images/travel/nueva-york.webp"
+            <img
+              src="/images/travel/nueva-york-960.webp"
+              srcSet="/images/travel/nueva-york-480.webp 480w, /images/travel/nueva-york-960.webp 960w"
               alt=""
-              fill
               sizes="(max-width: 720px) 45vw, 300px"
-              priority
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
           <div className="travel-collage-photo travel-collage-front">
             <span className="travel-tape" />
-            <Image
-              src="/images/travel/londres.webp"
+            <img
+              src="/images/travel/londres-960.webp"
+              srcSet="/images/travel/londres-480.webp 480w, /images/travel/londres-960.webp 960w"
               alt=""
-              fill
               sizes="(max-width: 720px) 55vw, 380px"
-              priority
+              loading="eager"
+              fetchPriority="high"
             />
             <span className="travel-collage-caption">LONDRES · 2024</span>
           </div>
@@ -216,10 +231,17 @@ export function TravelMap() {
                     <div className="travel-map-controls">
                       <button
                         type="button"
+                        ref={zoomInRef}
                         aria-label="Acercar mapa"
                         onFocus={() => setFocusedIndex(null)}
-                        onClick={() => {
+                        onClick={(event) => {
                           setFocusedIndex(null)
+                          if (
+                            event.detail === 0 &&
+                            document.activeElement === event.currentTarget &&
+                            zoom === 1.5
+                          )
+                            zoomFocusAfter.current = "out"
                           setZoom((value) => Math.min(2, value + 0.5))
                         }}
                         disabled={zoom >= 2}
@@ -228,10 +250,17 @@ export function TravelMap() {
                       </button>
                       <button
                         type="button"
+                        ref={zoomOutRef}
                         aria-label="Alejar mapa"
                         onFocus={() => setFocusedIndex(null)}
-                        onClick={() => {
+                        onClick={(event) => {
                           setFocusedIndex(null)
+                          if (
+                            event.detail === 0 &&
+                            document.activeElement === event.currentTarget &&
+                            zoom === 1.5
+                          )
+                            zoomFocusAfter.current = "in"
                           setZoom((value) => Math.max(1, value - 0.5))
                         }}
                         disabled={zoom <= 1}
@@ -304,7 +333,10 @@ export function TravelMap() {
                           )}
                           <span className="travel-pin-dot" />
                           {index === selectedIndex && (
-                            <span className="travel-pin-label" aria-hidden="true">
+                            <span
+                              className={`travel-pin-label ${place.id === "amsterdam" || place.id === "montreal" ? "is-side" : ""}`}
+                              aria-hidden="true"
+                            >
                               {place.city}
                             </span>
                           )}
@@ -505,7 +537,7 @@ export function TravelMap() {
                     </button>
                   </div>
                 )}
-                <span className="sr-only" aria-live="polite">
+                <span className="travel-share-status" aria-live="polite">
                   {shareStatus}
                 </span>
               </div>

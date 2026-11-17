@@ -580,6 +580,12 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   padding-block: 125px;
   background: #e9c96a;
 }
+.nico-map-teaser .nico-section-label {
+  color: #3f5145;
+}
+.nico-map-teaser .nico-section-label > span {
+  color: #803d22;
+}
 .nico-map-inner {
   display: grid;
   grid-template-columns: 1fr .9fr;
