@@ -1,5 +1,6 @@
 "use client"
 
+import { PassportOpening } from "@/components/passport-opening"
 import { travelPlaces } from "@/lib/travel"
 import { type RegionId, regionForPlace, regions } from "@/lib/travel-regions"
 import Image from "next/image"
@@ -18,6 +19,8 @@ export function TravelMap() {
     travelPlaces.findIndex((place) => place.id === "medellin")
   )
   const [zoom, setZoom] = useState(1)
+  const [passportOpen, setPassportOpen] = useState(false)
+  const passportTimer = useRef<number | null>(null)
   const [view, setView] = useState<RegionId | "world">("world")
   const backRef = useRef<HTMLButtonElement>(null)
   const postcardRef = useRef<HTMLElement>(null)
@@ -41,6 +44,41 @@ export function TravelMap() {
   const anchorNudge = anchorRegion ? regions[anchorRegion].worldNudge : zoomAnchor.nudge
   const selectedPosition = position(zoomAnchor.latitude, zoomAnchor.longitude)
   const picturePlaces = ["londres", "montreal", "hong-kong", "shanghai"]
+
+  useEffect(
+    () => () => {
+      if (passportTimer.current !== null) window.clearTimeout(passportTimer.current)
+    },
+    []
+  )
+
+  function openPassport(fromIntro = false) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (passportTimer.current !== null) window.clearTimeout(passportTimer.current)
+    const showMap = () => {
+      document
+        .getElementById("explorar")
+        ?.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" })
+      document.getElementById("atlas-title")?.focus({ preventScroll: true })
+    }
+    if (passportOpen || reducedMotion) {
+      setPassportOpen(true)
+      showMap()
+      return
+    }
+    const animatePassport = () => {
+      setPassportOpen(true)
+      passportTimer.current = window.setTimeout(showMap, 1000)
+    }
+    if (fromIntro && window.innerWidth <= 720) {
+      document
+        .querySelector(".passport-book")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" })
+      passportTimer.current = window.setTimeout(animatePassport, 600)
+    } else {
+      animatePassport()
+    }
+  }
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("lugar")
@@ -225,9 +263,9 @@ export function TravelMap() {
           <p className="travel-intro-description">
             Algunos lugares donde he estado. Toca un punto para explorarlos.
           </p>
-          <a href="#explorar" className="travel-explore-link">
-            Explorar el mapa <span aria-hidden="true">↘</span>
-          </a>
+          <button type="button" className="travel-explore-link" onClick={() => openPassport(true)}>
+            Abrir el mapa <span aria-hidden="true">↘</span>
+          </button>
           <div className="travel-intro-meta" aria-label="Sobre esta selección">
             <span>
               <strong>{String(travelPlaces.length).padStart(2, "0")}</strong> lugares en esta
@@ -238,41 +276,7 @@ export function TravelMap() {
             </span>
           </div>
         </div>
-        <div className="travel-intro-collage" aria-hidden="true">
-          <div className="travel-collage-disc">
-            <span>LA VIDA DE NICO</span>
-            <b>✳</b>
-            <span>DESDE MEDELLÍN</span>
-          </div>
-          <div className="travel-collage-photo travel-collage-back">
-            <img
-              src="/images/travel/nueva-york-960.webp"
-              srcSet="/images/travel/nueva-york-480.webp 480w, /images/travel/nueva-york-960.webp 960w"
-              alt=""
-              sizes="(max-width: 720px) 45vw, 300px"
-              loading="eager"
-              fetchPriority="high"
-            />
-          </div>
-          <div className="travel-collage-photo travel-collage-front">
-            <span className="travel-tape" />
-            <img
-              src="/images/travel/londres-960.webp"
-              srcSet="/images/travel/londres-480.webp 480w, /images/travel/londres-960.webp 960w"
-              alt=""
-              sizes="(max-width: 720px) 55vw, 380px"
-              loading="eager"
-              fetchPriority="high"
-            />
-            <span className="travel-collage-caption">LONDRES · 2024</span>
-          </div>
-          <span className="travel-sticker">
-            ¡NOS
-            <br />
-            FUIMOS! <span>↗</span>
-          </span>
-          <span className="travel-intro-scribble">de mi carrete ✳</span>
-        </div>
+        <PassportOpening open={passportOpen} onOpen={() => openPassport()} />
       </section>
 
       <section id="explorar" className="travel-atlas" aria-labelledby="atlas-title">
@@ -749,7 +753,7 @@ export function TravelMap() {
             </h2>
           </div>
           <p>
-            De mi carrete al mapa.
+            Algunas fotos de mis viajes.
             <br />
             Toca una foto para ver el lugar.
           </p>
@@ -787,9 +791,9 @@ export function TravelMap() {
         <div className="travel-closing-note">
           <span aria-hidden="true">✳</span>
           <p>
-            Una selección de mis fotos.
+            Gracias por explorar
             <br />
-            <em>El mapa sigue creciendo.</em>
+            <em>mi mapa.</em>
           </p>
         </div>
       </section>

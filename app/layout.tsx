@@ -44,16 +44,8 @@ export const metadata: Metadata = {
     images: ["/images/og-cover.png"],
   },
   icons: {
-    icon: [
-      { url: "/favicon-nico.png", type: "image/png", sizes: "128x128" },
-      {
-        url: "/favicon-nico.gif",
-        type: "image/gif",
-        sizes: "128x128",
-        media: "(prefers-reduced-motion: no-preference)",
-      },
-    ],
-    apple: "/apple-nico.png",
+    icon: [{ url: "/favicon-n.png", type: "image/png", sizes: "128x128" }],
+    apple: "/apple-n.png",
   },
 }
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

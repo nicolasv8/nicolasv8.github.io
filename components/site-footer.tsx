@@ -7,9 +7,9 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="shell footer-main">
         <p>
-          Qué bueno que
+          Gracias por
           <br />
-          <span>pasaste por acá.</span>
+          <span>pasar por acá.</span>
         </p>
         <div className="footer-links">
           {site.socials.map((link) => (

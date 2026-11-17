@@ -20,9 +20,6 @@ export function SiteHeader() {
       }}
     >
       <div className="site-brand">
-        <span className="wordmark-avatar" aria-hidden="true">
-          <img className="wordmark-avatar-body" src="/images/avatar/nico.webp" alt="" />
-        </span>
         <Link
           href="/"
           className="wordmark"

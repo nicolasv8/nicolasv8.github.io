@@ -9,7 +9,7 @@ const things = [
     label: "Viajar",
     icon: "✈",
     title: "De Medellín a Shanghái.",
-    body: "Fotos de algunos lugares donde he estado. El mapa sigue creciendo.",
+    body: "Fotos de algunos lugares donde he estado.",
     href: "/mapa",
     link: "Abrir mi mapa",
   },

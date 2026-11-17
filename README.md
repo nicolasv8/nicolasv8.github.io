@@ -38,3 +38,5 @@ Hay tres textos de muestra de una versión anterior cuya autoría no se ha confi
 Las fotos públicas del mapa están en `public/images/travel/`. Cada foto tiene variantes de 480 y 960 píxeles para que los dispositivos carguen el tamaño adecuado. Antes de publicar una nueva imagen, elimina y verifica sus metadatos de ubicación y conserva los originales fuera del repositorio. El mapa usa coordenadas aproximadas de las ciudades y datos geográficos de Natural Earth.
 
 Las variantes de la portada están en `public/images/home/`. `scripts/optimize-images.mjs` corresponde a los recursos originales del retrato y no genera las fotos ni las variantes del mapa.
+
+El escudo de Colombia de la portada del pasaporte proviene de [Wikimedia Commons, colaboradores del archivo](https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Colombia.svg); se muestra con un tratamiento monocromático.

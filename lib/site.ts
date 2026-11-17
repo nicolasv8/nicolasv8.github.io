@@ -3,7 +3,7 @@ import imageManifest from "./image-manifest.json"
 export const site = {
   name: "La Vida de Nico",
   description:
-    "Soy Nicolás Velasco Pérez, Nico: de Medellín, con historias de China y del mundo. Aquí están mis videos, viajes y proyectos.",
+    "Soy Nicolás Velasco Pérez, Nico. Aquí comparto mis videos, viajes, escritos y proyectos.",
   navigation: [
     { href: "/", label: "Inicio" },
     { href: "/about", label: "Sobre mí" },
@@ -51,7 +51,7 @@ export const projects = [
     category: "Emprendimiento · Atención",
     title: "Recobra tu tiempo.",
     description:
-      "Con Damián Duque creé Recobra: una tarjeta física que sirve de llave para desbloquear las aplicaciones que quieres pausar.",
+      "Con Damián Duque cofundé Recobra: una app para iPhone que bloquea las aplicaciones que te distraen y usa una tarjeta física para desbloquearlas.",
     tags: ["Emprendimiento", "Bienestar digital", "Producto"],
     href: "https://www.recobratutiempo.com/",
     linkLabel: "Conoce Recobra",

@@ -54,9 +54,9 @@ export default function AboutPage() {
       <header className="page-heading">
         <p className="eyebrow">Sobre mí</p>
         <h1>
-          Soy Nico.
+          Soy Nico,
           <br />
-          Mucho <em>gusto.</em>
+          de <em>Medellín.</em>
         </h1>
       </header>
       <section className="about-intro" aria-label="Conoce a Nico">
@@ -105,7 +105,7 @@ export default function AboutPage() {
               La versión <em>corta.</em>
             </h2>
           </div>
-          <p>Algunos lugares y proyectos que hacen parte de esta historia.</p>
+          <p>Algunos lugares y proyectos importantes para mí.</p>
         </div>
         <div className="about-chapter-grid">
           <article>

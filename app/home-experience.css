@@ -1278,3 +1278,237 @@ body:has(.home-page) .site-header.is-home :focus-visible,
     transform: translateY(0) rotate(0);
   }
 }
+.home-soundtrack {
+  padding: 85px 0;
+  background: #203f32;
+  color: #f6f0df;
+}
+.home-soundtrack-inner {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 1fr);
+  align-items: center;
+  gap: 60px;
+}
+.home-soundtrack-copy h2 {
+  margin-top: 20px;
+  max-width: 10ch;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -.065em;
+}
+.home-soundtrack-copy h2 em {
+  color: #e8ce79;
+}
+.home-soundtrack-copy > p:not(.nico-section-label) {
+  max-width: 38ch;
+  margin-top: 22px;
+  color: #d9e4d5;
+  font-size: .88rem;
+  line-height: 1.7;
+}
+.home-soundtrack-copy a {
+  display: inline-flex;
+  margin-top: 24px;
+  color: #f6f0df;
+}
+.home-soundtrack-player iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  background: #142b20;
+}
+.home-soundtrack-player > a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #e8ce79;
+  font-size: .75rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 720px) {
+  .home-soundtrack {
+    padding: 65px 0;
+  }
+  .home-soundtrack-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+}
+@media (max-width: 350px) {
+  .home-soundtrack-player iframe {
+    width: calc(100% + 16px);
+    margin-left: -8px;
+  }
+}
+
+.home-soundtrack-years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 23px;
+  padding: 0;
+  border: 0;
+}
+.home-soundtrack-years button {
+  min-width: 60px;
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 1px solid #a7bdab;
+  border-radius: 999px;
+  background: transparent;
+  color: #f6f0df;
+  font-size: .75rem;
+  cursor: pointer;
+}
+.home-soundtrack-years button[aria-pressed="true"] {
+  background: #e8ce79;
+  border-color: #e8ce79;
+  color: #1d3b30;
+}
+.home-journey-stories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 30px;
+}
+.home-journey-stories a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #8f4e36;
+  font-size: .75rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.home-running {
+  padding: 85px 0;
+  background: #efe9d8;
+  color: #1d3b30;
+}
+.home-running-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+}
+.home-running-inner h2 {
+  margin-top: 18px;
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  letter-spacing: -.06em;
+  line-height: 1;
+}
+.home-running-inner h2 em {
+  color: #b85e3c;
+}
+.home-running-inner > div:first-child > p:not(.nico-section-label) {
+  max-width: 36ch;
+  margin-top: 20px;
+  color: #5a6d5d;
+  font-size: .88rem;
+  line-height: 1.7;
+}
+.home-running-inner > div:first-child > a {
+  display: inline-flex;
+  margin-top: 20px;
+  min-height: 44px;
+  align-items: center;
+}
+.home-running-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid #d6d2bd;
+  background: #faf7ea;
+  box-shadow: 0 12px 26px #203e3212;
+}
+.home-running-track {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 2px solid #d4a27c;
+  border-radius: 50%;
+}
+.home-running-track::before,
+.home-running-track::after {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border: 1px solid #e0c4a3;
+  border-radius: 50%;
+}
+.home-running-track::after {
+  inset: 20%;
+}
+.home-running-track span {
+  color: #a95e3b;
+  font: 700 2.2rem / 1 var(--font-geist-sans), sans-serif;
+  letter-spacing: -.08em;
+}
+.home-running-track i {
+  position: absolute;
+  inset: -5px;
+  border: 0 solid transparent;
+  border-top: 6px solid #b85e3c;
+  border-radius: 50%;
+}
+.home-running-card h3 {
+  margin-top: 12px;
+  font-size: 1.4rem;
+  letter-spacing: -.04em;
+}
+.home-running-card p:not(.nico-section-label) {
+  margin-top: 10px;
+  color: #617266;
+  font-size: .8rem;
+  line-height: 1.6;
+}
+.home-running-card a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 10px;
+  color: #915039;
+  font-size: .75rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .home-running-card:hover .home-running-track i,
+  .home-running-card:focus-within .home-running-track i {
+    animation: running-lap 1.6s ease-in-out;
+  }
+}
+@keyframes running-lap {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 720px) {
+  .home-running {
+    padding: 65px 0;
+  }
+  .home-running-inner {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .home-running-card {
+    grid-template-columns: 105px 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+  .home-running-track span {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 380px) {
+  .home-running-card {
+    grid-template-columns: 1fr;
+  }
+  .home-running-track {
+    width: 105px;
+  }
+}

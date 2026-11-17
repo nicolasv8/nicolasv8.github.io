@@ -2,6 +2,8 @@ import { HomeCuriosity } from "@/components/home-curiosity"
 import { Hero } from "@/components/home-hero"
 import { HomeJourney } from "@/components/home-journey"
 import { HomePostcards } from "@/components/home-postcards"
+import { HomeRunning } from "@/components/home-running"
+import { HomeSoundtrack } from "@/components/home-soundtrack"
 import Image from "next/image"
 import Link from "next/link"
 import "./home-experience.css"
@@ -69,14 +71,14 @@ export default function Home() {
               <span>Una noche en Shanghái. ↗</span>
             </Link>
             <span className="nico-collage-note" aria-hidden="true">
-              mi carrete
+              fotos de
               <br />
-              no cabe aquí ✳
+              mis viajes ✳
             </span>
             <span className="nico-collage-stamp" aria-hidden="true">
-              HECHO
+              MEDELLÍN
               <br />
-              DE VIAJES
+              KUNSHAN
               <br />✈
             </span>
           </div>
@@ -88,6 +90,10 @@ export default function Home() {
       <HomeCuriosity />
 
       <HomePostcards />
+
+      <HomeSoundtrack />
+
+      <HomeRunning />
 
       <section className="nico-video-section" aria-labelledby="video-title">
         <div className="shell">

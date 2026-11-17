@@ -1,4 +1,5 @@
 import { Asterisk } from "@/components/icons"
+import { PoetryBookView } from "@/components/writing/poetry-book-view"
 import { WritingIndex } from "@/components/writing/writing-index"
 import { pageMetadata } from "@/lib/metadata"
 import {
@@ -17,7 +18,7 @@ export const metadata = pageMetadata(
 )
 export default function WritingPage() {
   const entries = getPublishedWritingEntries()
-    .filter((entry) => !isUnverifiedLegacyEntry(entry))
+    .filter((entry) => !isUnverifiedLegacyEntry(entry) && entry.type !== "poems")
     .map((entry) => ({
       url: entry.url,
       title: entry.title,
@@ -32,15 +33,16 @@ export default function WritingPage() {
   return (
     <main id="main-content" className="shell interior-page writing-index-page">
       <header className="page-heading writing-heading">
-        <p className="eyebrow">El cuaderno / Textos y publicaciones</p>
+        <p className="eyebrow">Poemas y publicaciones</p>
         <h1>
-          Algunas cosas
+          Lo que
           <br />
-          por <em>escrito.</em>
+          <em>escribo.</em>
         </h1>
         <p className="page-description">Aquí están algunos de mis poemas y publicaciones.</p>
         <Asterisk />
       </header>
+      <PoetryBookView />
       <a
         className="writing-publication"
         href="https://repository.eafit.edu.co/bitstreams/82eee464-52b4-46d0-893a-977948190b2a/download"

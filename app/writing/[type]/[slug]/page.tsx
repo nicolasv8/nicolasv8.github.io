@@ -1,5 +1,6 @@
 import { Arrow } from "@/components/icons"
 import { writingMdxComponents } from "@/components/writing/mdx-components"
+import { PoetryBookView } from "@/components/writing/poetry-book-view"
 import { pageMetadata } from "@/lib/metadata"
 import {
   formatWritingDate,
@@ -94,6 +95,17 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
     )
   }
 
+  if (entry.type === "poems") {
+    return (
+      <main id="main-content" className="shell interior-page writing-index-page">
+        <Link href="/writing" className="writing-backlink">
+          ← Volver a escritos
+        </Link>
+        <PoetryBookView initialSlug={entry.slug} />
+      </main>
+    )
+  }
+
   const entries = getPublishedWritingEntries().filter((item) => !isUnverifiedLegacyEntry(item))
   const nextEntry = entries.length
     ? entries[(entries.findIndex((item) => item.url === entry.url) + 1) % entries.length]
@@ -101,7 +113,7 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
 
   return (
     <main id="main-content" className="writing-surface">
-      <article className={`writing-shell ${entry.type === "poems" ? "max-w-2xl" : "max-w-3xl"}`}>
+      <article className="writing-shell max-w-3xl">
         <Link href="/writing" className="writing-backlink">
           ← Volver al cuaderno
         </Link>
@@ -111,11 +123,9 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
           <h1 lang={entry.language} className="writing-article-title">
             {entry.title}
           </h1>
-          {entry.type !== "poems" && (
-            <time className="writing-article-date" dateTime={entry.date}>
-              {formatWritingDate(entry.date)}
-            </time>
-          )}
+          <time className="writing-article-date" dateTime={entry.date}>
+            {formatWritingDate(entry.date)}
+          </time>
           <p className="reading-time">
             {getReadingMinutes(entry.content)} min de lectura ·{" "}
             {entry.language === "en" ? "En inglés" : "En español"}

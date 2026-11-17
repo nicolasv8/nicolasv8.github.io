@@ -20,7 +20,7 @@ export function Hero() {
           </p>
           <div className="nico-hero-actions">
             <a href="#mi-mundo" className="nico-button nico-button-light">
-              Pasa, te muestro <span aria-hidden="true">↘</span>
+              Conoce más de mí <span aria-hidden="true">↘</span>
             </a>
             <Link href="/mapa" className="nico-hero-map-link">
               Explorar mi mapa <span aria-hidden="true">↗</span>
@@ -61,9 +61,9 @@ export function Hero() {
           <Link href="/mapa" className="nico-ticket">
             <span>✈ &nbsp; MEDELLÍN · COLOMBIA</span>
             <strong>
-              De Medellín
+              Mis viajes
               <br />
-              al mundo.
+              en el mapa.
             </strong>
             <span>VER MIS PARADAS &nbsp; ↗</span>
           </Link>
@@ -82,7 +82,7 @@ export function Hero() {
             </b>
           </a>
           <span className="nico-hero-note" aria-hidden="true">
-            ¡qué bueno verte por acá!
+            Medellín, Colombia
           </span>
         </HeroParallax>
       </div>

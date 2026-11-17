@@ -36,7 +36,7 @@ export function HomeJourney() {
     >
       <div className="shell">
         <p className="nico-section-label">UNA PARTE DEL CAMINO</p>
-        <h2 id="journey-title">Tres lugares, muchas historias.</h2>
+        <h2 id="journey-title">Entre Medellín, Kunshan y Durham.</h2>
         <p>De Medellín a mis años de universidad en China y Estados Unidos.</p>
         <div className="home-journey-stops">
           <span className="home-journey-plane" aria-hidden="true">
@@ -49,6 +49,16 @@ export function HomeJourney() {
               <small>{stop.detail}</small>
             </Link>
           ))}
+        </div>
+        <div className="home-journey-stories">
+          <a href="/writing/poems/kunshan-y-shanghai/">Un poema entre Kunshan y Shanghái ↗</a>
+          <a
+            href="https://www.youtube.com/watch?v=56f1HvY4zsg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Un video desde China ↗
+          </a>
         </div>
       </div>
     </section>
