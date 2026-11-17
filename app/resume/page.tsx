@@ -106,8 +106,8 @@ export default function ResumePage() {
         </h2>
         <div>
           <p>
-            Estudié economía política y experimenté con pequeños negocios de importación entre China
-            y Colombia.
+            Estudié economía política y creé pequeños negocios en Colombia con productos importados
+            de China.
           </p>
           <p>
             También me gusta probar herramientas de IA, grabar videos y compartir oportunidades como

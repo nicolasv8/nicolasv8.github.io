@@ -84,9 +84,9 @@ export const projects = [
   {
     number: "04",
     category: "Historias · Video",
-    title: "Una vida para contar.",
+    title: "La Vida de Nico.",
     description:
-      "De las montañas de China a One Young World en Montreal: en La Vida de Nico comparto los lugares, las personas y los aprendizajes que voy encontrando por el camino.",
+      "En mi canal hay una caminata por Xishan, un día en China rural y mi experiencia en One Young World en Montreal.",
     tags: ["Video", "Viajes", "Curiosidad"],
     href: "https://www.youtube.com/@LaVidadeNicoVP",
     linkLabel: "Pasar por el canal",

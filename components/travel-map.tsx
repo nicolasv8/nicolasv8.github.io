@@ -253,7 +253,7 @@ export function TravelMap() {
               selección
             </span>
             <span>
-              <strong>04</strong> continentes
+              <strong>03</strong> continentes
             </span>
           </div>
         </div>
