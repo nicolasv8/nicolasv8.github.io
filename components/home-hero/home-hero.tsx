@@ -13,8 +13,8 @@ export function Hero() {
             Hola, soy <em>Nico.</em>
           </h1>
           <p className="nico-hero-description">
-            Soy de Medellín. Estudié en China y Estados Unidos; hago videos, corro y me gusta
-            convertir ideas en proyectos.
+            Soy de Medellín. Estudié en China y Estados Unidos, hago videos, he corrido medias
+            maratones y cofundé Recobra.
           </p>
           <div className="nico-hero-actions">
             <a href="#mi-mundo" className="nico-button nico-button-light">
