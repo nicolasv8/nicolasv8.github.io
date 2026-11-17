@@ -202,9 +202,9 @@ export const travelPlaces: TravelPlace[] = [
     latitude: 5.792,
     longitude: -75.786,
     image: "/images/travel/jerico.webp",
-    imageAlt: "Árboles junto a una zona verde en Jericó",
+    imageAlt: "Árboles junto a una zona verde en el municipio de Jericó",
     photoPosition: "50% 100%",
-    note: "Un rincón verde en Jericó.",
+    note: "Un rincón verde en el municipio de Jericó.",
   },
   {
     id: "suzhou",

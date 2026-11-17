@@ -368,8 +368,14 @@ export function TravelMap() {
                     className="travel-map-return"
                     ref={backRef}
                     onClick={returnToWorld}
+                    aria-label="Volver al mapa del mundo"
                   >
-                    ← Volver al mundo
+                    <span className="travel-map-return-long" aria-hidden="true">
+                      ← Volver al mundo
+                    </span>
+                    <span className="travel-map-return-short" aria-hidden="true">
+                      ← Mundo
+                    </span>
                   </button>
                 )}
               </div>
@@ -576,7 +582,7 @@ export function TravelMap() {
 
             <article className="travel-postcard" aria-label="Lugar seleccionado" ref={postcardRef}>
               <div className="travel-postcard-heading">
-                <span>UNA FOTO DE MI CARRETE</span>
+                <span>DE MI CARRETE</span>
                 <span>
                   {String(selectedIndex + 1).padStart(2, "0")} /{" "}
                   {String(travelPlaces.length).padStart(2, "0")}
@@ -646,7 +652,7 @@ export function TravelMap() {
                 </span>
               </div>
               <div className="travel-postcard-nav">
-                <span>CAMBIAR DE LUGAR</span>
+                <span>OTRA PARADA</span>
                 <div>
                   <button
                     type="button"
