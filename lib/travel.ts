@@ -191,7 +191,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: -75.159,
     image: "/images/travel/guatape.webp",
     imageAlt: "Una fachada colorida bajo sombrillas en Guatapé",
-    photoPosition: "50% 60%",
+    photoPosition: "50% 40%",
     note: "Una fachada colorida en Guatapé.",
   },
   {
