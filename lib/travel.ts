@@ -215,6 +215,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 120.585,
     image: "/images/travel/suzhou.webp",
     imageAlt: "La Puerta de Oriente, un edificio con forma de arco en Suzhou",
+    photoPosition: "50% 20%",
     note: "La Puerta de Oriente, en Suzhou.",
   },
   {
