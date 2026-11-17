@@ -306,7 +306,7 @@ export function TravelMap() {
             <p>
               Una selección, no la lista completa.
               <br />
-              Elige un punto o un lugar de abajo.
+              Los puntos son aproximados. Elige uno para explorar.
             </p>
           </div>
 
