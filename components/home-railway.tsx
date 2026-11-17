@@ -82,7 +82,7 @@ export function HomeRailway() {
                 setDestination(destination === "shanghai" ? "kunshan" : "shanghai")
               }}
             >
-              Ir a {next} ↗
+              Llevar el tren a {next} →
             </button>
             <Link href={`/mapa/?lugar=${destination}#explorar`}>
               Ver {destination === "shanghai" ? "Shanghái" : "Kunshan"} en el mapa ↗
