@@ -72,7 +72,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: -73.5673,
     image: "/images/travel/montreal.webp",
     imageAlt: "Nico en un pasaje rodeado de plantas en Montreal",
-    note: "One Young World · septiembre de 2024.",
+    note: "Charlas y una libreta llena de apuntes de One Young World.",
     nudge: [-18, -14],
     link: {
       label: "Mira la historia en YouTube",
