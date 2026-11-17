@@ -3,7 +3,6 @@ import { Hero } from "@/components/home-hero"
 import { HomeJourney } from "@/components/home-journey"
 import { HomePostcards } from "@/components/home-postcards"
 import { HomeRailway } from "@/components/home-railway"
-import { HomeRunning } from "@/components/home-running"
 import { HomeScrollMotion } from "@/components/home-scroll-motion"
 import { HomeSoundtrack } from "@/components/home-soundtrack"
 import { HomeTravelScene } from "@/components/home-travel-scene"
@@ -101,8 +100,6 @@ export default function Home() {
       <HomePostcards />
 
       <HomeSoundtrack />
-
-      <HomeRunning />
 
       <section className="nico-video-section" aria-labelledby="video-title">
         <div className="shell">

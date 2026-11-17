@@ -27,9 +27,9 @@ const things = [
     label: "Moverme",
     icon: "↗",
     title: "A correr.",
-    body: "He corrido varias medias maratones. En 2025 corrí los 10K con el equipo de Duke Kunshan; quedamos terceros por equipos.",
-    href: "https://athletics.dukekunshan.edu.cn/latest-in-athletics/home-course-home-champions-dku-varsity-running-claims-third-straight-victory/",
-    link: "Ver la carrera en DKU",
+    body: "",
+    href: "https://www.strava.com/athletes/59913615",
+    link: "Ver mi Strava",
     external: true,
   },
 ] as const
@@ -74,7 +74,7 @@ export function HomeCuriosity() {
               {active.icon}
             </span>
             <h3>{active.title}</h3>
-            <p>{active.body}</p>
+            {active.body && <p>{active.body}</p>}
             {"external" in active && active.external ? (
               <a
                 href={active.href}

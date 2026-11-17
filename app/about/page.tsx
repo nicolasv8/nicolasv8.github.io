@@ -82,14 +82,13 @@ export default function AboutPage() {
             <br />y Estados Unidos.
           </h2>
           <p>
-            Soy Nicolás Velasco Pérez, pero todos me dicen Nico. Soy de Medellín y estudié entre
-            Duke Kunshan, en China, y Duke, en Estados Unidos, con formación en Economía Política y
-            Políticas Públicas. También me gusta correr, grabar videos y meterme en proyectos
-            nuevos.
+            Soy Nicolás Velasco Pérez, pero todos me dicen Nico. Estudié en Duke Kunshan y Duke, con
+            formación en Economía Política y Políticas Públicas. Me gusta correr, grabar videos y
+            meterme en proyectos nuevos.
           </p>
           <p>
             He trabajado en iniciativas de desarrollo global, participado en One Young World y
-            cofundado Recobra. Aquí reúno mis videos, escritos y algunos proyectos.
+            cofundado Recobra.
           </p>
           <p className="handwritten">Gracias por pasar por acá.</p>
           <Link href="/writing" className="text-link">

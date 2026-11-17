@@ -20,10 +20,7 @@ export default function ResumePage() {
           <br />
           que <em>he hecho.</em>
         </h1>
-        <p className="page-description">
-          De una tarjeta para pausar aplicaciones al capítulo de South-North Scholars en Duke
-          Kunshan: aquí están algunos proyectos que he ayudado a construir.
-        </p>
+        <p className="page-description">Algunos proyectos que he ayudado a construir.</p>
         <Asterisk />
       </header>
       <section className="project-list" aria-label="Proyectos seleccionados">

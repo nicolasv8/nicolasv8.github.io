@@ -34,6 +34,7 @@ export function TravelMap() {
   const focusAfterView = useRef<"back" | RegionId | null>(null)
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null)
   const [stamps, setStamps] = useState<string[]>([])
+  const galleryRef = useRef<HTMLElement>(null)
   const pointerDown = useRef(false)
   const selected = travelPlaces[selectedIndex]
   const zoomPlace = travelPlaces[focusedIndex ?? selectedIndex]
@@ -44,6 +45,21 @@ export function TravelMap() {
   const anchorNudge = anchorRegion ? regions[anchorRegion].worldNudge : zoomAnchor.nudge
   const selectedPosition = position(zoomAnchor.latitude, zoomAnchor.longitude)
   const picturePlaces = ["londres", "montreal", "hong-kong", "shanghai"]
+
+  useEffect(() => {
+    const gallery = galleryRef.current
+    if (!gallery) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        gallery.classList.add("is-in-view")
+        observer.disconnect()
+      },
+      { threshold: 0.15 }
+    )
+    observer.observe(gallery)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(
     () => () => {
@@ -756,7 +772,7 @@ export function TravelMap() {
         </div>
       </section>
 
-      <section className="travel-gallery shell" aria-labelledby="gallery-title">
+      <section className="travel-gallery shell" aria-labelledby="gallery-title" ref={galleryRef}>
         <div className="travel-section-top travel-gallery-head">
           <div>
             <p className="travel-kicker">02 / UNAS CUANTAS POSTALES</p>

@@ -17,7 +17,7 @@ export function HomeSoundtrack() {
     <section className="home-soundtrack" aria-labelledby="soundtrack-title">
       <div className="home-soundtrack-inner shell">
         <div className="home-soundtrack-copy">
-          <p className="nico-section-label">MÚSICA Y KILÓMETROS</p>
+          <p className="nico-section-label">MÚSICA</p>
           <h2 id="soundtrack-title">
             Mis canciones, <em>por año.</em>
           </h2>

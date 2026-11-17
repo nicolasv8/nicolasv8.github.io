@@ -5,7 +5,7 @@ import { useEffect } from "react"
 export function HomeScrollMotion() {
   useEffect(() => {
     const sections = document.querySelectorAll(
-      ".nico-intro, .nico-curiosity, .nico-map-teaser, .home-running, .nico-video-section"
+      ".nico-intro, .nico-curiosity, .nico-map-teaser, .nico-video-section"
     )
     const observer = new IntersectionObserver(
       (entries) => {

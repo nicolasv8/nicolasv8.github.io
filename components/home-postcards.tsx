@@ -1,9 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const postcards = [
+  {
+    id: "pekin",
+    city: "Pekín",
+    year: "2023",
+    image: "pekin",
+    alt: "Nico frente al Templo del Cielo",
+    position: "50% 40%",
+  },
   {
     id: "londres",
     city: "Londres",
@@ -32,16 +40,53 @@ const postcards = [
 
 export function HomePostcards() {
   const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [pageVisible, setPageVisible] = useState(false)
+  const [motionAllowed, setMotionAllowed] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const start = useRef<{ x: number; y: number } | null>(null)
   const ignoreClick = useRef(false)
   const card = postcards[index]
 
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const updateMotion = () => setMotionAllowed(!motion.matches)
+    const updatePage = () => setPageVisible(!document.hidden)
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {
+      threshold: 0.3,
+    })
+    updateMotion()
+    updatePage()
+    observer.observe(section)
+    motion.addEventListener("change", updateMotion)
+    document.addEventListener("visibilitychange", updatePage)
+    return () => {
+      observer.disconnect()
+      motion.removeEventListener("change", updateMotion)
+      document.removeEventListener("visibilitychange", updatePage)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!visible || !pageVisible || !motionAllowed || paused || hovered || focused) return
+    const timer = window.setInterval(() => {
+      setIndex((current) => (current + 1) % postcards.length)
+    }, 7000)
+    return () => window.clearInterval(timer)
+  }, [visible, pageVisible, motionAllowed, paused, hovered, focused])
+
   function turn(direction: number) {
+    setPaused(true)
     setIndex((current) => (current + direction + postcards.length) % postcards.length)
   }
 
   return (
-    <section className="nico-map-teaser" aria-labelledby="map-teaser-title">
+    <section className="nico-map-teaser" aria-labelledby="map-teaser-title" ref={sectionRef}>
       <div className="nico-map-inner shell">
         <div className="nico-map-copy">
           <p className="nico-section-label">
@@ -52,13 +97,24 @@ export function HomePostcards() {
             <br />
             <em>donde he estado.</em>
           </h2>
-          <p>Algunas fotos de mis viajes. Puedes abrir cada lugar en el mapa.</p>
+          <p>Toca una foto para verla en el mapa.</p>
           <Link href="/mapa" className="nico-button nico-button-dark">
             Explorar el mapa <span aria-hidden="true">↗</span>
           </Link>
-          <span className="nico-map-note">Fotos y recuerdos de viaje.</span>
         </div>
-        <div className="nico-postcards">
+        <div
+          className="nico-postcards"
+          onPointerEnter={(event) => {
+            if (event.pointerType === "mouse") setHovered(true)
+          }}
+          onPointerLeave={(event) => {
+            if (event.pointerType === "mouse") setHovered(false)
+          }}
+          onFocusCapture={(event) => setFocused(event.target.matches(":focus-visible"))}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false)
+          }}
+        >
           <div
             className="nico-postcard-stack"
             onPointerMove={(event) => {
@@ -107,6 +163,7 @@ export function HomePostcards() {
             <span className="nico-postcard-sheet nico-postcard-sheet-back" aria-hidden="true" />
             <span className="nico-postcard-sheet nico-postcard-sheet-middle" aria-hidden="true" />
             <Link
+              key={card.id}
               href={`/mapa/?lugar=${card.id}#explorar`}
               className="nico-map-art"
               aria-label={`${card.city}: ${card.alt}. Ver en el mapa`}
@@ -139,21 +196,31 @@ export function HomePostcards() {
           </div>
           <div className="nico-postcard-controls">
             <span aria-hidden="true">
-              {String(index + 1).padStart(2, "0")} / 03 &nbsp; · &nbsp; MI CARRETE
+              {String(index + 1).padStart(2, "0")} / {String(postcards.length).padStart(2, "0")}{" "}
+              &nbsp; · &nbsp; MI CARRETE
             </span>
-            <span className="sr-only" aria-live="polite">
+            <span className="sr-only" aria-live={paused || !motionAllowed ? "polite" : "off"}>
               Postal {index + 1} de {postcards.length}: {card.city}
             </span>
             <div>
               <button type="button" onClick={() => turn(-1)} aria-label="Postal anterior">
                 ←
               </button>
+              {motionAllowed && (
+                <button
+                  type="button"
+                  onClick={() => setPaused((value) => !value)}
+                  aria-label={paused ? "Reproducir postales automáticamente" : "Pausar postales"}
+                >
+                  {paused ? "▶" : "Ⅱ"}
+                </button>
+              )}
               <button type="button" onClick={() => turn(1)} aria-label="Siguiente postal">
                 →
               </button>
             </div>
           </div>
-          <p className="nico-postcard-hint">Pasa las fotos y toca una para verla en el mapa.</p>
+          <p className="nico-postcard-hint">Usa las flechas o desliza para cambiar de foto.</p>
         </div>
       </div>
     </section>

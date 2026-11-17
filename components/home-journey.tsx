@@ -37,7 +37,6 @@ export function HomeJourney() {
       <div className="shell">
         <p className="nico-section-label">UNA PARTE DEL CAMINO</p>
         <h2 id="journey-title">Entre Medellín, Kunshan y Durham.</h2>
-        <p>De Medellín a mis años de universidad en China y Estados Unidos.</p>
         <div className="home-journey-stops">
           <span className="home-journey-plane" aria-hidden="true">
             ✈

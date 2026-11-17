@@ -17,10 +17,7 @@ export default function VideosPage() {
           <h1>
             Cosas que <em>grabé.</em>
           </h1>
-          <p className="videos-intro">
-            De las montañas de Xishan a Montreal. Aquí están mis videos de viajes, lugares y cosas
-            que me dieron curiosidad.
-          </p>
+          <p className="videos-intro">Videos desde China, Montreal y otros lugares.</p>
           <a
             href="https://www.youtube.com/@LaVidadeNicoVP"
             target="_blank"

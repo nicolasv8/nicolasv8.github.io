@@ -298,14 +298,12 @@
   .nico-intro.scene-visible .nico-intro-copy,
   .nico-curiosity.scene-visible .nico-curiosity-heading,
   .nico-map-teaser.scene-visible .nico-map-copy,
-  .home-running.scene-visible .home-running-inner > div:first-child,
   .nico-video-section.scene-visible .nico-video-heading {
     animation: home-scene-copy .8s ease-out both;
   }
   .nico-intro.scene-visible .nico-photo,
   .nico-curiosity.scene-visible .nico-curiosity-card,
   .nico-map-teaser.scene-visible .nico-postcards,
-  .home-running.scene-visible .home-running-card,
   .nico-video-section.scene-visible .nico-film {
     animation: home-scene-object .9s .1s cubic-bezier(0.2, 0.75, 0.2, 1) both;
   }
@@ -994,13 +992,6 @@ body:has(.home-page) .site-header.is-home :focus-visible,
 .nico-map-copy .nico-button {
   margin-top: 30px;
 }
-.nico-map-note {
-  display: block;
-  margin: 25px 0 0 30px;
-  color: #754125;
-  font: italic 1.25rem var(--serif);
-  transform: rotate(-4deg);
-}
 .nico-postcards {
   min-width: 0;
 }
@@ -1051,6 +1042,23 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   aspect-ratio: 4 / 3;
   object-fit: cover;
   animation: postcard-arrive .32s ease-out both;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nico-map-art {
+    animation: postcard-turn .6s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  }
+}
+@keyframes postcard-turn {
+  from {
+    opacity: 0.35;
+    translate: 30px 12px;
+    rotate: 5deg;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+  }
 }
 @keyframes postcard-arrive {
   0% {
@@ -1108,6 +1116,7 @@ body:has(.home-page) .site-header.is-home :focus-visible,
 }
 .nico-postcard-controls {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
@@ -1715,135 +1724,4 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   font-size: .75rem;
   text-decoration: underline;
   text-underline-offset: 4px;
-}
-.home-running {
-  padding: 85px 0;
-  background: #efe9d8;
-  color: #1d3b30;
-}
-.home-running-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 50px;
-  align-items: center;
-}
-.home-running-inner h2 {
-  margin-top: 18px;
-  font-size: clamp(3rem, 5vw, 4.8rem);
-  letter-spacing: -.06em;
-  line-height: 1;
-}
-.home-running-inner h2 em {
-  color: #b85e3c;
-}
-.home-running-inner > div:first-child > p:not(.nico-section-label) {
-  max-width: 36ch;
-  margin-top: 20px;
-  color: #5a6d5d;
-  font-size: .88rem;
-  line-height: 1.7;
-}
-.home-running-inner > div:first-child > a {
-  display: inline-flex;
-  margin-top: 20px;
-  min-height: 44px;
-  align-items: center;
-}
-.home-running-card {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 24px;
-  align-items: center;
-  padding: 28px;
-  border: 1px solid #d6d2bd;
-  background: #faf7ea;
-  box-shadow: 0 12px 26px #203e3212;
-}
-.home-running-track {
-  position: relative;
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1;
-  border: 2px solid #d4a27c;
-  border-radius: 50%;
-}
-.home-running-track::before,
-.home-running-track::after {
-  content: "";
-  position: absolute;
-  inset: 10%;
-  border: 1px solid #e0c4a3;
-  border-radius: 50%;
-}
-.home-running-track::after {
-  inset: 20%;
-}
-.home-running-track span {
-  color: #a95e3b;
-  font: 700 2.2rem / 1 var(--font-geist-sans), sans-serif;
-  letter-spacing: -.08em;
-}
-.home-running-track i {
-  position: absolute;
-  inset: -5px;
-  border: 0 solid transparent;
-  border-top: 6px solid #b85e3c;
-  border-radius: 50%;
-}
-.home-running-card h3 {
-  margin-top: 12px;
-  font-size: 1.4rem;
-  letter-spacing: -.04em;
-}
-.home-running-card p:not(.nico-section-label) {
-  margin-top: 10px;
-  color: #617266;
-  font-size: .8rem;
-  line-height: 1.6;
-}
-.home-running-card a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  margin-top: 10px;
-  color: #915039;
-  font-size: .75rem;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .home-running-card:hover .home-running-track i,
-  .home-running-card:focus-within .home-running-track i {
-    animation: running-lap 1.6s ease-in-out;
-  }
-}
-@keyframes running-lap {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@media (max-width: 720px) {
-  .home-running {
-    padding: 65px 0;
-  }
-  .home-running-inner {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  .home-running-card {
-    grid-template-columns: 105px 1fr;
-    gap: 18px;
-    padding: 20px;
-  }
-  .home-running-track span {
-    font-size: 1.6rem;
-  }
-}
-@media (max-width: 380px) {
-  .home-running-card {
-    grid-template-columns: 1fr;
-  }
-  .home-running-track {
-    width: 105px;
-  }
 }

@@ -491,6 +491,30 @@
   transform: rotate(0) translateY(-7px);
   box-shadow: 0 14px 24px #2c433527;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .travel-gallery.is-in-view .travel-gallery-card {
+    animation: gallery-card-arrive .8s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  }
+  .travel-gallery.is-in-view .travel-gallery-card:nth-child(2) {
+    animation-delay: .1s;
+  }
+  .travel-gallery.is-in-view .travel-gallery-card:nth-child(3) {
+    animation-delay: .2s;
+  }
+  .travel-gallery.is-in-view .travel-gallery-card:nth-child(4) {
+    animation-delay: .3s;
+  }
+}
+@keyframes gallery-card-arrive {
+  from {
+    opacity: 0;
+    translate: 0 35px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
 .travel-gallery-photo {
   display: block;
   position: relative;
