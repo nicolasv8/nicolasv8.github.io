@@ -127,7 +127,7 @@ export default function ResumePage() {
         <Asterisk />
         <div>
           <p className="eyebrow">¿Construimos algo?</p>
-          <h2>Todo empieza hablando.</h2>
+          <h2>Hablemos.</h2>
           <p>Cuéntame lo que tienes en mente.</p>
         </div>
         <a className="button" href={site.socials[1].href} target="_blank" rel="noopener noreferrer">

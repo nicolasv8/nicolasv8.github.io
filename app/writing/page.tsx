@@ -38,9 +38,7 @@ export default function WritingPage() {
           <br />
           por <em>escrito.</em>
         </h1>
-        <p className="page-description">
-          Algunas cosas que he escrito o ayudado a escribir. Si tienes un ratico, pasa y lee.
-        </p>
+        <p className="page-description">Aquí están algunos de mis poemas y publicaciones.</p>
         <Asterisk />
       </header>
       <a

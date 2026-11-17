@@ -48,18 +48,15 @@ export function HomePostcards() {
             <span>03</span> POSTALES Y PARADAS
           </p>
           <h2 id="map-teaser-title">
-            Pasaporte
+            Algunos lugares
             <br />
-            <em>con fotos.</em>
+            <em>donde he estado.</em>
           </h2>
-          <p>
-            Algunos de los lugares que han quedado en mi cámara. Elige un punto y acompáñame a dar
-            una vuelta.
-          </p>
+          <p>Algunas fotos de mis viajes. Puedes abrir cada lugar en el mapa.</p>
           <Link href="/mapa" className="nico-button nico-button-dark">
             Explorar el mapa <span aria-hidden="true">↗</span>
           </Link>
-          <span className="nico-map-note">De mi carrete al mapa.</span>
+          <span className="nico-map-note">Fotos y recuerdos de viaje.</span>
         </div>
         <div className="nico-postcards">
           <div

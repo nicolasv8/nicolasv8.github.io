@@ -17,7 +17,7 @@ const things = [
     id: "crear",
     label: "Crear",
     icon: "✳",
-    title: "Ideas que se pueden probar.",
+    title: "Ideas y proyectos.",
     body: "Últimamente experimento con IA y automatización, incluyendo herramientas para que las conversaciones de WhatsApp sean más útiles.",
     href: "/resume",
     link: "Ver lo que construyo",
@@ -46,11 +46,11 @@ export function HomeCuriosity() {
             <span>02</span> VIAJES, PROYECTOS Y KILÓMETROS
           </p>
           <h2 id="curiosity-title">
-            Tres pistas
+            Algunas cosas
             <br />
-            <em>sobre mí.</em>
+            <em>que me gustan.</em>
           </h2>
-          <p>Escoge una y mira por dónde empezamos.</p>
+          <p>Viajar, construir cosas y correr.</p>
           <span className="nico-curiosity-doodle" aria-hidden="true">
             ↘
           </span>

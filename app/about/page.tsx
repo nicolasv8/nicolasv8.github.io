@@ -22,7 +22,7 @@ const interests = [
   },
   {
     number: "02",
-    title: "Sentarse a la mesa",
+    title: "Año Nuevo en China",
     description:
       "Celebré el Año Nuevo Lunar en una aldea de China: cocinamos, estuvimos en la naturaleza y fuimos a una ópera.",
     href: "https://www.instagram.com/lavidadenicovp/p/DFlwTFvyGmx/",
@@ -44,7 +44,7 @@ const interests = [
     description:
       "Escribí con otros autores un capítulo sobre el estado de resultados para pequeños negocios.",
     href: "/writing",
-    label: "Pasar por el cuaderno",
+    label: "Ver mis escritos",
     external: false,
   },
 ]
@@ -52,11 +52,11 @@ export default function AboutPage() {
   return (
     <main id="main-content" className="shell interior-page">
       <header className="page-heading">
-        <p className="eyebrow">Sobre mí / Más allá de la bio</p>
+        <p className="eyebrow">Sobre mí</p>
         <h1>
           Soy Nico.
           <br />
-          ¿Qué te <em>cuento?</em>
+          Mucho <em>gusto.</em>
         </h1>
       </header>
       <section className="about-intro" aria-label="Conoce a Nico">
@@ -73,18 +73,17 @@ export default function AboutPage() {
             fetchPriority="high"
             decoding="async"
           />
-          <figcaption>El de la camiseta de Colombia. Sí, ese soy yo.</figcaption>
+          <figcaption>Con mi camiseta de Colombia.</figcaption>
         </figure>
         <div className="about-copy">
           <p className="eyebrow">Hola, soy Nico.</p>
           <h2>
             De Medellín a China,
-            <br />
-            con cámara y tenis.
+            <br />y Estados Unidos.
           </h2>
           <p>
-            Soy Nicolás Velasco Pérez, Nico para los amigos, y soy de Medellín. Estudié entre Duke
-            Kunshan, en China, y Duke, en Estados Unidos, con formación en Economía Política y
+            Soy Nicolás Velasco Pérez, pero todos me dicen Nico. Soy de Medellín y estudié entre
+            Duke Kunshan, en China, y Duke, en Estados Unidos, con formación en Economía Política y
             Políticas Públicas. También me gusta correr, grabar videos y meterme en proyectos
             nuevos.
           </p>
@@ -92,9 +91,9 @@ export default function AboutPage() {
             He trabajado en iniciativas de desarrollo global, participado en One Young World y
             cofundado Recobra. Aquí reúno mis videos, escritos y algunos proyectos.
           </p>
-          <p className="handwritten">Qué chimba tenerte por acá.</p>
+          <p className="handwritten">Gracias por pasar por acá.</p>
           <Link href="/writing" className="text-link">
-            Si tienes un ratico, lee algo <Arrow />
+            Mis escritos <Arrow />
           </Link>
         </div>
       </section>

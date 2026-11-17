@@ -1,47 +1,26 @@
 "use client"
 
 import { homeImages } from "@/lib/home-images"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 export function HeroPortrait() {
-  const videoRef = useRef<HTMLVideoElement>(null)
   const [motionAllowed, setMotionAllowed] = useState(false)
-  const [videoReady, setVideoReady] = useState(false)
   const [videoVisible, setVideoVisible] = useState(false)
-  const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)")
     const update = () => {
       setMotionAllowed(!preference.matches)
-      if (preference.matches) {
-        setVideoReady(false)
-        setVideoVisible(false)
-        setPlaying(false)
-      }
+      if (preference.matches) setVideoVisible(false)
     }
     update()
     preference.addEventListener("change", update)
     return () => preference.removeEventListener("change", update)
   }, [])
 
-  async function toggleVideo() {
-    const video = videoRef.current
-    if (!video) return
-    if (!video.paused) {
-      video.pause()
-    } else {
-      try {
-        await video.play()
-      } catch {
-        setVideoVisible(false)
-      }
-    }
-  }
-
   return (
     <>
-      <div className={`nico-hero-person ${videoVisible ? "has-video" : ""}`}>
+      <div className="nico-hero-person">
         <img
           src={homeImages.portrait.src}
           srcSet={homeImages.portrait.srcSet}
@@ -53,37 +32,24 @@ export function HeroPortrait() {
           fetchPriority="high"
           decoding="async"
         />
-        {motionAllowed && (
+      </div>
+      {motionAllowed && (
+        <div className={`nico-hero-video-frame ${videoVisible ? "is-visible" : ""}`}>
           <video
-            ref={videoRef}
             className="nico-hero-video"
             autoPlay
             muted
-            loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
             tabIndex={-1}
-            onCanPlay={() => setVideoReady(true)}
-            onPlaying={() => {
-              setVideoVisible(true)
-              setPlaying(true)
-            }}
-            onPause={() => setPlaying(false)}
-            onError={() => {
-              setVideoReady(false)
-              setVideoVisible(false)
-              setPlaying(false)
-            }}
+            onPlaying={() => setVideoVisible(true)}
+            onEnded={() => setVideoVisible(false)}
+            onError={() => setVideoVisible(false)}
           >
-            <source src="/images/home/nico-schwarzman.mp4" type="video/mp4" />
+            <source src="/images/home/nico-saludo.mp4" type="video/mp4" />
           </video>
-        )}
-      </div>
-      {videoReady && (
-        <button type="button" className="nico-hero-video-toggle" onClick={toggleVideo}>
-          {playing ? "Pausar video" : "Reproducir video"}
-        </button>
+        </div>
       )}
     </>
   )

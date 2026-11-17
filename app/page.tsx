@@ -1,5 +1,6 @@
 import { HomeCuriosity } from "@/components/home-curiosity"
 import { Hero } from "@/components/home-hero"
+import { HomeJourney } from "@/components/home-journey"
 import { HomePostcards } from "@/components/home-postcards"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,20 +14,20 @@ export default function Home() {
         <div className="nico-intro-inner shell">
           <div className="nico-intro-copy">
             <p className="nico-section-label">
-              <span>01</span> UN POQUITO DE CONTEXTO
+              <span>01</span> UN POCO SOBRE MÍ
             </p>
             <h2 id="intro-title">
               Medellín, China
               <br />
-              <em>y unas cuantas vueltas.</em>
+              <em>y Estados Unidos.</em>
             </h2>
             <p>
               Estudié entre Duke Kunshan y Duke, con formación en Economía Política y Políticas
               Públicas. En mi canal comparto videos de China, viajes y One Young World.
             </p>
             <p>
-              También me he metido de cabeza en el emprendimiento, la IA y las medias maratones. En
-              esta página estoy juntando un poco de todo eso.
+              También me gustan el emprendimiento, la IA y correr. Aquí encontrarás un poco de todo
+              eso.
             </p>
             <Link className="nico-inline-link" href="/about">
               Conoce un poco más de mí <span aria-hidden="true">↗</span>
@@ -81,6 +82,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HomeJourney />
 
       <HomeCuriosity />
 

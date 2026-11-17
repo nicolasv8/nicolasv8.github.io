@@ -26,7 +26,6 @@ export function SiteFooter() {
       </div>
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} La Vida de Nico</span>
-        <span>Con amor, Nico.</span>
         <a href="#top">Volver arriba ↑</a>
       </div>
     </footer>

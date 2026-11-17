@@ -3,12 +3,13 @@
 export type TravelPlace = {
   id: string
   city: string
+  chineseName?: string
   country: string
   year: string
   latitude: number
   longitude: number
-  image: string
-  imageAlt: string
+  image?: string
+  imageAlt?: string
   photoPosition?: string
   note: string
   nudge?: [number, number]
@@ -120,18 +121,18 @@ export const travelPlaces: TravelPlace[] = [
   {
     id: "pekin",
     city: "Pekín",
+    chineseName: "北京",
     country: "China",
-    year: "2023",
+    year: "",
     latitude: 39.9042,
     longitude: 116.4074,
-    image: "/images/travel/pekin.webp",
-    imageAlt: "Nico en un pasaje de arquitectura tradicional en Pekín",
-    note: "Una visita al Museo del Palacio.",
+    note: "Pekín, China.",
     nudge: [-16, -11],
   },
   {
     id: "kunshan",
     city: "Kunshan",
+    chineseName: "昆山",
     country: "China",
     year: "2024",
     latitude: 31.384,
@@ -145,6 +146,7 @@ export const travelPlaces: TravelPlace[] = [
   {
     id: "shanghai",
     city: "Shanghái",
+    chineseName: "上海",
     country: "China",
     year: "2024",
     latitude: 31.2304,
@@ -158,6 +160,7 @@ export const travelPlaces: TravelPlace[] = [
   {
     id: "hong-kong",
     city: "Hong Kong",
+    chineseName: "香港",
     country: "China · RAE",
     year: "2024",
     latitude: 22.3193,
@@ -209,6 +212,7 @@ export const travelPlaces: TravelPlace[] = [
   {
     id: "suzhou",
     city: "Suzhou",
+    chineseName: "苏州",
     country: "China",
     year: "2023",
     latitude: 31.299,
@@ -221,6 +225,7 @@ export const travelPlaces: TravelPlace[] = [
   {
     id: "hangzhou",
     city: "Hangzhou",
+    chineseName: "杭州",
     country: "China",
     year: "2023",
     latitude: 30.274,
@@ -232,6 +237,7 @@ export const travelPlaces: TravelPlace[] = [
   {
     id: "tianjin",
     city: "Tianjin",
+    chineseName: "天津",
     country: "China",
     year: "2023",
     latitude: 39.0842,

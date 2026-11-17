@@ -30,6 +30,7 @@ export function TravelMap() {
   const zoomFocusAfter = useRef<"in" | "out" | null>(null)
   const focusAfterView = useRef<"back" | RegionId | null>(null)
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null)
+  const [stamps, setStamps] = useState<string[]>([])
   const pointerDown = useRef(false)
   const selected = travelPlaces[selectedIndex]
   const zoomPlace = travelPlaces[focusedIndex ?? selectedIndex]
@@ -39,7 +40,20 @@ export function TravelMap() {
     : zoomPlace
   const anchorNudge = anchorRegion ? regions[anchorRegion].worldNudge : zoomAnchor.nudge
   const selectedPosition = position(zoomAnchor.latitude, zoomAnchor.longitude)
-  const picturePlaces = ["londres", "montreal", "pekin", "shanghai"]
+  const picturePlaces = ["londres", "montreal", "hong-kong", "shanghai"]
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("lugar")
+    if (
+      requested &&
+      requested !== selected.id &&
+      travelPlaces.some((place) => place.id === requested)
+    )
+      return
+    setStamps((previous) =>
+      previous.includes(selected.id) ? previous : [...previous, selected.id]
+    )
+  }, [selected.id])
 
   useEffect(() => {
     const releasePointer = () => {
@@ -209,8 +223,7 @@ export function TravelMap() {
             al resto del <em>mapa.</em>
           </h1>
           <p className="travel-intro-description">
-            Un pedacito de mi carrete: lugares donde estuve entre 2021 y 2024. Toca un punto y date
-            una vuelta.
+            Algunos lugares donde he estado. Toca un punto para explorarlos.
           </p>
           <a href="#explorar" className="travel-explore-link">
             Explorar el mapa <span aria-hidden="true">↘</span>
@@ -557,23 +570,33 @@ export function TravelMap() {
                 </span>
               </div>
               <div className="travel-postcard-photo" key={selected.id}>
-                <img
-                  src={selected.image.replace(".webp", "-960.webp")}
-                  srcSet={`${selected.image.replace(".webp", "-480.webp")} 480w, ${selected.image.replace(".webp", "-960.webp")} 960w`}
-                  sizes="(max-width: 720px) calc(100vw - 72px), 300px"
-                  alt={selected.imageAlt}
-                  style={{ objectPosition: selected.photoPosition }}
-                  decoding="async"
-                />
+                {selected.image ? (
+                  <img
+                    src={selected.image.replace(".webp", "-960.webp")}
+                    srcSet={`${selected.image.replace(".webp", "-480.webp")} 480w, ${selected.image.replace(".webp", "-960.webp")} 960w`}
+                    sizes="(max-width: 720px) calc(100vw - 72px), 300px"
+                    alt={selected.imageAlt ?? ""}
+                    style={{ objectPosition: selected.photoPosition }}
+                    decoding="async"
+                  />
+                ) : (
+                  <div className="travel-postcard-no-photo">
+                    <span lang="zh-Hans">{selected.chineseName}</span>
+                    <small>Una parada en el mapa</small>
+                  </div>
+                )}
+                {selected.id === "shanghai" && (
+                  <span className="travel-night-lights" aria-hidden="true" />
+                )}
                 <span className="travel-postcard-tape" aria-hidden="true" />
                 <span className="travel-postcard-star" aria-hidden="true">
                   ✳
                 </span>
               </div>
               <div className="travel-postcard-body" aria-live="polite" aria-atomic="true">
-                <span className="sr-only">Foto: {selected.imageAlt}.</span>
                 <p className="travel-postcard-location">
-                  {selected.country} / {selected.year}
+                  {selected.country}
+                  {selected.year && ` / ${selected.year}`}
                 </p>
                 <h3 ref={postcardTitleRef} tabIndex={-1}>
                   <span className="travel-place-name" key={selected.id}>
@@ -583,7 +606,62 @@ export function TravelMap() {
                     .
                   </span>
                 </h3>
+                {selected.chineseName && (
+                  <span className="travel-chinese-name" lang="zh-Hans" key={selected.id}>
+                    {selected.chineseName}
+                  </span>
+                )}
                 <p className="travel-postcard-note">{selected.note}</p>
+                {(selected.id === "kunshan" || selected.id === "shanghai") && (
+                  <div className="travel-rail" aria-label="Entre Kunshan y Shanghái">
+                    <div className="travel-rail-stations">
+                      <button
+                        type="button"
+                        aria-pressed={selected.id === "kunshan"}
+                        onClick={() =>
+                          selectPlace(travelPlaces.findIndex((place) => place.id === "kunshan"))
+                        }
+                      >
+                        Kunshan <span lang="zh-Hans">昆山</span>
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed={selected.id === "shanghai"}
+                        onClick={() =>
+                          selectPlace(travelPlaces.findIndex((place) => place.id === "shanghai"))
+                        }
+                      >
+                        Shanghái <span lang="zh-Hans">上海</span>
+                      </button>
+                    </div>
+                    <div className="travel-rail-track" aria-hidden="true">
+                      <span
+                        className={`travel-rail-train ${selected.id === "kunshan" ? "to-kunshan" : ""}`}
+                        key={selected.id}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 32 22"
+                          width="32"
+                          height="22"
+                          fill="none"
+                        >
+                          <rect x="3" y="2" width="26" height="16" rx="5" fill="currentColor" />
+                          <path d="M8 6h16v5H8z" fill="#fffcf2" />
+                          <path
+                            d="M9 18l-2 2m16-2 2 2"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                    <a href="/writing/poems/kunshan-y-shanghai/">
+                      Un poema que escribí sobre estas dos ciudades ↗
+                    </a>
+                  </div>
+                )}
                 {selected.link && (
                   <a href={selected.link.href} target="_blank" rel="noopener noreferrer">
                     {selected.link.label} ↗
@@ -615,6 +693,30 @@ export function TravelMap() {
                 </div>
               </div>
             </article>
+          </div>
+
+          <div className="travel-passport" aria-label="Lugares explorados en esta visita">
+            <div>
+              <p className="travel-kicker">TU PASAPORTE</p>
+              <p>Los lugares que has abierto en esta visita.</p>
+            </div>
+            <div className="travel-passport-stamps" aria-live="polite">
+              {stamps.map((id) => {
+                const place = travelPlaces.find((item) => item.id === id)
+                if (!place) return null
+                return (
+                  <button
+                    type="button"
+                    key={id}
+                    onClick={() => openPlace(id)}
+                    aria-label={`Volver a ${place.city}`}
+                  >
+                    <strong>{place.city}</strong>
+                    <span>{place.chineseName ?? place.country}</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
           <div className="travel-place-picker">
@@ -655,7 +757,7 @@ export function TravelMap() {
         <div className="travel-gallery-grid">
           {picturePlaces.map((id, index) => {
             const place = travelPlaces.find((item) => item.id === id)
-            if (!place) return null
+            if (!place?.image) return null
             return (
               <button
                 className={`travel-gallery-card travel-gallery-card-${index + 1}`}
