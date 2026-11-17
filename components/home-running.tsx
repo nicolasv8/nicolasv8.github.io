@@ -7,7 +7,7 @@ export function HomeRunning() {
           <h2 id="running-title">
             También <em>corro.</em>
           </h2>
-          <p>Me gusta correr medias maratones y compartir kilómetros con otras personas.</p>
+          <p>Me gusta correr medias maratones y salir a correr con otras personas.</p>
           <a
             className="nico-inline-link"
             href="https://www.strava.com/athletes/59913615"
@@ -25,7 +25,7 @@ export function HomeRunning() {
           <div>
             <p className="nico-section-label">DUKE KUNSHAN · 2025</p>
             <h3>10K con el equipo de DKU</h3>
-            <p>Quedamos terceros por equipos en nuestra carrera de casa.</p>
+            <p>Quedamos terceros por equipos en la carrera de Duke Kunshan.</p>
             <a
               href="https://athletics.dukekunshan.edu.cn/latest-in-athletics/home-course-home-champions-dku-varsity-running-claims-third-straight-victory/"
               target="_blank"

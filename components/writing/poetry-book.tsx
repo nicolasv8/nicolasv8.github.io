@@ -1,9 +1,16 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
-type Poem = { slug: string; title: string; language: string; body: ReactNode }
+type Poem = {
+  slug: string
+  title: string
+  date: string
+  displayDate: string
+  language: string
+  body: ReactNode
+}
 
 export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?: string }) {
   const startingIndex = Math.max(
@@ -12,7 +19,54 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
   )
   const [opened, setOpened] = useState(Boolean(initialSlug))
   const [index, setIndex] = useState(startingIndex)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const focusTitle = useRef(false)
   const poem = poems[index]
+
+  useEffect(() => {
+    document.title =
+      opened && poem ? `${poem.title} | La Vida de Nico` : "Escritos | La Vida de Nico"
+  }, [opened, poem])
+
+  useEffect(() => {
+    function syncFromHistory() {
+      const match = window.location.pathname.match(/^\/writing\/poems\/([^/]+)\/?$/)
+      if (!match) {
+        if (/^\/writing\/?$/.test(window.location.pathname)) setOpened(false)
+        return
+      }
+      const next = poems.findIndex((item) => item.slug === match[1])
+      if (next >= 0) {
+        focusTitle.current = true
+        setIndex(next)
+        setOpened(true)
+      }
+    }
+    window.addEventListener("popstate", syncFromHistory)
+    return () => window.removeEventListener("popstate", syncFromHistory)
+  }, [poems])
+
+  useEffect(() => {
+    if (!opened || !poem || !focusTitle.current) return
+    focusTitle.current = false
+    titleRef.current?.focus({ preventScroll: true })
+    titleRef.current?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+      block: "start",
+    })
+  }, [opened, poem])
+
+  function showPoem(next: number) {
+    const nextPoem = poems[next]
+    if (!nextPoem || (opened && next === index)) return
+    focusTitle.current = true
+    window.history.pushState(null, "", `/writing/poems/${nextPoem.slug}/`)
+    setIndex(next)
+    setOpened(true)
+  }
+
   if (!poem) return null
 
   return (
@@ -29,7 +83,7 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
       </div>
       {!opened ? (
         <div className="poetry-cover-wrap">
-          <button type="button" className="poetry-cover" onClick={() => setOpened(true)}>
+          <button type="button" className="poetry-cover" onClick={() => showPoem(index)}>
             <span className="poetry-cover-top">LA VIDA DE NICO</span>
             <span className="poetry-cover-art" aria-hidden="true">
               ✳ <i>☾</i>
@@ -61,7 +115,7 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
                   key={item.slug}
                   type="button"
                   aria-current={itemIndex === index ? "page" : undefined}
-                  onClick={() => setIndex(itemIndex)}
+                  onClick={() => showPoem(itemIndex)}
                 >
                   <span>{String(itemIndex + 1).padStart(2, "0")}</span> {item.title}
                 </button>
@@ -77,7 +131,7 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
             </div>
             <label className="poetry-book-select">
               Elegir poema
-              <select value={index} onChange={(event) => setIndex(Number(event.target.value))}>
+              <select value={index} onChange={(event) => showPoem(Number(event.target.value))}>
                 {poems.map((item, itemIndex) => (
                   <option key={item.slug} value={itemIndex}>
                     {item.title}
@@ -91,7 +145,18 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
                   {poem.slug === "luna-lunita-luna" ? "☾" : "↝"}
                 </span>
               )}
-              <h3>{poem.title}</h3>
+              {initialSlug ? (
+                <h1 ref={titleRef} tabIndex={-1}>
+                  {poem.title}
+                </h1>
+              ) : (
+                <h3 ref={titleRef} tabIndex={-1}>
+                  {poem.title}
+                </h3>
+              )}
+              <time className="poetry-book-date" dateTime={poem.date}>
+                {poem.displayDate}
+              </time>
               <div className="writing-prose" data-writing-type="poems">
                 {poem.body}
               </div>
@@ -102,13 +167,13 @@ export function PoetryBook({ poems, initialSlug }: { poems: Poem[]; initialSlug?
               )}
             </article>
             <nav className="poetry-book-nav" aria-label="Pasar páginas">
-              <button type="button" disabled={index === 0} onClick={() => setIndex(index - 1)}>
+              <button type="button" disabled={index === 0} onClick={() => showPoem(index - 1)}>
                 ← Anterior
               </button>
               <button
                 type="button"
                 disabled={index === poems.length - 1}
-                onClick={() => setIndex(index + 1)}
+                onClick={() => showPoem(index + 1)}
               >
                 Siguiente →
               </button>

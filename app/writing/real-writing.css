@@ -308,11 +308,21 @@
   margin-top: 52px;
   animation: poetry-page-arrive .45s ease-out both;
 }
+.poetry-book-content h1,
 .poetry-book-content h3 {
   max-width: 14ch;
   color: #263f32;
   font: 400 clamp(2.1rem, 4vw, 3.4rem) / 1.05 var(--serif);
   letter-spacing: -.04em;
+}
+.poetry-book-content :is(h1, h3) {
+  scroll-margin-top: 100px;
+}
+.poetry-book-date {
+  display: block;
+  margin-top: 14px;
+  color: #786552;
+  font-size: .75rem;
 }
 .poetry-book-content .writing-prose {
   margin-top: 34px;

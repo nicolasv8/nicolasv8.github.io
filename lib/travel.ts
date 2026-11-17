@@ -11,7 +11,7 @@ export type TravelPlace = {
   image?: string
   imageAlt?: string
   photoPosition?: string
-  note: string
+  note?: string
   nudge?: [number, number]
   link?: { label: string; href: string }
 }
@@ -126,7 +126,6 @@ export const travelPlaces: TravelPlace[] = [
     year: "",
     latitude: 39.9042,
     longitude: 116.4074,
-    note: "Pekín, China.",
     nudge: [-16, -11],
   },
   {

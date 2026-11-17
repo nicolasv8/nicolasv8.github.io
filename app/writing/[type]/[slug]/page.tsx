@@ -88,7 +88,7 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
             <p>La autoría del texto de esta página aún está pendiente de verificar.</p>
           </header>
           <Link href="/writing" className="writing-backlink">
-            ← Volver al cuaderno
+            ← Volver a escritos
           </Link>
         </article>
       </main>
@@ -115,7 +115,7 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
     <main id="main-content" className="writing-surface">
       <article className="writing-shell max-w-3xl">
         <Link href="/writing" className="writing-backlink">
-          ← Volver al cuaderno
+          ← Volver a escritos
         </Link>
 
         <header className="writing-article-header">

@@ -65,7 +65,7 @@ export const projects = [
     category: "Comunidad · Desarrollo global",
     title: "South-North Scholars.",
     description:
-      "Una red de jóvenes interesados en desarrollo global. Cofundé su capítulo en Duke Kunshan para acercar estas conversaciones a la universidad.",
+      "Cofundé el capítulo de South-North Scholars en Duke Kunshan, una red de jóvenes interesados en desarrollo global.",
     tags: ["Comunidad", "Desarrollo", "Perspectiva global"],
     href: "https://www.southnorthscholars.org/about",
     linkLabel: "Conoce el proyecto",
@@ -77,8 +77,7 @@ export const projects = [
     number: "03",
     category: "IA · Herramientas útiles",
     title: "Asistentes y automatización.",
-    description:
-      "Experimento con asistentes de IA para organizar tareas y hacer más útiles las conversaciones de WhatsApp.",
+    description: "Experimento con asistentes de IA para organizar tareas y trabajar con WhatsApp.",
     tags: ["Inteligencia artificial", "Automatización", "Aprender haciendo"],
   },
   {

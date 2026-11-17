@@ -24,8 +24,8 @@ export default function Home() {
               <em>y Estados Unidos.</em>
             </h2>
             <p>
-              Estudié entre Duke Kunshan y Duke, con formación en Economía Política y Políticas
-              Públicas. En mi canal comparto videos de China, viajes y One Young World.
+              Entre mis videos hay caminatas por China, un día recogiendo naranjas y mi experiencia
+              en One Young World, en Montreal.
             </p>
             <p>
               También me gustan el emprendimiento, la IA y correr. Aquí encontrarás un poco de todo

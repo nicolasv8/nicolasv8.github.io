@@ -18,7 +18,7 @@ const things = [
     label: "Crear",
     icon: "✳",
     title: "Ideas y proyectos.",
-    body: "Últimamente experimento con IA y automatización, incluyendo herramientas para que las conversaciones de WhatsApp sean más útiles.",
+    body: "Experimento con asistentes de IA para organizar tareas y trabajar con WhatsApp.",
     href: "/resume",
     link: "Ver lo que construyo",
   },

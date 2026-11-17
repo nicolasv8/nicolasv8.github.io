@@ -553,6 +553,9 @@ export function TravelMap() {
                   })}
                 </div>
               )}
+              <button type="button" className="travel-show-postcard" onClick={revealPostcard}>
+                Ver postal: <span aria-live="polite">{selected.city}</span> ↓
+              </button>
               <div className="travel-map-foot">
                 <span>●&nbsp; {String(travelPlaces.length).padStart(2, "0")} PARADAS</span>
                 <a
@@ -615,7 +618,7 @@ export function TravelMap() {
                     {selected.chineseName}
                   </span>
                 )}
-                <p className="travel-postcard-note">{selected.note}</p>
+                {selected.note && <p className="travel-postcard-note">{selected.note}</p>}
                 {(selected.id === "kunshan" || selected.id === "shanghai") && (
                   <div className="travel-rail" aria-label="Entre Kunshan y Shanghái">
                     <div className="travel-rail-stations">
@@ -669,6 +672,15 @@ export function TravelMap() {
                 {selected.link && (
                   <a href={selected.link.href} target="_blank" rel="noopener noreferrer">
                     {selected.link.label} ↗
+                  </a>
+                )}
+                {selected.id === "hong-kong" && (
+                  <a
+                    href="https://cscc.dukekunshan.edu.cn/featured-student-nicolas-velasco-perez/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Mi experiencia en el US-China Hong Kong Forum ↗
                   </a>
                 )}
               </div>

@@ -123,6 +123,9 @@
   line-height: 1.7;
   color: #526254;
 }
+.travel-show-postcard {
+  display: none;
+}
 .travel-map-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(270px, 330px);
@@ -395,6 +398,10 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.travel-postcard-body > a {
+  display: block;
+  width: fit-content;
+}
 .travel-postcard-nav {
   padding: 8px 4px 0;
   border-top: 1px solid #e7e8da;
@@ -592,6 +599,17 @@
   .travel-map-layout {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  .travel-show-postcard {
+    display: block;
+    width: calc(100% - 24px);
+    min-height: 44px;
+    margin: 0 12px 10px;
+    border: 1px solid #c8baa4;
+    background: #faf6ec;
+    color: #263f32;
+    font-size: .8rem;
+    text-align: center;
   }
   .travel-map-bar,
   .travel-map-foot {

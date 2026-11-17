@@ -183,7 +183,7 @@ export default function AboutPage() {
           <p>Nos podemos encontrar en Instagram.</p>
         </div>
         <a className="button" href={site.socials[1].href} target="_blank" rel="noopener noreferrer">
-          Hablemos <Arrow diagonal />
+          Ir a Instagram <Arrow diagonal />
         </a>
       </aside>
     </main>

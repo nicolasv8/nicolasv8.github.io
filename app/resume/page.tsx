@@ -126,12 +126,12 @@ export default function ResumePage() {
       <aside className="contact-note">
         <Asterisk />
         <div>
-          <p className="eyebrow">¿Construimos algo?</p>
-          <h2>Hablemos.</h2>
-          <p>Cuéntame lo que tienes en mente.</p>
+          <p className="eyebrow">Contacto</p>
+          <h2>¿Tienes alguna idea?</h2>
+          <p>Puedes escribirme por Instagram.</p>
         </div>
         <a className="button" href={site.socials[1].href} target="_blank" rel="noopener noreferrer">
-          Hablemos <Arrow diagonal />
+          Ir a Instagram <Arrow diagonal />
         </a>
       </aside>
     </main>

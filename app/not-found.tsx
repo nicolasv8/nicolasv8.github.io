@@ -7,9 +7,9 @@ export default function NotFound() {
       <header className="page-heading">
         <p className="eyebrow">404 / Nos salimos del camino</p>
         <h1>
-          Por acá
+          No encontré
           <br />
-          todavía <em>no.</em>
+          esta <em>página.</em>
         </h1>
         <p className="page-description">
           Esta página no existe o cambió de lugar. Puedes volver al inicio.

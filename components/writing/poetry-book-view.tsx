@@ -1,4 +1,4 @@
-import { getWritingEntriesByType, isUnverifiedLegacyEntry } from "@/lib/writing"
+import { formatWritingDate, getWritingEntriesByType, isUnverifiedLegacyEntry } from "@/lib/writing"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { writingMdxComponents } from "./mdx-components"
 import { PoetryBook } from "./poetry-book"
@@ -11,6 +11,8 @@ export function PoetryBookView({ initialSlug }: { initialSlug?: string }) {
       poems={poems.map((poem) => ({
         slug: poem.slug,
         title: poem.title,
+        date: poem.date,
+        displayDate: formatWritingDate(poem.date),
         language: poem.language,
         body: <MDXRemote source={poem.content} components={writingMdxComponents} />,
       }))}

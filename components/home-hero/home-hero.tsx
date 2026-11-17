@@ -15,8 +15,8 @@ export function Hero() {
             Hola, soy <em>Nico.</em>
           </h1>
           <p className="nico-hero-description">
-            Soy de Medellín. Estudié en China y Estados Unidos, hago videos, he corrido medias
-            maratones y cofundé Recobra.
+            Soy de Medellín y estudié en China y Estados Unidos. Aquí comparto mis viajes, videos,
+            poemas y proyectos.
           </p>
           <div className="nico-hero-actions">
             <a href="#mi-mundo" className="nico-button nico-button-light">
