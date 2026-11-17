@@ -359,6 +359,11 @@
   padding-inline: 5px;
   transform: none;
 }
+.travel-pin-label.is-left {
+  left: auto;
+  right: calc(100% - 1px);
+  padding-block: 2px;
+}
 .travel-map-controls {
   display: flex;
   border: 1px solid #aac2b1;

@@ -19,8 +19,8 @@ export default function ResumePage() {
           que <em>he hecho.</em>
         </h1>
         <p className="page-description">
-          Proyectos, comunidades y experimentos que me han enseñado mucho. Unos empezaron con una
-          conversación; otros, con un problema que no me dejaba tranquilo.
+          De una tarjeta para bloquear aplicaciones al capítulo de South-North Scholars en Duke
+          Kunshan: aquí están algunos proyectos que he ayudado a construir.
         </p>
         <Asterisk />
       </header>

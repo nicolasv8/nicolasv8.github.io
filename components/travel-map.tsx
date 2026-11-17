@@ -359,7 +359,7 @@ export function TravelMap() {
                           <span className="travel-pin-dot" />
                           {index === selectedIndex && (
                             <span
-                              className={`travel-pin-label ${place.id === "amsterdam" || place.id === "montreal" ? "is-side" : ""}`}
+                              className={`travel-pin-label ${place.id === "amsterdam" ? "is-side is-left" : place.id === "montreal" ? "is-side" : ""}`}
                               aria-hidden="true"
                             >
                               {place.city}
@@ -537,9 +537,9 @@ export function TravelMap() {
                   <span aria-hidden="true">.</span>
                 </h3>
                 <p className="travel-postcard-note">{selected.note}</p>
-                {selected.video && (
-                  <a href={selected.video.href} target="_blank" rel="noopener noreferrer">
-                    {selected.video.label} ↗
+                {selected.link && (
+                  <a href={selected.link.href} target="_blank" rel="noopener noreferrer">
+                    {selected.link.label} ↗
                   </a>
                 )}
               </div>

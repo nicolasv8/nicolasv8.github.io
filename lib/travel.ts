@@ -11,7 +11,7 @@ export type TravelPlace = {
   imageAlt: string
   note: string
   nudge?: [number, number]
-  video?: { label: string; href: string }
+  link?: { label: string; href: string }
 }
 
 export const travelPlaces: TravelPlace[] = [
@@ -61,7 +61,7 @@ export const travelPlaces: TravelPlace[] = [
     imageAlt: "Nico en un pasaje rodeado de plantas en Montreal",
     note: "One Young World · septiembre de 2024.",
     nudge: [-18, -14],
-    video: {
+    link: {
       label: "Mira la historia en YouTube",
       href: "https://www.youtube.com/watch?v=MSIRX2332S4",
     },
@@ -88,7 +88,7 @@ export const travelPlaces: TravelPlace[] = [
     image: "/images/travel/londres.webp",
     imageAlt: "Nico con la camiseta de Colombia frente a Tower Bridge en Londres",
     note: "Tower Bridge y la camiseta de Colombia.",
-    nudge: [0, 22],
+    nudge: [-6, 22],
   },
   {
     id: "doha",
@@ -100,7 +100,8 @@ export const travelPlaces: TravelPlace[] = [
     image: "/images/travel/doha.webp",
     imageAlt: "Nico sonriendo de noche en Doha",
     note: "Una escala camino a One Young World.",
-    video: { label: "La escala en video", href: "https://www.youtube.com/watch?v=nUPqWWgVAwc" },
+    nudge: [-10, 2],
+    link: { label: "La escala en video", href: "https://www.youtube.com/watch?v=nUPqWWgVAwc" },
   },
   {
     id: "pekin",
@@ -147,8 +148,12 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 114.1694,
     image: "/images/travel/hong-kong.webp",
     imageAlt: "Nico con la camiseta de Colombia en Hong Kong",
-    note: "Una visita a Victoria Peak.",
+    note: "Victoria Peak, el ferry y waffles callejeros.",
     nudge: [-14, 10],
+    link: {
+      label: "Una noche en Instagram",
+      href: "https://www.instagram.com/lavidadenicovp/p/DC1vhAwpAMI/",
+    },
   },
   {
     id: "cartagena",
@@ -204,5 +209,16 @@ export const travelPlaces: TravelPlace[] = [
     image: "/images/travel/hangzhou.webp",
     imageAlt: "Nenúfares en el agua y árboles al fondo en Hangzhou",
     note: "Un paisaje en Hangzhou.",
+  },
+  {
+    id: "tianjin",
+    city: "Tianjin",
+    country: "China",
+    year: "2023",
+    latitude: 39.0842,
+    longitude: 117.2009,
+    image: "/images/travel/tianjin.webp",
+    imageAlt: "Nico frente al horizonte de Tianjin",
+    note: "Tianjin, enero de 2023.",
   },
 ]

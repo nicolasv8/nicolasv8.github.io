@@ -15,19 +15,19 @@ const interests = [
     number: "01",
     title: "Contar historias",
     description:
-      "Con una cámara, una idea y un espacio propio en YouTube. La Vida de Nico también se cuenta en video.",
+      "He grabado una caminata por Xishan y un día recogiendo naranjas en China rural. Los comparto en mi canal.",
     href: site.socials[0].href,
     label: "Ir a YouTube",
     external: true,
   },
   {
     number: "02",
-    title: "Ir, mirar y contar",
+    title: "Sentarse a la mesa",
     description:
-      "Estudié entre China y Estados Unidos. He guardado fotos de muchos lugares en el camino; aquí puedes explorar algunos.",
-    href: "/mapa",
-    label: "Abrir mi mapa",
-    external: false,
+      "Celebré el Año Nuevo Lunar en una villa rural china: cocinamos, estuvimos en la naturaleza y fuimos a una ópera.",
+    href: "https://www.instagram.com/lavidadenicovp/p/DFlwTFvyGmx/",
+    label: "Ver ese Año Nuevo",
+    external: true,
   },
   {
     number: "03",
@@ -41,7 +41,8 @@ const interests = [
   {
     number: "04",
     title: "Ponerlo en palabras",
-    description: "También he escrito sobre negocios y educación financiera, entre otras cosas.",
+    description:
+      "Escribí con otros autores un capítulo sobre el estado de resultados para pequeños negocios.",
     href: "/writing",
     label: "Pasar por el cuaderno",
     external: false,
@@ -77,9 +78,9 @@ export default function AboutPage() {
         <div className="about-copy">
           <p className="eyebrow">Hola, soy Nico.</p>
           <h2>
-            Hay más de una forma
+            De Medellín a China,
             <br />
-            de contar una vida.
+            con cámara y tenis.
           </h2>
           <p>
             Soy Nicolás Velasco Pérez, Nico para los amigos, y soy de Medellín. Estudié entre Duke

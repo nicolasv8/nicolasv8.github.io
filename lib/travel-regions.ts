@@ -1,4 +1,4 @@
-export type RegionId = "colombia" | "china"
+export type RegionId = "colombia" | "china" | "china-norte"
 
 // Boundaries describe the crop of the same Natural Earth equirectangular map.
 export const regions = {
@@ -17,6 +17,14 @@ export const regions = {
     bounds: [119, 122.4, 29.5, 32.8],
     ids: ["suzhou", "kunshan", "shanghai", "hangzhou"],
     nudges: { suzhou: [-10, 0], kunshan: [8, 0], shanghai: [18, 0] },
+  },
+  "china-norte": {
+    label: "Norte de China",
+    center: "pekin",
+    worldNudge: [-21, -16],
+    bounds: [115.3, 118.4, 38.3, 40.7],
+    ids: ["pekin", "tianjin"],
+    nudges: {},
   },
 } satisfies Record<
   RegionId,
