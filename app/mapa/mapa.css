@@ -718,7 +718,19 @@
   .travel-map-foot {
     min-height: 38px;
     padding-inline: 12px;
-    font-size: .49rem;
+    gap: 8px;
+    font-size: .6rem;
+    letter-spacing: .02em;
+  }
+  .travel-map-bar > span,
+  .travel-map-foot > span,
+  .travel-map-foot a {
+    white-space: nowrap;
+  }
+  .travel-map-bar .travel-map-return {
+    padding-inline: 8px;
+    font-size: .65rem;
+    white-space: nowrap;
   }
   .travel-map-bar-caption {
     display: none;

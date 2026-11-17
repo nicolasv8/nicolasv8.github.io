@@ -27,7 +27,7 @@ El último comando permite ver la exportación en `http://localhost:3001`. Al su
 - `lib/site.ts`: navegación, redes y proyectos.
 - `app/page.tsx` y `app/about/page.tsx`: portada y presentación.
 - `lib/videos.ts`: selección de videos. Sus miniaturas están en `public/images/videos/` y usan el identificador del video como nombre.
-- `lib/travel.ts`: paradas, años, textos y fotos del mapa. Las coordenadas representan centros de ciudades, no el lugar exacto de una fotografía.
+- `lib/travel.ts`: paradas, años, textos y fotos del mapa. Las coordenadas representan centros de ciudades, no el lugar exacto de una fotografía. `photoPosition` permite ajustar el encuadre de una postal cuando hace falta.
 - `lib/travel-regions.ts`: agrupaciones regionales del mapa. Si se agregan lugares cercanos, hay que revisar que los marcadores y sus áreas táctiles no se superpongan en celular.
 - `content/writing/{essays,poems,notes}/`: textos MDX. Cada archivo necesita `title`, `date` (`YYYY-MM-DD`), `type` correspondiente a la carpeta y `published: true`; `excerpt` es opcional y `language` puede ser `es` o `en`.
 

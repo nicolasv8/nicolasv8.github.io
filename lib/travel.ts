@@ -9,6 +9,7 @@ export type TravelPlace = {
   longitude: number
   image: string
   imageAlt: string
+  photoPosition?: string
   note: string
   nudge?: [number, number]
   link?: { label: string; href: string }
@@ -35,6 +36,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: -78.8986,
     image: "/images/travel/durham.webp",
     imageAlt: "Un rincón verde cerca de Duke University en Durham",
+    photoPosition: "50% 85%",
     note: "Un rincón verde cerca de Duke University.",
     nudge: [-24, 14],
   },
@@ -75,6 +77,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 4.9041,
     image: "/images/travel/amsterdam.webp",
     imageAlt: "Un canal de Ámsterdam entre árboles y edificios",
+    photoPosition: "50% 100%",
     note: "Un canal en octubre de 2022.",
     nudge: [0, -13],
   },
@@ -124,6 +127,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 120.982,
     image: "/images/travel/kunshan.webp",
     imageAlt: "Una calle al atardecer en la región de Kunshan",
+    photoPosition: "50% 100%",
     note: "Duke Kunshan University · 2021–2025.",
     nudge: [-21, 1],
   },
@@ -136,6 +140,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 121.4737,
     image: "/images/travel/shanghai.webp",
     imageAlt: "El horizonte iluminado de Shanghái de noche",
+    photoPosition: "50% 75%",
     note: "El horizonte iluminado en octubre de 2024.",
     nudge: [17, 5],
   },
@@ -175,6 +180,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: -75.159,
     image: "/images/travel/guatape.webp",
     imageAlt: "Una fachada colorida bajo sombrillas en Guatapé",
+    photoPosition: "50% 60%",
     note: "Una fachada colorida en Guatapé.",
   },
   {
@@ -186,6 +192,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: -75.786,
     image: "/images/travel/jerico.webp",
     imageAlt: "Árboles junto a una zona verde en Jericó",
+    photoPosition: "50% 100%",
     note: "Un rincón verde en Jericó.",
   },
   {
@@ -219,6 +226,7 @@ export const travelPlaces: TravelPlace[] = [
     longitude: 117.2009,
     image: "/images/travel/tianjin.webp",
     imageAlt: "Nico frente al horizonte de Tianjin",
+    photoPosition: "50% 80%",
     note: "Junto al río, en enero de 2023.",
   },
 ]

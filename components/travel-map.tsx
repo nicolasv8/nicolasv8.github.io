@@ -21,8 +21,10 @@ export function TravelMap() {
   const [shareStatus, setShareStatus] = useState("")
   const backRef = useRef<HTMLButtonElement>(null)
   const postcardRef = useRef<HTMLElement>(null)
+  const postcardTitleRef = useRef<HTMLHeadingElement>(null)
   const surpriseRef = useRef<HTMLButtonElement>(null)
   const revealSurprise = useRef<number | null>(null)
+  const revealFromPicker = useRef<{ index: number; view: RegionId | "world" } | null>(null)
   const zoomInRef = useRef<HTMLButtonElement>(null)
   const zoomOutRef = useRef<HTMLButtonElement>(null)
   const zoomFocusAfter = useRef<"in" | "out" | null>(null)
@@ -63,6 +65,39 @@ export function TravelMap() {
   }, [])
 
   useEffect(() => {
+    function restorePlace() {
+      const id = new URLSearchParams(window.location.search).get("lugar")
+      const found = travelPlaces.findIndex((place) => place.id === id)
+      const next = found >= 0 ? found : 0
+      const nextView = found >= 0 ? (regionForPlace(travelPlaces[next].id) ?? "world") : "world"
+      if (next === selectedIndex && (found >= 0 || view === "world")) return
+
+      if (view !== nextView) {
+        const focused = document.activeElement
+        if (
+          focused instanceof HTMLElement &&
+          focused.closest(
+            ".travel-map-controls, .travel-map-return, .travel-map-canvas, .travel-region-canvas, .travel-region-places"
+          )
+        ) {
+          document.getElementById("atlas-title")?.focus({ preventScroll: true })
+        }
+        setZoom(1)
+      }
+      revealSurprise.current = null
+      revealFromPicker.current = null
+      focusAfterView.current = null
+      setSelectedIndex(next)
+      setFocusedIndex(null)
+      setView(nextView)
+      setShareUrl("")
+      setShareStatus("")
+    }
+    window.addEventListener("popstate", restorePlace)
+    return () => window.removeEventListener("popstate", restorePlace)
+  }, [selectedIndex, view])
+
+  useEffect(() => {
     if (focusAfterView.current === "back" && view !== "world") backRef.current?.focus()
     else if (focusAfterView.current && focusAfterView.current !== "back" && view === "world")
       document.getElementById(`travel-cluster-${focusAfterView.current}`)?.focus()
@@ -89,6 +124,21 @@ export function TravelMap() {
     }
   }, [selectedIndex])
 
+  useLayoutEffect(() => {
+    const target = revealFromPicker.current
+    revealFromPicker.current = null
+    if (target?.index === selectedIndex && target.view === view) revealPostcard()
+  }, [selectedIndex, view])
+
+  function revealPostcard() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    postcardTitleRef.current?.focus({ preventScroll: true })
+    postcardRef.current?.scrollIntoView({
+      behavior: reducedMotion ? "instant" : "smooth",
+      block: "start",
+    })
+  }
+
   function selectPlace(index: number) {
     const next = (index + travelPlaces.length) % travelPlaces.length
     setSelectedIndex(next)
@@ -98,6 +148,22 @@ export function TravelMap() {
     setView(nextView)
     setShareUrl("")
     setShareStatus("")
+    const url = new URL(window.location.href)
+    if (url.searchParams.get("lugar") !== travelPlaces[next].id) {
+      url.searchParams.set("lugar", travelPlaces[next].id)
+      window.history.replaceState(null, "", url)
+    }
+  }
+
+  function selectFromPicker(index: number) {
+    const nextView = regionForPlace(travelPlaces[index].id) ?? "world"
+    if (index === selectedIndex && nextView === view) {
+      selectPlace(index)
+      revealPostcard()
+      return
+    }
+    revealFromPicker.current = { index, view: nextView }
+    selectPlace(index)
   }
 
   function openRegion(id: RegionId) {
@@ -520,6 +586,7 @@ export function TravelMap() {
                   srcSet={`${selected.image.replace(".webp", "-480.webp")} 480w, ${selected.image.replace(".webp", "-960.webp")} 960w`}
                   sizes="(max-width: 720px) calc(100vw - 72px), 300px"
                   alt={selected.imageAlt}
+                  style={{ objectPosition: selected.photoPosition }}
                   decoding="async"
                 />
                 <span className="travel-postcard-tape" aria-hidden="true" />
@@ -532,7 +599,7 @@ export function TravelMap() {
                 <p className="travel-postcard-location">
                   {selected.country} / {selected.year}
                 </p>
-                <h3>
+                <h3 ref={postcardTitleRef} tabIndex={-1}>
                   {selected.city}
                   <span aria-hidden="true">.</span>
                 </h3>
@@ -607,7 +674,7 @@ export function TravelMap() {
                 <button
                   key={place.id}
                   type="button"
-                  onClick={() => selectPlace(index)}
+                  onClick={() => selectFromPicker(index)}
                   aria-pressed={index === selectedIndex}
                 >
                   {place.city}
