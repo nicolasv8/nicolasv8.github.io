@@ -9,7 +9,6 @@ import { Arrow } from "./icons"
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const [wave, setWave] = useState(0)
   return (
     <header
       className={`site-header shell ${pathname === "/" ? "is-home" : ""}`}
@@ -21,15 +20,9 @@ export function SiteHeader() {
       }}
     >
       <div className="site-brand">
-        <button
-          type="button"
-          className="wordmark-avatar"
-          aria-label="Saludar a Nico"
-          onClick={() => setWave((count) => count + 1)}
-        >
-          <img key={wave} className="wordmark-avatar-arm" src="/images/avatar/brazo.webp" alt="" />
+        <span className="wordmark-avatar" aria-hidden="true">
           <img className="wordmark-avatar-body" src="/images/avatar/nico.webp" alt="" />
-        </button>
+        </span>
         <Link
           href="/"
           className="wordmark"

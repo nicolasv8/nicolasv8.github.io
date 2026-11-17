@@ -107,7 +107,7 @@ a {
 .wordmark-avatar {
   position: relative;
   display: block;
-  width: 54px;
+  width: 44px;
   height: 48px;
   padding: 0;
   border: 0;
@@ -125,8 +125,7 @@ a {
   border-radius: 50%;
   background: #e6c755;
 }
-.wordmark-avatar-body,
-.wordmark-avatar-arm {
+.wordmark-avatar-body {
   position: absolute;
   max-width: none;
   height: auto;
@@ -138,34 +137,22 @@ a {
   bottom: 0;
   z-index: 2;
 }
-.wordmark-avatar-arm {
-  width: 29px;
-  left: 25px;
-  bottom: 5px;
-  transform-origin: 5% 95%;
-  z-index: 1;
-}
 @media (prefers-reduced-motion: no-preference) {
-  .wordmark-avatar-arm {
-    animation: nico-wave 1.65s .35s ease-in-out both;
-  }
-  .wordmark-avatar:hover .wordmark-avatar-arm,
-  .wordmark-avatar:focus-visible .wordmark-avatar-arm {
-    animation: nico-wave 1.65s ease-in-out both;
+  .wordmark-avatar-body {
+    transform-origin: 50% 100%;
+    animation: nico-hello 2s .35s ease-in-out both;
   }
 }
-@keyframes nico-wave {
+@keyframes nico-hello {
   0%,
   100% {
     transform: rotate(0);
   }
-  20%,
-  60% {
-    transform: rotate(-15deg);
+  35% {
+    transform: rotate(-4deg);
   }
-  40%,
-  80% {
-    transform: rotate(10deg);
+  65% {
+    transform: rotate(3deg);
   }
 }
 .brand-dot {
