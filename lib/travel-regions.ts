@@ -16,7 +16,7 @@ export const regions = {
     worldNudge: [21, -2],
     bounds: [119, 122.4, 29.5, 32.8],
     ids: ["suzhou", "kunshan", "shanghai", "hangzhou"],
-    nudges: { suzhou: [-10, 0], kunshan: [8, 0], shanghai: [18, 0] },
+    nudges: { suzhou: [-10, 0], kunshan: [8, 0], shanghai: [22, 0] },
   },
   "china-norte": {
     label: "Norte de China",
