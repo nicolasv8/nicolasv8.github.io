@@ -26,7 +26,7 @@ const things = [
     id: "moverme",
     label: "Moverme",
     icon: "↗",
-    title: "También corro. Bastante.",
+    title: "Medias maratones.",
     body: "He corrido varias medias maratones. En 2025 corrí los 10K con el equipo de Duke Kunshan; quedamos terceros por equipos.",
     href: "https://athletics.dukekunshan.edu.cn/latest-in-athletics/home-course-home-champions-dku-varsity-running-claims-third-straight-victory/",
     link: "Ver la carrera en DKU",
