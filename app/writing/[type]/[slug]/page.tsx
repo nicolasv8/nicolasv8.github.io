@@ -45,13 +45,23 @@ export async function generateMetadata({ params }: WritingEntryPageProps): Promi
     return {}
   }
 
+  if (isUnverifiedLegacyEntry(entry)) {
+    return {
+      ...pageMetadata(
+        "Texto en revisión",
+        "Esta página de una versión anterior del sitio está en revisión.",
+        entry.url
+      ),
+      robots: { index: false, follow: true },
+    }
+  }
+
   return {
     ...pageMetadata(
       entry.title,
       entry.excerpt ?? `${getWritingTypeLabel(entry.type)} de La Vida de Nico.`,
       entry.url
     ),
-    ...(isUnverifiedLegacyEntry(entry) ? { robots: { index: false, follow: true } } : {}),
   }
 }
 
@@ -68,6 +78,22 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
     notFound()
   }
 
+  if (isUnverifiedLegacyEntry(entry)) {
+    return (
+      <main id="main-content" className="writing-surface">
+        <article className="writing-shell max-w-3xl">
+          <header className="writing-article-header">
+            <h1 className="writing-article-title">Texto en revisión</h1>
+            <p>La autoría del texto de esta página aún está pendiente de verificar.</p>
+          </header>
+          <Link href="/writing" className="writing-backlink">
+            ← Volver al cuaderno
+          </Link>
+        </article>
+      </main>
+    )
+  }
+
   const entries = getPublishedWritingEntries().filter((item) => !isUnverifiedLegacyEntry(item))
   const nextEntry = entries.length
     ? entries[(entries.findIndex((item) => item.url === entry.url) + 1) % entries.length]
@@ -79,13 +105,6 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
         <Link href="/writing" className="writing-backlink">
           ← Volver al cuaderno
         </Link>
-
-        {isUnverifiedLegacyEntry(entry) && (
-          <aside className="legacy-writing-notice">
-            Este texto pertenece a una versión anterior del sitio y su autoría está pendiente de
-            verificar.
-          </aside>
-        )}
 
         <header className="writing-article-header">
           <p className="writing-kicker">{getWritingTypeLabel(entry.type)}</p>

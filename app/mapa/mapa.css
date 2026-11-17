@@ -876,6 +876,11 @@
 .travel-share {
   padding: 0 19px 12px;
 }
+.travel-share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 .travel-share-button,
 .travel-share-fallback button {
   min-height: 44px;

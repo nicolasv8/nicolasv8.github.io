@@ -3,7 +3,7 @@
 import { travelPlaces } from "@/lib/travel"
 import { type RegionId, regionForPlace, regions } from "@/lib/travel-regions"
 import Image from "next/image"
-import { type CSSProperties, useEffect, useRef, useState } from "react"
+import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from "react"
 
 // The projection matches the locally generated Natural Earth illustration.
 function position(latitude: number, longitude: number) {
@@ -20,6 +20,9 @@ export function TravelMap() {
   const [shareUrl, setShareUrl] = useState("")
   const [shareStatus, setShareStatus] = useState("")
   const backRef = useRef<HTMLButtonElement>(null)
+  const postcardRef = useRef<HTMLElement>(null)
+  const surpriseRef = useRef<HTMLButtonElement>(null)
+  const revealSurprise = useRef<number | null>(null)
   const zoomInRef = useRef<HTMLButtonElement>(null)
   const zoomOutRef = useRef<HTMLButtonElement>(null)
   const zoomFocusAfter = useRef<"in" | "out" | null>(null)
@@ -72,6 +75,20 @@ export function TravelMap() {
     zoomFocusAfter.current = null
   }, [zoom])
 
+  useLayoutEffect(() => {
+    const target = revealSurprise.current
+    revealSurprise.current = null
+    if (target === null || target !== selectedIndex) return
+    const card = postcardRef.current?.getBoundingClientRect()
+    const button = surpriseRef.current?.getBoundingClientRect()
+    if (!card || !button) return
+    const padding = 16
+    if (card.top < 0 || button.top < 0 || button.bottom > window.innerHeight) {
+      const delta = Math.max(card.top - padding, button.bottom - window.innerHeight + padding)
+      window.scrollBy({ top: delta, behavior: "instant" })
+    }
+  }, [selectedIndex])
+
   function selectPlace(index: number) {
     const next = (index + travelPlaces.length) % travelPlaces.length
     setSelectedIndex(next)
@@ -89,6 +106,14 @@ export function TravelMap() {
       regionForPlace(selected.id) === id
         ? selectedIndex
         : travelPlaces.findIndex((place) => place.id === regions[id].center)
+    selectPlace(index)
+  }
+
+  function surprisePlace() {
+    const choice = Math.floor(Math.random() * (travelPlaces.length - 1))
+    const index = choice >= selectedIndex ? choice + 1 : choice
+    revealSurprise.current =
+      (regionForPlace(travelPlaces[index].id) ?? "world") !== view ? index : null
     selectPlace(index)
   }
 
@@ -481,7 +506,7 @@ export function TravelMap() {
               </div>
             </div>
 
-            <article className="travel-postcard" aria-label="Lugar seleccionado">
+            <article className="travel-postcard" aria-label="Lugar seleccionado" ref={postcardRef}>
               <div className="travel-postcard-heading">
                 <span>UNA FOTO DE MI CARRETE</span>
                 <span>
@@ -519,9 +544,19 @@ export function TravelMap() {
                 )}
               </div>
               <div className="travel-share">
-                <button type="button" className="travel-share-button" onClick={sharePlace}>
-                  Compartir lugar ↗
-                </button>
+                <div className="travel-share-actions">
+                  <button type="button" className="travel-share-button" onClick={sharePlace}>
+                    Compartir lugar ↗
+                  </button>
+                  <button
+                    type="button"
+                    className="travel-share-button"
+                    ref={surpriseRef}
+                    onClick={surprisePlace}
+                  >
+                    ✳ Sorpréndeme
+                  </button>
+                </div>
                 {shareUrl && (
                   <div className="travel-share-fallback">
                     <label htmlFor="travel-share-url">Enlace de {selected.city}</label>

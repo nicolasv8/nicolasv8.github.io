@@ -496,7 +496,7 @@ em {
   margin-block: 10px;
 }
 .contact-note p:last-child {
-  color: var(--muted);
+  color: #56675a;
   font-size: .85rem;
 }
 .button {
