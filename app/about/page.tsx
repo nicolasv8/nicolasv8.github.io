@@ -31,12 +31,12 @@ const interests = [
   },
   {
     number: "03",
-    title: "Hacer que funcione",
+    title: "Diplomacia de ping-pong",
     description:
-      "Me gusta probar ideas con tecnología y trabajar en proyectos que resuelvan algo concreto.",
-    href: "/resume",
-    label: "Explorar mis proyectos",
-    external: false,
+      "En Hong Kong aprendí cómo un encuentro entre jugadores de ping-pong ayudó a abrir el diálogo entre China y Estados Unidos.",
+    href: "https://cscc.dukekunshan.edu.cn/featured-student-nicolas-velasco-perez/",
+    label: "Leer la entrevista",
+    external: true,
   },
   {
     number: "04",
