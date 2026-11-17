@@ -24,7 +24,7 @@ const interests = [
     number: "02",
     title: "Sentarse a la mesa",
     description:
-      "Celebré el Año Nuevo Lunar en una villa rural china: cocinamos, estuvimos en la naturaleza y fuimos a una ópera.",
+      "Celebré el Año Nuevo Lunar en una aldea de China: cocinamos, estuvimos en la naturaleza y fuimos a una ópera.",
     href: "https://www.instagram.com/lavidadenicovp/p/DFlwTFvyGmx/",
     label: "Ver ese Año Nuevo",
     external: true,
