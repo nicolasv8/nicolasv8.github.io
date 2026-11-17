@@ -12,8 +12,7 @@ export default function NotFound() {
           todavía <em>no.</em>
         </h1>
         <p className="page-description">
-          Esta página no existe o cambió de lugar. Hay otras puertas abiertas para seguir
-          explorando.
+          Esta página no existe o cambió de lugar. Puedes volver al inicio.
         </p>
         <Asterisk />
       </header>
