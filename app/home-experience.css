@@ -539,7 +539,7 @@ body:has(.home-page) .site-header.is-home :focus-visible,
 }
 .nico-curiosity-tabs button span {
   margin-right: 6px;
-  color: #829084;
+  color: #5a6e5d;
   font-family: var(--font-geist-mono), monospace;
   font-size: .58rem;
 }
@@ -605,7 +605,7 @@ body:has(.home-page) .site-header.is-home :focus-visible,
 .nico-map-note {
   display: block;
   margin: 25px 0 0 30px;
-  color: #865134;
+  color: #754125;
   font: italic 1.25rem var(--serif);
   transform: rotate(-4deg);
 }
