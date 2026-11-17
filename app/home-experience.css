@@ -1,4 +1,339 @@
 /* A small, tactile world built around Nico's own photographs. */
+.travel-scene {
+  --travel-progress: 0;
+  overflow: clip;
+  position: relative;
+  background: #dfb1a2;
+  color: #193b31;
+}
+.travel-scene-inner {
+  min-height: 780px;
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  position: relative;
+  padding-block: 100px;
+}
+.travel-scene-kicker {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  font: 600 .65rem / 1.4 var(--font-geist-mono), monospace;
+  letter-spacing: .12em;
+}
+.travel-scene-kicker span {
+  color: #af4f35;
+  margin-inline: 8px;
+}
+.travel-scene-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+}
+.travel-scene-copy h2 {
+  font-size: clamp(4rem, 7.8vw, 8rem);
+  font-weight: 730;
+  line-height: 0.91;
+  letter-spacing: -.075em;
+}
+.travel-scene-copy h2 em {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+}
+.travel-scene-copy > p {
+  max-width: 27ch;
+  margin-top: 26px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.travel-scene-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 48px;
+  margin-top: 24px;
+  padding: 0 20px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 650;
+  transition: color .2s, background .2s;
+}
+.travel-scene-link:hover {
+  background: #193b31;
+  color: #fff8ea;
+}
+.travel-scene-art {
+  position: relative;
+  min-height: 590px;
+}
+.travel-scene-orbit {
+  position: absolute;
+  inset: 7% 5% 8% 8%;
+  border: 1px solid #193b3166;
+  border-radius: 50%;
+  transform: rotate(-24deg);
+  pointer-events: none;
+}
+.travel-scene-plane {
+  position: absolute;
+  top: 3%;
+  right: 16%;
+  z-index: 4;
+  font-size: 2rem;
+  transform: translate3d(
+      calc(var(--travel-progress) * -65px),
+      calc(var(--travel-progress) * -18px),
+      0
+    )
+    rotate(-12deg);
+  pointer-events: none;
+}
+.travel-scene-card {
+  position: absolute;
+  display: block;
+  padding: 9px 9px 12px;
+  background: #fbf5e8;
+  box-shadow: 0 15px 35px #352a2930;
+  color: #193b31;
+}
+.travel-scene-card img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .travel-scene.is-in-view .travel-scene-card {
+    animation: travel-scene-card-in .9s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  }
+  .travel-scene.is-in-view .travel-scene-card-shanghai {
+    animation-delay: .12s;
+  }
+  .travel-scene.is-in-view .travel-scene-card-london {
+    animation-delay: .24s;
+  }
+  .travel-scene.is-in-view .travel-scene-copy {
+    animation: travel-scene-copy-in .8s ease-out both;
+  }
+  .travel-scene.is-in-view .travel-scene-card img {
+    animation: travel-scene-photo .8s ease-out both;
+  }
+  .travel-scene.is-in-view .travel-scene-card-shanghai img {
+    animation-delay: .12s;
+  }
+  .travel-scene.is-in-view .travel-scene-card-london img {
+    animation-delay: .24s;
+  }
+  .travel-scene.is-in-view .travel-scene-stamp {
+    animation: travel-scene-stamp .8s .25s ease-out both;
+  }
+}
+@keyframes travel-scene-card-in {
+  from {
+    opacity: 0;
+    translate: 0 60px;
+    scale: 0.85;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+@keyframes travel-scene-copy-in {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes travel-scene-photo {
+  from {
+    opacity: 0.5;
+    filter: saturate(0.6);
+  }
+  to {
+    opacity: 1;
+    filter: saturate(1);
+  }
+}
+@keyframes travel-scene-stamp {
+  from {
+    opacity: 0;
+    transform: rotate(-25deg) scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(14deg) scale(1);
+  }
+}
+.travel-scene-card > span {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-top: 10px;
+  font: 700 .6rem / 1.1 var(--font-geist-mono), monospace;
+  letter-spacing: .04em;
+}
+.travel-scene-card > span > span {
+  white-space: nowrap;
+}
+.travel-scene-card small {
+  margin-left: auto;
+  font-size: .6rem;
+}
+.travel-scene-card-beijing {
+  width: 43%;
+  left: 26%;
+  top: 6%;
+  z-index: 3;
+  transform: translate3d(0, calc(var(--travel-progress) * -38px), 0) rotate(-6deg);
+}
+.travel-scene-card-beijing img {
+  aspect-ratio: 4 / 4.6;
+  object-position: center 40%;
+}
+.travel-scene-card-shanghai {
+  width: 34%;
+  right: 2%;
+  top: 24%;
+  z-index: 2;
+  transform: translate3d(0, calc(var(--travel-progress) * 34px), 0) rotate(9deg);
+}
+.travel-scene-card-shanghai img {
+  aspect-ratio: 1 / 1.12;
+}
+.travel-scene-card-london {
+  width: 35%;
+  left: 4%;
+  bottom: 4%;
+  z-index: 4;
+  transform: translate3d(0, calc(var(--travel-progress) * 48px), 0) rotate(7deg);
+}
+.travel-scene-card-london img {
+  aspect-ratio: 1.25;
+}
+.travel-scene-card:focus-visible {
+  outline: 4px solid #193b31;
+  outline-offset: 5px;
+  z-index: 5;
+}
+.travel-scene-stamp {
+  position: absolute;
+  right: 9%;
+  bottom: 5%;
+  display: grid;
+  place-content: center;
+  width: 104px;
+  height: 104px;
+  border: 2px solid #193b31;
+  border-radius: 50%;
+  text-align: center;
+  font: 700 .6rem / 1.3 var(--font-geist-mono), monospace;
+  transform: rotate(14deg);
+}
+.travel-scene-stamp b {
+  font-size: 1.35rem;
+}
+@media (max-width: 720px) {
+  .travel-scene-inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    padding-block: 88px 40px;
+  }
+  .travel-scene-kicker {
+    top: 35px;
+  }
+  .travel-scene-copy h2 {
+    font-size: clamp(3.8rem, 15vw, 6rem);
+  }
+  .travel-scene-copy > p {
+    margin-top: 16px;
+    font-size: .92rem;
+  }
+  .travel-scene-link {
+    margin-top: 16px;
+  }
+  .travel-scene-art {
+    min-height: 0;
+    height: min(115vw, 500px);
+    margin-top: 24px;
+  }
+  .travel-scene-card {
+    padding: 6px 6px 9px;
+  }
+  .travel-scene-card > span,
+  .travel-scene-card small {
+    font-size: .5rem;
+  }
+  .travel-scene-stamp {
+    width: 72px;
+    height: 72px;
+    font-size: .48rem;
+  }
+  .travel-scene-stamp b {
+    font-size: 1rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .travel-scene-card-beijing {
+    transform: rotate(-6deg);
+  }
+  .travel-scene-card-shanghai {
+    transform: rotate(9deg);
+  }
+  .travel-scene-card-london {
+    transform: rotate(7deg);
+  }
+  .travel-scene-plane {
+    transform: rotate(-12deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nico-intro.scene-visible .nico-intro-copy,
+  .nico-curiosity.scene-visible .nico-curiosity-heading,
+  .nico-map-teaser.scene-visible .nico-map-copy,
+  .home-running.scene-visible .home-running-inner > div:first-child,
+  .nico-video-section.scene-visible .nico-video-heading {
+    animation: home-scene-copy .8s ease-out both;
+  }
+  .nico-intro.scene-visible .nico-photo,
+  .nico-curiosity.scene-visible .nico-curiosity-card,
+  .nico-map-teaser.scene-visible .nico-postcards,
+  .home-running.scene-visible .home-running-card,
+  .nico-video-section.scene-visible .nico-film {
+    animation: home-scene-object .9s .1s cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  }
+  .nico-intro.scene-visible .nico-photo:nth-child(2),
+  .nico-video-section.scene-visible .nico-film:nth-child(2) {
+    animation-delay: .22s;
+  }
+}
+@keyframes home-scene-copy {
+  from {
+    opacity: 0;
+    translate: 0 30px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes home-scene-object {
+  from {
+    opacity: 0;
+    translate: 0 38px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
 body:has(.home-page) .site-footer {
   display: block;
 }

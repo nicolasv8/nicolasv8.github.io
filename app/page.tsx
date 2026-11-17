@@ -3,7 +3,9 @@ import { Hero } from "@/components/home-hero"
 import { HomeJourney } from "@/components/home-journey"
 import { HomePostcards } from "@/components/home-postcards"
 import { HomeRunning } from "@/components/home-running"
+import { HomeScrollMotion } from "@/components/home-scroll-motion"
 import { HomeSoundtrack } from "@/components/home-soundtrack"
+import { HomeTravelScene } from "@/components/home-travel-scene"
 import Image from "next/image"
 import Link from "next/link"
 import "./home-experience.css"
@@ -11,6 +13,7 @@ import "./home-experience.css"
 export default function Home() {
   return (
     <main id="main-content" className="home-page">
+      <HomeScrollMotion />
       <Hero />
       <section id="mi-mundo" className="nico-intro" aria-labelledby="intro-title">
         <div className="nico-intro-inner shell">
@@ -84,6 +87,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HomeTravelScene />
 
       <HomeJourney />
 

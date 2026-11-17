@@ -123,9 +123,12 @@ export const travelPlaces: TravelPlace[] = [
     city: "Pekín",
     chineseName: "北京",
     country: "China",
-    year: "",
+    year: "2023",
     latitude: 39.9042,
     longitude: 116.4074,
+    image: "/images/travel/pekin.webp",
+    imageAlt: "Nico frente al Templo del Cielo en Pekín",
+    note: "El Templo del Cielo, en enero de 2023.",
     nudge: [-16, -11],
   },
   {
