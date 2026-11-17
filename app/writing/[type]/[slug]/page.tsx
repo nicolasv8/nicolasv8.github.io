@@ -111,9 +111,11 @@ export default async function WritingEntryPage({ params }: WritingEntryPageProps
           <h1 lang={entry.language} className="writing-article-title">
             {entry.title}
           </h1>
-          <time className="writing-article-date" dateTime={entry.date}>
-            {formatWritingDate(entry.date)}
-          </time>
+          {entry.type !== "poems" && (
+            <time className="writing-article-date" dateTime={entry.date}>
+              {formatWritingDate(entry.date)}
+            </time>
+          )}
           <p className="reading-time">
             {getReadingMinutes(entry.content)} min de lectura ·{" "}
             {entry.language === "en" ? "En inglés" : "En español"}

@@ -84,20 +84,89 @@ a {
   position: relative;
   z-index: 70;
 }
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .wordmark {
   font-size: .85rem;
   font-weight: 600;
   letter-spacing: -.03em;
   line-height: 1;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 5px;
   white-space: nowrap;
 }
-.wordmark > span {
+.wordmark .wordmark-name {
   font-size: 2rem;
   font-weight: 850;
   letter-spacing: -.07em;
+}
+.wordmark-avatar {
+  position: relative;
+  display: block;
+  width: 54px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  flex: none;
+  isolation: isolate;
+}
+.wordmark-avatar::before {
+  content: "";
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  bottom: 1px;
+  left: 2px;
+  border-radius: 50%;
+  background: #e6c755;
+}
+.wordmark-avatar-body,
+.wordmark-avatar-arm {
+  position: absolute;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+}
+.wordmark-avatar-body {
+  width: 42px;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+.wordmark-avatar-arm {
+  width: 29px;
+  left: 25px;
+  bottom: 5px;
+  transform-origin: 5% 95%;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wordmark-avatar-arm {
+    animation: nico-wave 1.65s .35s ease-in-out both;
+  }
+  .wordmark-avatar:hover .wordmark-avatar-arm,
+  .wordmark-avatar:focus-visible .wordmark-avatar-arm {
+    animation: nico-wave 1.65s ease-in-out both;
+  }
+}
+@keyframes nico-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-15deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
 }
 .brand-dot {
   color: #a2562a;
@@ -799,9 +868,6 @@ em {
 .writing-prose img {
   margin-block: 35px;
 }
-.writing-prose[data-writing-type="poems"] p {
-  white-space: pre-line;
-}
 .article-next {
   border-top: 1px solid var(--line);
   margin-top: 65px;
@@ -917,7 +983,7 @@ em {
   .wordmark {
     font-size: .74rem;
   }
-  .wordmark > span {
+  .wordmark .wordmark-name {
     font-size: 1.8rem;
   }
   .menu-toggle {

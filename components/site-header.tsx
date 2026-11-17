@@ -9,6 +9,7 @@ import { Arrow } from "./icons"
 export function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [wave, setWave] = useState(0)
   return (
     <header
       className={`site-header shell ${pathname === "/" ? "is-home" : ""}`}
@@ -19,17 +20,28 @@ export function SiteHeader() {
         }
       }}
     >
-      <Link
-        href="/"
-        className="wordmark"
-        aria-label="La Vida de Nico · Inicio"
-        onClick={() => setOpen(false)}
-      >
-        la vida de{" "}
-        <span>
-          nico<span className="brand-dot">.</span>
-        </span>
-      </Link>
+      <div className="site-brand">
+        <button
+          type="button"
+          className="wordmark-avatar"
+          aria-label="Saludar a Nico"
+          onClick={() => setWave((count) => count + 1)}
+        >
+          <img key={wave} className="wordmark-avatar-arm" src="/images/avatar/brazo.webp" alt="" />
+          <img className="wordmark-avatar-body" src="/images/avatar/nico.webp" alt="" />
+        </button>
+        <Link
+          href="/"
+          className="wordmark"
+          aria-label="La Vida de Nico · Inicio"
+          onClick={() => setOpen(false)}
+        >
+          <span className="wordmark-caption">la vida de</span>{" "}
+          <span className="wordmark-name">
+            nico<span className="brand-dot">.</span>
+          </span>
+        </Link>
+      </div>
       <button
         className="menu-toggle"
         type="button"

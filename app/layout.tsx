@@ -43,7 +43,18 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/images/og-cover.png"],
   },
-  icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
+  icons: {
+    icon: [
+      { url: "/favicon-nico.png", type: "image/png", sizes: "128x128" },
+      {
+        url: "/favicon-nico.gif",
+        type: "image/gif",
+        sizes: "128x128",
+        media: "(prefers-reduced-motion: no-preference)",
+      },
+    ],
+    apple: "/apple-nico.png",
+  },
 }
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

@@ -78,13 +78,13 @@ export default function WritingPage() {
         <span aria-hidden="true">↗</span>
       </a>
       {entries.length > 0 && (
-        <details className="writing-archive">
-          <summary>
-            Archivo de la versión anterior del sitio <span aria-hidden="true">＋</span>
-          </summary>
+        <section className="writing-archive" aria-labelledby="writing-poems-heading">
+          <h2 id="writing-poems-heading" className="writing-poems-heading">
+            Poemas y escritos
+          </h2>
           <WritingIndex entries={entries} />
           <p className="writing-language-note">Los textos conservan su idioma original.</p>
-        </details>
+        </section>
       )}
     </main>
   )

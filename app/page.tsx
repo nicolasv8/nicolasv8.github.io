@@ -1,6 +1,6 @@
 import { HomeCuriosity } from "@/components/home-curiosity"
 import { Hero } from "@/components/home-hero"
-import { homeImages } from "@/lib/home-images"
+import { HomePostcards } from "@/components/home-postcards"
 import Image from "next/image"
 import Link from "next/link"
 import "./home-experience.css"
@@ -33,7 +33,11 @@ export default function Home() {
             </Link>
           </div>
           <div className="nico-intro-collage" aria-label="Recuerdos de viajes">
-            <div className="nico-photo nico-photo-nyc">
+            <Link
+              href="/mapa/?lugar=nueva-york#explorar"
+              className="nico-photo nico-photo-nyc"
+              aria-label="Ver Nueva York en mi mapa"
+            >
               <img
                 src="/images/travel/nueva-york-480.webp"
                 srcSet="/images/travel/nueva-york-480.webp 480w, /images/travel/nueva-york-960.webp 960w"
@@ -44,9 +48,13 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
-              <span>Nueva York, un atardecer.</span>
-            </div>
-            <div className="nico-photo nico-photo-shanghai">
+              <span>Nueva York, un atardecer. ↗</span>
+            </Link>
+            <Link
+              href="/mapa/?lugar=shanghai#explorar"
+              className="nico-photo nico-photo-shanghai"
+              aria-label="Ver Shanghái en mi mapa"
+            >
               <img
                 src="/images/travel/shanghai-480.webp"
                 srcSet="/images/travel/shanghai-480.webp 480w, /images/travel/shanghai-960.webp 960w"
@@ -57,8 +65,8 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
-              <span>Una noche en Shanghái.</span>
-            </div>
+              <span>Una noche en Shanghái. ↗</span>
+            </Link>
             <span className="nico-collage-note" aria-hidden="true">
               mi carrete
               <br />
@@ -76,56 +84,7 @@ export default function Home() {
 
       <HomeCuriosity />
 
-      <section className="nico-map-teaser" aria-labelledby="map-teaser-title">
-        <div className="nico-map-inner shell">
-          <div className="nico-map-copy">
-            <p className="nico-section-label">
-              <span>03</span> POSTALES Y PARADAS
-            </p>
-            <h2 id="map-teaser-title">
-              Pasaporte
-              <br />
-              <em>con fotos.</em>
-            </h2>
-            <p>
-              Algunos de los lugares que han quedado en mi cámara. Elige un punto y acompáñame a dar
-              una vuelta.
-            </p>
-            <Link href="/mapa" className="nico-button nico-button-dark">
-              Explorar el mapa <span aria-hidden="true">↗</span>
-            </Link>
-            <span className="nico-map-note">De mi carrete al mapa.</span>
-          </div>
-          <Link
-            href="/mapa"
-            className="nico-map-art"
-            aria-label="Ver mi mapa de viajes y fotografías"
-          >
-            <span className="nico-map-art-caption">UNA VUELTA POR EL MUNDO &nbsp; ↗</span>
-            <img
-              src={homeImages.london.src}
-              srcSet={homeImages.london.srcSet}
-              alt="Nico frente al Tower Bridge en Londres"
-              width={1600}
-              height={1200}
-              sizes="(max-width: 720px) 82vw, 430px"
-              loading="lazy"
-              decoding="async"
-            />
-            <span className="nico-map-art-label">
-              <b>LONDRES</b>
-              <span>2024 ↗</span>
-            </span>
-            <span className="nico-map-art-stamp" aria-hidden="true">
-              POSTAL
-              <br />
-              PARA
-              <br />
-              TI ✳
-            </span>
-          </Link>
-        </div>
-      </section>
+      <HomePostcards />
 
       <section className="nico-video-section" aria-labelledby="video-title">
         <div className="shell">

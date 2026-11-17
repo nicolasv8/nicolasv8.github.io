@@ -19,8 +19,6 @@ export function TravelMap() {
   )
   const [zoom, setZoom] = useState(1)
   const [view, setView] = useState<RegionId | "world">("world")
-  const [shareUrl, setShareUrl] = useState("")
-  const [shareStatus, setShareStatus] = useState("")
   const backRef = useRef<HTMLButtonElement>(null)
   const postcardRef = useRef<HTMLElement>(null)
   const postcardTitleRef = useRef<HTMLHeadingElement>(null)
@@ -92,8 +90,6 @@ export function TravelMap() {
       setSelectedIndex(next)
       setFocusedIndex(null)
       setView(nextView)
-      setShareUrl("")
-      setShareStatus("")
     }
     window.addEventListener("popstate", restorePlace)
     return () => window.removeEventListener("popstate", restorePlace)
@@ -148,8 +144,6 @@ export function TravelMap() {
     const nextView = regionForPlace(travelPlaces[next].id) ?? "world"
     if (nextView !== view) setZoom(1)
     setView(nextView)
-    setShareUrl("")
-    setShareStatus("")
     const url = new URL(window.location.href)
     if (url.searchParams.get("lugar") !== travelPlaces[next].id) {
       url.searchParams.set("lugar", travelPlaces[next].id)
@@ -190,32 +184,6 @@ export function TravelMap() {
     setZoom(1)
     setFocusedIndex(null)
     setView("world")
-  }
-
-  async function sharePlace() {
-    const url = new URL("/mapa/", window.location.origin)
-    url.searchParams.set("lugar", selected.id)
-    url.hash = "explorar"
-    const link = url.toString()
-    setShareUrl(link)
-    setShareStatus("Enlace listo para copiar.")
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: `${selected.city} · La Vida de Nico`, url: link })
-        return
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") return
-      }
-    }
-  }
-
-  async function copyShareUrl() {
-    try {
-      await navigator.clipboard.writeText(shareUrl)
-      setShareStatus("Enlace copiado.")
-    } catch {
-      setShareStatus("No se pudo copiar. Selecciona el enlace para copiarlo manualmente.")
-    }
   }
 
   function openPlace(id: string) {
@@ -484,7 +452,7 @@ export function TravelMap() {
                     })}
                   </div>
                 ) : (
-                  <div className="travel-region-canvas">
+                  <div className="travel-region-canvas" key={view}>
                     <div className="travel-map-grid" />
                     <Image
                       src={`/images/travel/map-${view}.svg`}
@@ -608,8 +576,12 @@ export function TravelMap() {
                   {selected.country} / {selected.year}
                 </p>
                 <h3 ref={postcardTitleRef} tabIndex={-1}>
-                  {selected.city}
-                  <span aria-hidden="true">.</span>
+                  <span className="travel-place-name" key={selected.id}>
+                    {selected.city}
+                  </span>
+                  <span className="travel-place-period" aria-hidden="true">
+                    .
+                  </span>
                 </h3>
                 <p className="travel-postcard-note">{selected.note}</p>
                 {selected.link && (
@@ -618,38 +590,10 @@ export function TravelMap() {
                   </a>
                 )}
               </div>
-              <div className="travel-share">
-                <div className="travel-share-actions">
-                  <button type="button" className="travel-share-button" onClick={sharePlace}>
-                    Compartir lugar ↗
-                  </button>
-                  <button
-                    type="button"
-                    className="travel-share-button"
-                    ref={surpriseRef}
-                    onClick={surprisePlace}
-                  >
-                    ✳ Sorpréndeme
-                  </button>
-                </div>
-                {shareUrl && (
-                  <div className="travel-share-fallback">
-                    <label htmlFor="travel-share-url">Enlace de {selected.city}</label>
-                    <input
-                      id="travel-share-url"
-                      type="text"
-                      readOnly
-                      value={shareUrl}
-                      onFocus={(event) => event.currentTarget.select()}
-                    />
-                    <button type="button" onClick={copyShareUrl}>
-                      Copiar enlace
-                    </button>
-                  </div>
-                )}
-                <span className="travel-share-status" aria-live="polite">
-                  {shareStatus}
-                </span>
+              <div className="travel-surprise">
+                <button type="button" ref={surpriseRef} onClick={surprisePlace}>
+                  <span aria-hidden="true">✳</span> Sorpréndeme
+                </button>
               </div>
               <div className="travel-postcard-nav">
                 <span>OTRA PARADA</span>

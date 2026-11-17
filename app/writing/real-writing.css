@@ -92,6 +92,13 @@
   margin-top: 40px;
 }
 
+.writing-poems-heading {
+  margin-bottom: 24px;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 400;
+}
+
 .writing-archive summary {
   display: flex;
   justify-content: space-between;

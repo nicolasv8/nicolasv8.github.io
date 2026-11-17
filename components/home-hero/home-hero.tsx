@@ -1,5 +1,7 @@
 import { homeImages } from "@/lib/home-images"
 import Link from "next/link"
+import { HeroParallax } from "./hero-parallax"
+import { HeroPortrait } from "./hero-portrait"
 
 export function Hero() {
   return (
@@ -25,7 +27,7 @@ export function Hero() {
             </Link>
           </div>
         </div>
-        <div className="nico-hero-stage" aria-label="Un vistazo al mundo de Nico">
+        <HeroParallax>
           <div className="nico-hero-halo" aria-hidden="true" />
           <div className="nico-hero-orbit nico-orbit-one" aria-hidden="true" />
           <div className="nico-hero-orbit nico-orbit-two" aria-hidden="true" />
@@ -55,19 +57,7 @@ export function Hero() {
               Londres, 2024 <b>↗</b>
             </span>
           </Link>
-          <div className="nico-hero-person">
-            <img
-              src={homeImages.portrait.src}
-              srcSet={homeImages.portrait.srcSet}
-              alt="Nico sonriendo con la camiseta de Colombia"
-              width={1600}
-              height={2041}
-              sizes={homeImages.portrait.sizes}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
+          <HeroPortrait />
           <Link href="/mapa" className="nico-ticket">
             <span>✈ &nbsp; MEDELLÍN · COLOMBIA</span>
             <strong>
@@ -94,7 +84,7 @@ export function Hero() {
           <span className="nico-hero-note" aria-hidden="true">
             ¡qué bueno verte por acá!
           </span>
-        </div>
+        </HeroParallax>
       </div>
       <div className="nico-hero-bottom shell">
         <span>HISTORIAS &nbsp; · &nbsp; IDEAS &nbsp; · &nbsp; LUGARES</span>

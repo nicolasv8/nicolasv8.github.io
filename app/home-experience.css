@@ -72,6 +72,21 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   font-weight: 730;
   letter-spacing: -.075em;
   line-height: 0.98;
+  animation: nico-hello .85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes nico-hello {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) rotate(-2deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) rotate(.3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
 }
 .nico-hero-copy h1 em {
   display: block;
@@ -156,6 +171,8 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   bottom: 5%;
   background: #d0bc78;
   border-radius: 50%;
+  transform: translate(var(--halo-x, 0), var(--halo-y, 0));
+  transition: transform .25s ease-out;
 }
 .nico-hero-orbit {
   position: absolute;
@@ -179,6 +196,8 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   width: 69%;
   height: 92%;
   overflow: hidden;
+  transform: translate(var(--person-x, 0), var(--person-y, 0));
+  transition: transform .25s ease-out;
 }
 .nico-hero-person img {
   height: 100%;
@@ -186,6 +205,51 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   object-fit: contain;
   object-position: center bottom;
   filter: drop-shadow(0 16px 18px #14271c55);
+}
+.nico-hero-person.has-video {
+  width: 84%;
+  height: auto;
+  aspect-ratio: 640 / 566;
+  left: 8%;
+  bottom: 10%;
+  border: 6px solid #f7f0df;
+  border-bottom-width: 20px;
+  border-radius: 24px 24px 8px 8px;
+  background: #263a2f;
+  box-shadow: 0 18px 35px #061b1555;
+}
+.nico-hero-person.has-video > img {
+  opacity: 0;
+}
+.nico-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+}
+.has-video .nico-hero-video {
+  opacity: 1;
+}
+.nico-hero-video-toggle {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 1px solid #f7f0df;
+  border-radius: 999px;
+  background: #19382eef;
+  color: #fff9ed;
+  font: 600 .65rem / 1.3 var(--font-geist-mono), monospace;
+}
+.nico-hero-video-toggle:focus-visible {
+  outline-offset: -4px;
 }
 .nico-hero-spark {
   position: absolute;
@@ -422,6 +486,7 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   padding: 10px 10px 32px;
   background: #fffdf6;
   box-shadow: 0 14px 32px #1f30221f;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 .nico-photo img {
   width: 100%;
@@ -445,6 +510,17 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   right: 3%;
   top: 20%;
   transform: rotate(9deg);
+}
+.nico-photo-nyc:hover,
+.nico-photo-nyc:focus-visible {
+  transform: rotate(-3deg) translateY(-6px);
+  box-shadow: 0 20px 35px #1f302237;
+}
+.nico-photo-shanghai:hover,
+.nico-photo-shanghai:focus-visible {
+  z-index: 3;
+  transform: rotate(4deg) translateY(-6px);
+  box-shadow: 0 20px 35px #1f302237;
 }
 .nico-photo::before {
   content: "";
@@ -609,6 +685,26 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   font: italic 1.25rem var(--serif);
   transform: rotate(-4deg);
 }
+.nico-postcards {
+  min-width: 0;
+}
+.nico-postcard-stack {
+  position: relative;
+  touch-action: pan-y;
+}
+.nico-postcard-sheet {
+  position: absolute;
+  inset: 0 7%;
+  background: #f8f3e8;
+  box-shadow: 0 8px 18px #5b4d201e;
+  pointer-events: none;
+}
+.nico-postcard-sheet-back {
+  transform: translate(-12px, 5px) rotate(-7deg);
+}
+.nico-postcard-sheet-middle {
+  transform: translate(6px, -4px) rotate(-2deg);
+}
 .nico-map-art {
   position: relative;
   display: block;
@@ -617,11 +713,11 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   padding: 18px 18px 14px;
   background: #f8f3e8;
   box-shadow: 0 20px 34px #5b4d2038;
-  transform: rotate(4deg);
+  transform: translate(var(--postcard-x, 0), var(--postcard-y, 0)) rotate(4deg);
   transition: transform .25s;
 }
 .nico-map-art:hover {
-  transform: rotate(1deg) translateY(-5px);
+  transform: translate(var(--postcard-x, 0), var(--postcard-y, 0)) rotate(1deg);
 }
 .nico-map-art::before {
   content: "";
@@ -638,6 +734,21 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  animation: postcard-arrive .32s ease-out both;
+}
+@keyframes postcard-arrive {
+  0% {
+    opacity: 0.4;
+    transform: translateX(16px) rotate(2deg) scale(0.96);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-3px) rotate(-.4deg) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
 }
 .nico-map-art-caption,
 .nico-map-art-label {
@@ -678,6 +789,42 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   font-weight: 700;
   line-height: 1.3;
   transform: rotate(-12deg);
+}
+.nico-postcard-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 86%;
+  margin: 38px auto 0;
+  color: #344c3c;
+  font: 600 .65rem / 1.5 var(--font-geist-mono), monospace;
+  letter-spacing: .04em;
+}
+.nico-postcard-controls > div {
+  display: flex;
+  gap: 8px;
+}
+.nico-postcard-controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #536047;
+  border-radius: 50%;
+  background: transparent;
+  color: #203c30;
+  font-size: 1.1rem;
+  transition: background .2s, color .2s;
+}
+.nico-postcard-controls button:hover {
+  background: #203c30;
+  color: #fff9ed;
+}
+.nico-postcard-hint {
+  width: 86%;
+  margin: 8px auto 0 !important;
+  color: #4c5b40;
+  font-size: .75rem;
+  line-height: 1.5;
 }
 
 .nico-video-section {
@@ -1052,5 +1199,13 @@ body:has(.home-page) .site-header.is-home :focus-visible,
   .home-page *::after {
     transition: none !important;
     animation: none !important;
+  }
+  .nico-hero-person,
+  .nico-hero-halo {
+    transform: none;
+  }
+  .nico-map-art,
+  .nico-map-art:hover {
+    transform: rotate(4deg);
   }
 }

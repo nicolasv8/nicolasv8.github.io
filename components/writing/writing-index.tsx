@@ -54,8 +54,12 @@ export function WritingIndex({ entries }: { entries: Entry[] }) {
               <div>
                 <div className="writing-list-meta">
                   <span>{entry.label}</span>
-                  <span aria-hidden="true">·</span>
-                  <time dateTime={entry.date}>{entry.displayDate}</time>
+                  {entry.type !== "poems" && (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <time dateTime={entry.date}>{entry.displayDate}</time>
+                    </>
+                  )}
                   <span aria-hidden="true">·</span>
                   <span>{entry.minutes} min</span>
                 </div>
